@@ -4,54 +4,65 @@
   <meta charset="UTF-8">
   <title>Contact - MNSO</title>
   <style>
-    /* Your existing CSS styles */
+    /* General page styling */
     body {
       margin: 0;
       background-color: black;
       color: white;
       font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
     }
 
-    .container {
+    /* Left column styling for buttons */
+    .sidebar {
+      background-color: gray;
+      width: 250px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 90vh;
-    }
-
-    h1 {
-      font-size: 72px;
-      font-weight: bold;
-      margin-bottom: 40px;
-    }
-
-    .search-bar {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .tabs {
-      margin-top: 30px;
+      justify-content: space-between;
+      height: 100vh;
     }
 
     .tabs a {
-      margin: 0 10px;
+      margin: 10px 0;
       color: white;
       text-decoration: none;
       font-size: 18px;
       border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
+      padding: 10px;
+      border-radius: 5px;
       transition: background 0.3s;
     }
 
     .tabs a:hover {
       background-color: white;
       color: black;
+    }
+
+    /* Content area (right side of the page) */
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      padding: 20px;
+    }
+
+    /* Hotline display box */
+    .hotline-box {
+      background-color: white;
+      color: blue;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      width: 300px;
+    }
+
+    .hotline-box h2 {
+      margin-bottom: 10px;
     }
 
     .footer {
@@ -64,46 +75,49 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="title">Contact - MNSO</h1>
-    <input type="text" class="search-bar" id="search-bar" placeholder="Search...">
-    
-    <!-- Navigation bar with Norwegian Mode button -->
+  <!-- Left sidebar with navigation buttons -->
+  <div class="sidebar">
     <div class="tabs">
-      <a href="index.html" id="home">Home</a>
-      <a href="directory.html" id="directory">Directory</a>
-      <a href="contact.html" id="contact">Contact</a>
-      <a href="javascript:void(0);" onclick="switchLanguage()" id="norwegianMode">Norwegian Mode</a>
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="javascript:void(0);" onclick="switchLanguage()">Norwegian Mode</a>
     </div>
   </div>
 
-  <div class="footer" id="footer">
+  <!-- Main content area -->
+  <div class="content">
+    <!-- MNSO hotline info -->
+    <div class="hotline-box">
+      <h2>MNSO Hotline</h2>
+      <p><strong>254-307-8140</strong></p>
+      <p>Contact us now!</p>
+    </div>
+  </div>
+
+  <!-- Footer with ownership notice -->
+  <div class="footer">
     classified website owned and operated by MNSO organization
   </div>
 
-  <!-- JavaScript to handle the language switch -->
+  <!-- JavaScript to handle the Norwegian Mode toggle -->
   <script>
     let isNorwegian = false;
 
     // Language content for English and Norwegian
     const englishContent = {
       title: "Contact - MNSO",
-      searchPlaceholder: "Search...",
-      home: "Home",
-      directory: "Directory",
-      contact: "Contact",
-      norwegianMode: "Norwegian Mode",
-      footer: "classified website owned and operated by MNSO organization"
+      hotlineTitle: "MNSO Hotline",
+      hotlineNumber: "254-307-8140",
+      contactMessage: "Contact us now!",
+      norwegianMode: "Norwegian Mode"
     };
 
     const norwegianContent = {
       title: "Kontakt - MNSO",
-      searchPlaceholder: "Søk...",
-      home: "Hjem",
-      directory: "Katalog",
-      contact: "Kontakt",
-      norwegianMode: "Engelsk Mode",
-      footer: "klassifisert nettside eid og drevet av MNSO organisasjon"
+      hotlineTitle: "MNSO Hotline",
+      hotlineNumber: "254-307-8140", // Same number
+      contactMessage: "Kontakt oss nå!",
+      norwegianMode: "Engelsk Mode"
     };
 
     // Switch language function
@@ -111,13 +125,11 @@
       isNorwegian = !isNorwegian;
       const content = isNorwegian ? norwegianContent : englishContent;
 
-      document.getElementById("title").innerText = content.title;
-      document.getElementById("search-bar").placeholder = content.searchPlaceholder;
-      document.getElementById("home").innerText = content.home;
-      document.getElementById("directory").innerText = content.directory;
-      document.getElementById("contact").innerText = content.contact;
-      document.getElementById("norwegianMode").innerText = content.norwegianMode;
-      document.getElementById("footer").innerText = content.footer;
+      document.title = content.title;
+      document.querySelector(".hotline-box h2").innerText = content.hotlineTitle;
+      document.querySelector(".hotline-box p strong").innerText = content.hotlineNumber;
+      document.querySelector(".hotline-box p:last-child").innerText = content.contactMessage;
+      document.querySelector(".tabs a:nth-child(3)").innerText = content.norwegianMode;
     }
   </script>
 </body>
