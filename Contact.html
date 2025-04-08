@@ -1,71 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MNSO Contact</title>
+  <meta charset="UTF-8">
+  <title>Contact - MNSO</title>
   <style>
     body {
+      margin: 0;
       background-color: black;
       color: white;
-      margin: 0;
       font-family: Arial, sans-serif;
     }
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 160px;
-      height: 100%;
-      background-color: #444;
+
+    .container {
       display: flex;
       flex-direction: column;
-      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
     }
-    .sidebar a {
+
+    h1 {
+      font-size: 72px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+
+    .search-bar {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .tabs {
+      margin-top: 30px;
+    }
+
+    .tabs a {
+      margin: 0 10px;
       color: white;
       text-decoration: none;
-      margin: 10px 0;
-      background: #666;
-      padding: 8px;
+      font-size: 18px;
+      border: 1px solid white;
+      padding: 6px 12px;
       border-radius: 4px;
-      text-align: center;
+      transition: background 0.3s;
     }
-    .sidebar a:hover {
-      background-color: #888;
+
+    .tabs a:hover {
+      background-color: white;
+      color: black;
     }
-    .search {
+
+    .footer {
       position: absolute;
-      top: 10px;
-      left: 180px;
-    }
-    .search input {
-      padding: 6px;
-      border: none;
-      border-radius: 4px;
-    }
-    .hotline {
-      margin-left: 180px;
-      margin-top: 120px;
-      font-size: 24px;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: gray;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Contact MNSO</h1>
+    <div class="contact-info">
+      <p>Call us at: <strong>254-307-8140</strong></p>
+    </div>
 
-  <div class="sidebar">
-    <a href="directory.html">directory</a>
-    <a href="contact.html">contact</a>
-    <a href="#">code MIA</a>
-    <a href="#">apply for reisepass</a>
-    <a href="#">Norwegian mode</a>
+    <input type="text" class="search-bar" placeholder="Search...">
+
+    <div class="tabs">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Code MIA</a>
+      <a href="#">Apply for Reisepass</a>
+      <a href="#">Norwegian Mode</a>
+    </div>
   </div>
-
-  <div class="search">
-    <input type="text" placeholder="Search...">
+  <div class="footer">
+    classified website owned and operated by MNSO organization
   </div>
-
-  <div class="hotline">
-    Hotline: 254-307-8140
-  </div>
-
 </body>
 </html>
