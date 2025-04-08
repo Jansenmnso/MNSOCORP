@@ -75,5 +75,69 @@
   <div class="footer">
     classified website owned and operated by MNSO organization
   </div>
+</</<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MNSO</title>
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MNSO</h1>
+    <input type="text" class="search-bar" placeholder="Search...">
+    <div class="tabs">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="contact.html">Contact</a>
+      <a href="javascript:void(0);" onclick="switchLanguage()">Norwegian Mode</a> <!-- Norwegian mode button -->
+    </div>
+  </div>
+  <div class="footer">
+    classified website owned and operated by MNSO organization
+  </div>
+
+  <!-- Add JavaScript here -->
+  <script>
+    let isNorwegian = false;
+
+    // Language content for English and Norwegian
+    const englishContent = {
+      title: "MNSO",
+      searchPlaceholder: "Search...",
+      home: "Home",
+      directory: "Directory",
+      contact: "Contact",
+      norwegianMode: "Norwegian Mode",
+      footer: "classified website owned and operated by MNSO organization"
+    };
+
+    const norwegianContent = {
+      title: "MNSO - Norsk",
+      searchPlaceholder: "Søk...",
+      home: "Hjem",
+      directory: "Katalog",
+      contact: "Kontakt",
+      norwegianMode: "Engelsk Mode",
+      footer: "klassifisert nettside eid og drevet av MNSO organisasjon"
+    };
+
+    // Switch language function
+    function switchLanguage() {
+      isNorwegian = !isNorwegian;
+      const content = isNorwegian ? norwegianContent : englishContent;
+
+      document.getElementById("title").innerText = content.title;
+      document.getElementById("search-bar").placeholder = content.searchPlaceholder;
+      document.getElementById("home").innerText = content.home;
+      document.getElementById("directory").innerText = content.directory;
+      document.getElementById("contact").innerText = content.contact;
+      document.getElementById("norwegianMode").innerText = content.norwegianMode;
+      document.getElementById("footer").innerText = content.footer;
+    }
+  </script>
 </body>
+</html>>
 </html>
