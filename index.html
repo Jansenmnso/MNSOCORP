@@ -61,15 +61,22 @@
       color: gray;
     }
   </style>
-<//* Styling for the logo */
-.logo {
-  position: absolute;
-  top: 20px; /* Adjust this value to change how far down from the top the logo appears */
-  left: 20px; /* Adjust this value to change how far from the left side the logo appears */
-  width: 100px; /* You can change the width to adjust the logo size */
-  height: auto; /* This keeps the aspect ratio of the logo intact */
-}>
-<<img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">>
+<head>
+  <style>
+    /* Styling for the logo */
+    .logo {
+      position: absolute;
+      top: 20px; /* Adjust the vertical position */
+      left: 20px; /* Adjust the horizontal position */
+      width: 100px; /* Adjust the size of the logo to make it smaller */
+      height: auto; /* Keeps the aspect ratio of the logo */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo placed at the top-left corner -->
+  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Correct image tag -->
   <div class="container">
     <h1>MNSO</h1>
     <input type="text" class="search-bar" placeholder="Search...">
