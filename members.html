@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Members - MNSO</title>
+  <style>
+    /* General page styling */
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Left column styling for buttons */
+    .sidebar {
+      background-color: gray;
+      width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+    }
+
+    .tabs a {
+      margin: 10px 0;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border: 1px solid white;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .tabs a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    /* Content area (right side of the page) */
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Members list section */
+    .members-list {
+      margin-top: 20px;
+    }
+
+    .member {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .out-of-state-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .out-of-state-btn:hover {
+      background-color: darkblue;
+    }
+
+    /* Top right title (MNSO) */
+    .header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left sidebar with navigation buttons -->
+  <div class="sidebar">
+    <div class="tabs">
+      <a href="index.html">Home</a>
+      <a href="directory.html">Directory</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
+      <a href="javascript:void(0);" onclick="switchLanguage()">Norwegian Mode</a>
+    </div>
+  </div>
+
+  <!-- Top right MNSO title -->
+  <div class="header">MNSO</div>
+
+  <!-- Main content area -->
+  <div class="content">
+    <h2>Members</h2>
+
+    <!-- List of members -->
+    <div class="members-list">
+      <div class="member">
+        <p><strong>Jansen Monk</strong> - ID: A225C</p>
+      </div>
+      <div class="member">
+        <p><strong>Chris K.</strong> - ID: A234D</p>
+      </div>
+      <div class="member">
+        <p><strong>Kendel Martin</strong> - ID: A246E</p>
+      </div>
+      <div class="member">
+        <p><strong>Janathe L.</strong> - ID: A278E</p>
+      </div>
+    </div>
+
+    <!-- Out of State Members Button -->
+    <button class="out-of-state-btn">Out of State Members</button>
+  </div>
+
+  <!-- Footer with ownership notice -->
+  <div class="footer">
+    classified website owned and operated by MNSO organization
+  </div>
+
+  <!-- JavaScript to handle the Norwegian Mode toggle -->
+  <script>
+    let isNorwegian = false;
+
+    // Language content for English and Norwegian
+    const englishContent = {
+      title: "Members - MNSO",
+      members: "Members",
+      outOfState: "Out of State Members",
+      norwegianMode: "Norwegian Mode"
+    };
+
+    const norwegianContent = {
+      title: "Medlemmer - MNSO",
+      members: "Medlemmer",
+      outOfState: "Utenlandske Medlemmer",
+      norwegianMode: "Engelsk Mode"
+    };
+
+    // Switch language function
+    function switchLanguage() {
+      isNorwegian = !isNorwegian;
+      const content = isNorwegian ? norwegianContent : englishContent;
+
+      document.title = content.title;
+      document.querySelector("h2").innerText = content.members;
+      document.querySelector(".out-of-state-btn").innerText = content.outOfState;
+      document.querySelector(".tabs a:nth-child(5)").innerText = content.norwegianMode;
+    }
+  </script>
+</body>
+</html>
