@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code MIA - MNSO</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', Courier, monospace; /* Typewriter font */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Red border around the page */
+    .container {
+      border: 10px solid red;
+      width: 80%;
+      height: 80%;
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Heading styling */
+    h1 {
+      font-size: 72px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    /* Text below the heading */
+    .subheading {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* MNSO logo styling */
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+    }
+
+    /* Video styling */
+    .video-container {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MNSO logo placed at the top-right corner -->
+  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Ensure the correct image path -->
+
+  <!-- Main container with red border -->
+  <div class="container">
+    <h1>CODE MIA</h1> <!-- Main heading -->
+    <p class="subheading">Code MIA - THIS IS NOT A TEST</p>
+
+    <!-- Video embedded inside the red box -->
+    <div class="video-container">
+      <video autoplay loop>
+        <source src="CODE MIA ().mov" type="video/quicktime"> <!-- Replaced with your actual video file name -->
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+</body>
+</html>
