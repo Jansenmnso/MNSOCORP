@@ -26,21 +26,23 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
     /* Heading styling */
     h1 {
       font-size: 72px;
       font-weight: bold;
-      margin-bottom: 40px;
+      margin-bottom: 20px; /* Reduced margin to avoid overlap */
+      text-align: center;
     }
 
     /* Text below the heading */
     .subheading {
       font-size: 36px;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     /* MNSO logo styling */
@@ -52,24 +54,29 @@
       height: auto;
     }
 
-    /* Video styling */
+    /* Video container styling */
     .video-container {
       width: 100%;
-      height: 500px;
+      height: 60%; /* Adjusted the height to be 60% of the red border */
       margin-top: 20px;
+      overflow: hidden; /* Prevents the video from overflowing */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
+    /* Ensuring the video fits inside the box */
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Ensures the video fills the container while maintaining aspect ratio */
     }
   </style>
 </head>
 <body>
 
   <!-- MNSO logo placed at the top-right corner -->
-  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Ensure the correct image path -->
+  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Correct image path -->
 
   <!-- Main container with red border -->
   <div class="container">
@@ -78,8 +85,8 @@
 
     <!-- Video embedded inside the red box -->
     <div class="video-container">
-      <video autoplay loop>
-        <source src="CODE MIA ().mov" type="video/quicktime"> <!-- Replaced with your actual video file name -->
+      <video autoplay loop controls>
+        <source src="CODE MIA ().mov" type="video/quicktime"> <!-- Video file name -->
         Your browser does not support the video tag.
       </video>
     </div>
