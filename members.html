@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Members - MNSO</title>
   <style>
+    /* General page styling */
     body {
       margin: 0;
       background-color: black;
@@ -13,6 +14,7 @@
       height: 100vh;
     }
 
+    /* Left column styling for buttons */
     .sidebar {
       background-color: gray;
       width: 250px;
@@ -21,6 +23,11 @@
       flex-direction: column;
       justify-content: space-between;
       height: 100vh;
+    }
+
+    .tabs {
+      display: flex;
+      flex-direction: column;
     }
 
     .tabs a {
@@ -39,13 +46,17 @@
       color: black;
     }
 
+    /* Content area (right side of the page) */
     .content {
       flex: 1;
-      padding: 40px 20px 20px 20px;
+      padding: 40px 20px 60px 20px; /* Added bottom padding */
       overflow-y: auto;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* Members list section */
     .members-list {
       margin-top: 20px;
     }
@@ -56,7 +67,6 @@
       padding: 10px;
       border-radius: 5px;
       margin-bottom: 10px;
-      font-size: 18px;
     }
 
     .out-of-state-btn {
@@ -73,6 +83,7 @@
       background-color: darkblue;
     }
 
+    /* Top right title (MNSO) */
     .header {
       position: absolute;
       top: 20px;
@@ -82,6 +93,7 @@
       color: white;
     }
 
+    /* Footer */
     .footer {
       position: absolute;
       bottom: 10px;
@@ -110,6 +122,7 @@
   <div class="content">
     <h2>Members</h2>
 
+    <!-- List of members -->
     <div class="members-list">
       <div class="member"><p><strong>Jansen Monk</strong> - ID: A225C</p></div>
       <div class="member"><p><strong>Chris K.</strong> - ID: A234D</p></div>
@@ -120,14 +133,16 @@
       <div class="member"><p><strong>Horner Milton</strong> - ID: A265D</p></div>
     </div>
 
+    <!-- Out of State Members Button -->
     <button class="out-of-state-btn">Out of State Members</button>
-
-    <div class="footer">
-      classified website owned and operated by MNSO organization
-    </div>
   </div>
 
-  <!-- Norwegian Mode Script -->
+  <!-- Footer moved outside content for better positioning -->
+  <div class="footer">
+    classified website owned and operated by MNSO organization
+  </div>
+
+  <!-- JavaScript to handle the Norwegian Mode toggle -->
   <script>
     let isNorwegian = false;
 
