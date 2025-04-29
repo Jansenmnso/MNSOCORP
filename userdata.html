@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Data - Ross Lambert</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            border: 8px solid red;
+            height: 100vh;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .mnso-logo {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-weight: bold;
+            color: green;
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto 0 auto;
+            text-align: center;
+        }
+
+        .red-text {
+            color: red;
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: black;
+            color: green;
+            border: 2px solid green;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: green;
+            color: black;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            background-color: white;
+            color: red;
+            padding: 20px 40px;
+            border: 2px solid red;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mnso-logo">MNSO</div>
+
+    <div class="container">
+        <p>all data of user [Ross Lambert] MNSO Member <span class="red-text">[resigned 2025]</span></p>
+        <p class="red-text">Member ID: A262E</p>
+        <p>SNAPINC ID: kawi250rock</p>
+        <p>Cell Number: 2549644782</p>
+
+        <div class="button-container">
+            <button onclick="showPopup()">Delete Data</button>
+            <button>Download Data</button>
+        </div>
+    </div>
+
+    <div id="popup">All Data and Catche cleared from server</div>
+
+    <script>
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
