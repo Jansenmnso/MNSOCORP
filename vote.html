@@ -13,12 +13,25 @@
     }
 
     .header {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 30px;
     }
 
-    .header h1 {
+    .header img {
+      height: 50px;
+    }
+
+    .header-title {
+      flex: 1;
+      text-align: center;
+    }
+
+    .header-title h1 {
       color: #002855;
+      margin: 0;
+      font-size: 26px;
       border-bottom: 2px solid #ccc;
       padding-bottom: 10px;
     }
@@ -26,15 +39,35 @@
     .ballot {
       background: white;
       padding: 30px;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
 
     .candidate {
+      display: flex;
+      align-items: center;
       margin-bottom: 20px;
     }
+
+    .party-box {
+      width: 40px;
+      height: 40px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      border-radius: 4px;
+    }
+
+    .liberal { background-color: blue; }
+    .labor { background-color: orange; }
+    .conservative { background-color: red; }
+    .green { background-color: green; }
 
     label {
       font-size: 18px;
@@ -71,7 +104,6 @@
       color: #666;
     }
 
-    /* Modal Style */
     .modal {
       position: fixed;
       top: 0; left: 0;
@@ -133,23 +165,38 @@
   </div>
 
   <div class="header">
-    <h1>Vote for the Next MNSO Leader</h1>
-    <p>Your voice. Your choice. Your organization.</p>
+    <img src="texas-flag.png" alt="Texas Flag">
+    <div class="header-title">
+      <h1>Vote for the Next MNSO Leader</h1>
+    </div>
+    <img src="mnso-logo.png" alt="MNSO Logo">
   </div>
 
   <div class="ballot">
     <form id="voteForm">
+
       <div class="candidate">
-        <input type="radio" name="candidate" id="cand1" value="Rachel Adams" required>
-        <label for="cand1">Rachel Adams — Strategic & Diplomatic Focus</label>
+        <div class="party-box liberal">L</div>
+        <input type="radio" name="candidate" id="cand1" value="Jerome Foster II">
+        <label for="cand1">Jerome Foster II – Liberal Party</label>
       </div>
+
       <div class="candidate">
-        <input type="radio" name="candidate" id="cand2" value="Jordan Malik">
-        <label for="cand2">Jordan Malik — Security & Expansion Advocate</label>
+        <div class="party-box labor">LB</div>
+        <input type="radio" name="candidate" id="cand2" value="Janathe Nilsen">
+        <label for="cand2">Janathe Nilsen – Labor Party</label>
       </div>
+
       <div class="candidate">
-        <input type="radio" name="candidate" id="cand3" value="Taylor Fox">
-        <label for="cand3">Taylor Fox — Community Building & Tech Growth</label>
+        <div class="party-box conservative">C</div>
+        <input type="radio" name="candidate" id="cand3" value="Jansen Monk">
+        <label for="cand3">Jansen Monk – Conservative Party</label>
+      </div>
+
+      <div class="candidate">
+        <div class="party-box green">G</div>
+        <input type="radio" name="candidate" id="cand4" value="Jace Mcmillan">
+        <label for="cand4">Jace Mcmillan – Green Party</label>
       </div>
 
       <button class="submit-btn" type="submit">Submit Vote</button>
