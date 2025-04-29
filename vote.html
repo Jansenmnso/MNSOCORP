@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vote MNSO</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      color: #002855;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .ballot {
+      background: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .candidate {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .submit-btn:hover {
+      background-color: #004080;
+    }
+
+    .confirmation {
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      color: green;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Modal Style */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+    }
+
+    .modal-box {
+      background: #222;
+      padding: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal input {
+      padding: 10px;
+      margin-top: 10px;
+      width: 80%;
+      font-size: 16px;
+    }
+
+    .modal button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #0066cc;
+    }
+
+    .error-msg {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Access Control Modal -->
+  <div class="modal" id="idModal">
+    <div class="modal-box">
+      <h2>Enter Your Member ID to Vote</h2>
+      <input type="text" id="memberIdInput" placeholder="e.g., A234D">
+      <br>
+      <button onclick="validateID()">Enter</button>
+      <div class="error-msg" id="errorMsg" style="display: none;">Invalid ID. Access Denied.</div>
+    </div>
+  </div>
+
+  <div class="header">
+    <h1>Vote for the Next MNSO Leader</h1>
+    <p>Your voice. Your choice. Your organization.</p>
+  </div>
+
+  <div class="ballot">
+    <form id="voteForm">
+      <div class="candidate">
+        <input type="radio" name="candidate" id="cand1" value="Rachel Adams" required>
+        <label for="cand1">Rachel Adams — Strategic & Diplomatic Focus</label>
+      </div>
+      <div class="candidate">
+        <input type="radio" name="candidate" id="cand2" value="Jordan Malik">
+        <label for="cand2">Jordan Malik — Security & Expansion Advocate</label>
+      </div>
+      <div class="candidate">
+        <input type="radio" name="candidate" id="cand3" value="Taylor Fox">
+        <label for="cand3">Taylor Fox — Community Building & Tech Growth</label>
+      </div>
+
+      <button class="submit-btn" type="submit">Submit Vote</button>
+    </form>
+
+    <div class="confirmation" id="confirmation">
+      Thank you! Your vote has been submitted.
+    </div>
+  </div>
+
+  <div class="footer">
+    MNSO Voting Division • Confidential & Secure • 2025
+  </div>
+
+  <script>
+    const validIDs = [
+      "A225C", "A234D", "A246E", "A278E",
+      "A279C", "A262E", "A265D"
+    ];
+
+    function validateID() {
+      const input = document.getElementById("memberIdInput").value.trim().toUpperCase();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (validIDs.includes(input)) {
+        document.getElementById("idModal").style.display = "none";
+      } else {
+        errorMsg.style.display = "block";
+      }
+    }
+
+    document.getElementById("voteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
