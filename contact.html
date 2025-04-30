@@ -2,135 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact - MNSO</title>
+  <title>Contact MNSO Representatives</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* General page styling */
     body {
       margin: 0;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f9fc;
+      color: #111;
     }
 
-    /* Left column styling for buttons */
-    .sidebar {
-      background-color: gray;
-      width: 250px;
+    .header {
+      background-color: #002855;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .contact-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 100vh;
-    }
-
-    .tabs a {
-      margin: 10px 0;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid white;
-      padding: 10px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .tabs a:hover {
-      background-color: white;
-      color: black;
-    }
-
-    /* Content area (right side of the page) */
-    .content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
       align-items: center;
-      background-color: black;
-      padding: 20px;
+      transition: transform 0.3s ease;
     }
 
-    /* Hotline display box */
-    .hotline-box {
-      background-color: white;
-      color: blue;
-      padding: 20px;
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .contact-title {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 15px;
       text-align: center;
-      border-radius: 10px;
-      width: 300px;
     }
 
-    .hotline-box h2 {
-      margin-bottom: 10px;
+    .contact-info {
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .contact-info a {
+      color: #002855;
+      text-decoration: none;
+    }
+
+    .form-section {
+      max-width: 700px;
+      margin: 60px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-section h2 {
+      margin-top: 0;
+      color: #002855;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    form button {
+      background-color: #002855;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #004080;
     }
 
     .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+      text-align: center;
       font-size: 12px;
-      color: gray;
+      color: #777;
+      margin-top: 60px;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- Left sidebar with navigation buttons -->
-  <div class="sidebar">
-    <div class="tabs">
-      <a href="index.html">Home</a>
-      <a href="directory.html">Directory</a>
-      <a href="javascript:void(0);" onclick="switchLanguage()">Norwegian Mode</a>
-    </div>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
+    <div class="title">Contact Your MNSO Representatives</div>
   </div>
 
-  <!-- Main content area -->
-  <div class="content">
-    <!-- MNSO hotline info -->
-    <div class="hotline-box">
-      <h2>MNSO Hotline</h2>
-      <p><strong>254-307-8140</strong></p>
-      <p>Contact us now!</p>
+  <!-- Contact Cards -->
+  <div class="contact-container">
+
+    <!-- Janathe Nilsen -->
+    <div class="contact-card">
+      <div class="contact-photo" style="background-image: url('janathe.jpg');"></div>
+      <div class="contact-name">Janathe Nilsen</div>
+      <div class="contact-title">Houston, TX Representative</div>
+      <div class="contact-info">
+        Phone: 254-307-8140<br>
+        Email: <a href="mailto:Jcompany366@gmail.com">Jcompany366@gmail.com</a><br>
+        Instagram: <a href="https://instagram.com/janathenilsen" target="_blank">@JanatheNilsen</a>
+      </div>
     </div>
+
+    <!-- Jansen Monk -->
+    <div class="contact-card">
+      <div class="contact-photo" style="background-image: url('jansen.jpg');"></div>
+      <div class="contact-name">Jansen Monk</div>
+      <div class="contact-title">DFW / Stephenville Representative</div>
+      <div class="contact-info">
+        Phone: 254-307-8140<br>
+        Email: <a href="mailto:Jcompany366@gmail.com">Jcompany366@gmail.com</a><br>
+        Instagram: <a href="https://instagram.com/jansenmonk" target="_blank">@JansenMonk</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Footer with ownership notice -->
+  <!-- Contact Form -->
+  <div class="form-section">
+    <h2>Message MNSO Leadership</h2>
+    <form action="mailto:Jcompany366@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Name" required>
+      <input type="email" name="Email" placeholder="Your Email" required>
+      <textarea name="Message" rows="6" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
   <div class="footer">
-    classified website owned and operated by MNSO organization
+    MNSO Youth Political Organization — All communications confidential and representative-specific.
   </div>
 
-  <!-- JavaScript to handle the Norwegian Mode toggle -->
-  <script>
-    let isNorwegian = false;
-
-    // Language content for English and Norwegian
-    const englishContent = {
-      title: "Contact - MNSO",
-      hotlineTitle: "MNSO Hotline",
-      hotlineNumber: "254-307-8140",
-      contactMessage: "Contact us now!",
-      norwegianMode: "Norwegian Mode"
-    };
-
-    const norwegianContent = {
-      title: "Kontakt - MNSO",
-      hotlineTitle: "MNSO Hotline",
-      hotlineNumber: "254-307-8140", // Same number
-      contactMessage: "Kontakt oss nå!",
-      norwegianMode: "Engelsk Mode"
-    };
-
-    // Switch language function
-    function switchLanguage() {
-      isNorwegian = !isNorwegian;
-      const content = isNorwegian ? norwegianContent : englishContent;
-
-      document.title = content.title;
-      document.querySelector(".hotline-box h2").innerText = content.hotlineTitle;
-      document.querySelector(".hotline-box p strong").innerText = content.hotlineNumber;
-      document.querySelector(".hotline-box p:last-child").innerText = content.contactMessage;
-      document.querySelector(".tabs a:nth-child(3)").innerText = content.norwegianMode;
-    }
-  </script>
 </body>
 </html>
