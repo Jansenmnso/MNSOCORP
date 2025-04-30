@@ -127,6 +127,35 @@
       background-color: #004080;
     }
 
+    .chat-button-container {
+      text-align: center;
+      margin: 60px auto 40px auto;
+    }
+
+    .chat-button {
+      display: inline-block;
+      background-color: #002855;
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid gold;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background-color: #003e7d;
+    }
+
+    .chat-note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+    }
+
     .footer {
       text-align: center;
       font-size: 12px;
@@ -182,6 +211,16 @@
       <textarea name="Message" rows="6" placeholder="Your Message..." required></textarea>
       <button type="submit">Send Message</button>
     </form>
+  </div>
+
+  <!-- Chat Access Button -->
+  <div class="chat-button-container">
+    <a href="messaging.html" class="chat-button">
+      &#128274; Access MNSO Member & Staff Communications Hub
+    </a>
+    <p class="chat-note">
+      Authorized personnel only — ID required to enter chat
+    </p>
   </div>
 
   <!-- Footer -->
