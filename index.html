@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Your Site Title</title>
+
+  <!-- OneSignal Web Push Notification -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "e9b9a02f-0242-403a-9991-cdc65520675a",
+      });
+    });
+  </script>
+
+</head>
+<body>
+  <!-- Your content here -->
+</body>
+</html>>
   <meta charset="UTF-8">
   <title>MNSO</title>
   <style>
