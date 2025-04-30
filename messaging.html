@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MNSO Live Messaging</title>
+  <script type="module">
+    // Firebase imports
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy, deleteDoc, doc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC6q5IkfR7_ocuvRWwmO0kZlEEJxMvBxAk",
+      authDomain: "mnso-chat-918eb.firebaseapp.com",
+      projectId: "mnso-chat-918eb",
+      storageBucket: "mnso-chat-918eb.appspot.com",
+      messagingSenderId: "192616486933",
+      appId: "1:192616486933:web:2d673ba1f4442d86c0561c",
+      measurementId: "G-LL3FGWEGSG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let currentUser = "";
+
+    const validIDs = {
+      "A225C": "Jansen Monk",
+      "A234D": "Chris K.",
+      "A246E": "Kendel Martin",
+      "A278E": "Janathe L.",
+      "A279C": "Reece Wsn.",
+      "A262E": "Ross Lmb.",
+      "A265D": "Horner Milton",
+      "A353C": "Ella Shaw"
+    };
+
+    window.login = function login() {
+      const input = document.getElementById("idInput").value.trim().toUpperCase();
+      const error = document.getElementById("loginError");
+
+      if (validIDs[input]) {
+        currentUser = validIDs[input];
+        document.getElementById("login").style.display = "none";
+        document.getElementById("chatBox").style.display = "flex";
+        listenForMessages();
+      } else {
+        error.textContent = "Invalid ID. Please try again.";
+      }
+    };
+
+    window.sendMessage = async function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      await addDoc(collection(db, "messages"), {
+        user: currentUser,
+        text,
+        timestamp: serverTimestamp()
+      });
+
+      input.value = "";
+    };
+
+    function listenForMessages() {
+      const messagesRef = collection(db, "messages");
+      const q = query(messagesRef, orderBy("timestamp", "asc"));
+
+      onSnapshot(q, (snapshot) => {
+        const messagesContainer = document.getElementById("messages");
+        messagesContainer.innerHTML = "";
+
+        snapshot.forEach(doc => {
+          const msg = doc.data();
+          const time = msg.timestamp?.toDate().toLocaleTimeString() || "Just now";
+          messagesContainer.innerHTML += `
+            <div class="message">
+              <strong>${msg.user}</strong> <small>${time}</small><br>${msg.text}
+            </div>
+          `;
+        });
+
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      });
+    }
+
+    window.clearChat = async function clearChat() {
+      if (confirm("Are you sure you want to delete all messages?")) {
+        const querySnapshot = await getDocs(collection(db, "messages"));
+        querySnapshot.forEach(async (msg) => {
+          await deleteDoc(doc(db, "messages", msg.id));
+        });
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #111;
+    }
+
+    .header {
+      background-color: #002855;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .login-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      z-index: 9999;
+    }
+
+    .login-box {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .login-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .message {
+      margin-bottom: 15px;
+    }
+
+    .message strong {
+      color: #002855;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-area button {
+      padding: 12px 20px;
+      margin-left: 10px;
+      font-size: 16px;
+      background-color: #002855;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .footer-btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-btn button {
+      background-color: #b30000;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .footer-btn button:hover {
+      background-color: #800000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
+    <div class="title">MNSO Messaging Portal – Live Chat</div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="login-overlay" id="login">
+    <div class="login-box">
+      <h2>Enter MNSO ID</h2>
+      <input type="text" id="idInput" placeholder="e.g. A225C">
+      <button onclick="login()">Enter</button>
+      <p id="loginError" style="color:red; font-size: 14px;"></p>
+    </div>
+  </div>
+
+  <!-- Chat UI -->
+  <div class="chat-container" id="chatBox" style="display:none;">
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <input type="text" id="messageInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <div class="footer-btn">
+    <button onclick="clearChat()">Clear All Messages</button>
+  </div>
+
+</body>
+</html>
