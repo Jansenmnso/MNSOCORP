@@ -8,11 +8,25 @@
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
     window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
+    OneSignalDeferred.push(function(OneSignal) {
+      OneSignal.init({
         appId: "e9b9a02f-0242-403a-9991-cdc65520675a",
+        notifyButton: {
+          enable: false // we’ll trigger it manually
+        }
+      });
+
+      // Optional: log subscription state
+      OneSignal.isPushNotificationsEnabled().then(function(isEnabled) {
+        console.log("Push notifications enabled:", isEnabled);
       });
     });
+
+    function subscribeUser() {
+      OneSignalDeferred.push(function(OneSignal) {
+        OneSignal.showSlidedownPrompt(); // triggers opt-in
+      });
+    }
   </script>
 
   <style>
@@ -65,6 +79,21 @@
       color: black;
     }
 
+    .subscribe-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: black;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .subscribe-button:hover {
+      background-color: #ccc;
+    }
+
     .footer {
       position: absolute;
       bottom: 10px;
@@ -95,6 +124,9 @@
       <a href="contact.html">Contact</a>
       <a href="members.html">Members</a>
     </div>
+
+    <!-- Subscribe Button -->
+    <button class="subscribe-button" onclick="subscribeUser()">Subscribe to MNSO Notifications</button>
   </div>
 
   <div class="footer">
