@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Members - MNSO</title>
   <style>
-    /* General page styling */
     body {
       margin: 0;
       background-color: black;
@@ -14,7 +13,6 @@
       height: 100vh;
     }
 
-    /* Left column styling for buttons */
     .sidebar {
       background-color: gray;
       width: 250px;
@@ -46,17 +44,15 @@
       color: black;
     }
 
-    /* Content area (right side of the page) */
     .content {
       flex: 1;
-      padding: 40px 20px 60px 20px; /* Added bottom padding */
+      padding: 40px 20px 60px 20px;
       overflow-y: auto;
       position: relative;
       display: flex;
       flex-direction: column;
     }
 
-    /* Members list section */
     .members-list {
       margin-top: 20px;
     }
@@ -83,7 +79,6 @@
       background-color: darkblue;
     }
 
-    /* Top right title (MNSO) */
     .header {
       position: absolute;
       top: 20px;
@@ -93,7 +88,6 @@
       color: white;
     }
 
-    /* Footer */
     .footer {
       position: absolute;
       bottom: 10px;
@@ -101,10 +95,72 @@
       font-size: 12px;
       color: gray;
     }
+
+    /* Pop-up styling */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .popup-box {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .popup-box h2 {
+      margin-top: 0;
+    }
+
+    .popup-box input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 15px 0;
+    }
+
+    .popup-box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .popup-box button:hover {
+      background-color: #333;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-  <!-- Left sidebar with navigation buttons -->
+
+  <!-- Access Control Popup -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <h2>Enter Member ID</h2>
+      <input type="text" id="idInput" placeholder="e.g. 1234A">
+      <button onclick="validateID()">Submit</button>
+      <div class="error" id="errorMsg"></div>
+    </div>
+  </div>
+
   <div class="sidebar">
     <div class="tabs">
       <a href="index.html">Home</a>
@@ -115,15 +171,11 @@
     </div>
   </div>
 
-  <!-- Top right MNSO title -->
   <div class="header">MNSO</div>
 
-  <!-- Main content area -->
   <div class="content">
     <h2>Members</h2>
-
-    <!-- List of members -->
-    <div class="members-list">
+    <div class="members-list" id="membersList">
       <div class="member"><p><strong>Jansen Monk</strong> - ID: A225C</p></div>
       <div class="member"><p><strong>Chris K.</strong> - ID: A234D</p></div>
       <div class="member"><p><strong>Kendel Martin</strong> - ID: A246E</p></div>
@@ -131,19 +183,30 @@
       <div class="member"><p><strong>Reece Wsn.</strong> - ID: A279C</p></div>
       <div class="member"><p><strong>Ross Lmb.</strong> - ID: A262E</p></div>
       <div class="member"><p><strong>Horner Milton</strong> - ID: A265D</p></div>
+      <div class="member"><p><strong>Ella Shaw</strong> - ID: A353C</p></div>
     </div>
-
-    <!-- Out of State Members Button -->
     <button class="out-of-state-btn">Out of State Members</button>
   </div>
 
-  <!-- Footer moved outside content for better positioning -->
   <div class="footer">
     classified website owned and operated by MNSO organization
   </div>
 
-  <!-- JavaScript to handle the Norwegian Mode toggle -->
+  <!-- Access validation script -->
   <script>
+    const validIDs = ["A225C", "A234D", "A246E", "A278E", "A279C", "A262E", "A265D", "A353C"];
+
+    function validateID() {
+      const input = document.getElementById("idInput").value.trim().toUpperCase();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (validIDs.includes(input)) {
+        document.getElementById("popup").style.display = "none";
+      } else {
+        errorMsg.innerText = "Invalid ID. Please try again.";
+      }
+    }
+
     let isNorwegian = false;
 
     const englishContent = {
