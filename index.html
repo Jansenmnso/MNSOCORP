@@ -38,6 +38,32 @@
       50% { opacity: 0.4; }
     }
 
+    .ticker {
+      width: 100%;
+      overflow: hidden;
+      background-color: #000;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .ticker-text {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 10px;
+      font-size: 16px;
+      color: #fff;
+      animation: scroll-left 20s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
     .logo {
       position: absolute;
       top: 20px;
@@ -124,6 +150,13 @@
     <span class="live-badge">ELECTION MODE</span>
   </div>
 
+  <!-- Scrolling News Ticker -->
+  <div class="ticker">
+    <div class="ticker-text">
+      MNSO Elections Live on MNSO Website May 3, 2025 – Polls close 12:00 PM Saturday
+    </div>
+  </div>
+
   <!-- Logo -->
   <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
 
@@ -137,7 +170,7 @@
     </div>
 
     <!-- Link to Election Coverage Page -->
-    <a class="coverage-button" href="https://mnso.live/election">View Live Election Coverage</a>
+    <a class="coverage-button" href="election-coverage.html">View Live Election Coverage</a>
   </div>
 
   <div class="footer">
