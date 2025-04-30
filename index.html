@@ -1,15 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MNSO</title>
+  <title>MNSO – Election Edition</title>
   <style>
     body {
       margin: 0;
-      background-color: black;
+      background: linear-gradient(to bottom, #001f3f, #003366, #1a1a1a);
       color: white;
       font-family: Arial, sans-serif;
+    }
+
+    .banner {
+      background-color: #b30000;
+      text-align: center;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .live-badge {
+      background-color: red;
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+      margin-left: 10px;
+      animation: flash 1s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
     }
 
     .container {
@@ -17,13 +51,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 90vh;
+      height: 80vh;
+      text-align: center;
     }
 
     h1 {
-      font-size: 72px;
+      font-size: 64px;
       font-weight: bold;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      color: #ffffff;
     }
 
     .search-bar {
@@ -54,6 +90,23 @@
       color: black;
     }
 
+    .coverage-button {
+      margin-top: 40px;
+      background-color: #e60000;
+      color: white;
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .coverage-button:hover {
+      background-color: #cc0000;
+    }
+
     .footer {
       position: absolute;
       bottom: 10px;
@@ -61,74 +114,34 @@
       font-size: 12px;
       color: gray;
     }
-
-    /* Styling for the logo */
-    .logo {
-      position: absolute;
-      top: 20px; /* Adjust the vertical position */
-      left: 20px; /* Adjust the horizontal position */
-      width: 100px; /* Adjust the size of the logo to make it smaller */
-      height: auto; /* Keeps the aspect ratio of the logo */
-    }
   </style>
 </head>
 
 <body>
-  <!-- Logo placed at the top-left corner -->
-  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Correct image tag -->
-  
+  <!-- Special Election Banner -->
+  <div class="banner">
+    MNSO 2025 Leadership Election Coverage
+    <span class="live-badge">ELECTION MODE</span>
+  </div>
+
+  <!-- Logo -->
+  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
+
   <div class="container">
     <h1>MNSO</h1>
     <input type="text" class="search-bar" placeholder="Search...">
     <div class="tabs">
-        <a href="directory.html">Directory</a> <!-- Directory button now links to directory.html -->
-        <a href="contact.html">Contact</a>
-        <a href="members.html">Members</a>
+      <a href="directory.html">Directory</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
     </div>
+
+    <!-- Link to Election Coverage Page -->
+    <a class="coverage-button" href="election-coverage.html">View Live Election Coverage</a>
   </div>
-  
+
   <div class="footer">
     classified website owned and operated by MNSO organization
   </div>
-
-  <!-- JavaScript to handle the Norwegian Mode toggle -->
-  <script>
-    let isNorwegian = false;
-
-    // Language content for English and Norwegian
-    const englishContent = {
-      title: "MNSO",
-      searchPlaceholder: "Search...",
-      home: "Home",
-      directory: "Directory",
-      contact: "Contact",
-      norwegianMode: "Norwegian Mode",
-      footer: "classified website owned and operated by MNSO organization"
-    };
-
-    const norwegianContent = {
-      title: "MNSO - Norsk",
-      searchPlaceholder: "Søk...",
-      home: "Hjem",
-      directory: "Katalog",
-      contact: "Kontakt",
-      norwegianMode: "Engelsk Mode",
-      footer: "klassifisert nettside eid og drevet av MNSO organisasjon"
-    };
-
-    // Switch language function
-    function switchLanguage() {
-      isNorwegian = !isNorwegian;
-      const content = isNorwegian ? norwegianContent : englishContent;
-
-      document.getElementById("title").innerText = content.title;
-      document.getElementById("search-bar").placeholder = content.searchPlaceholder;
-      document.getElementById("home").innerText = content.home;
-      document.getElementById("directory").innerText = content.directory;
-      document.getElementById("contact").innerText = content.contact;
-      document.getElementById("norwegianMode").innerText = content.norwegianMode;
-      document.getElementById("footer").innerText = content.footer;
-    }
-  </script>
 </body>
 </html>
