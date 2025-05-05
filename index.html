@@ -2,179 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MNSO – Election Edition</title>
+  <title>MNSO – Youth. Leadership. Change.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom, #001f3f, #003366, #1a1a1a);
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
       color: white;
-      font-family: Arial, sans-serif;
     }
 
-    .banner {
-      background-color: #b30000;
-      text-align: center;
-      padding: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-
-    .live-badge {
-      background-color: red;
-      color: white;
-      padding: 6px 12px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 5px;
-      display: inline-block;
-      margin-left: 10px;
-      animation: flash 1s infinite;
-    }
-
-    @keyframes flash {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .ticker {
-      width: 100%;
-      overflow: hidden;
-      background-color: #000;
-      border-top: 1px solid #333;
-      border-bottom: 1px solid #333;
-    }
-
-    .ticker-text {
-      display: inline-block;
-      white-space: nowrap;
-      padding: 10px;
-      font-size: 16px;
-      color: #fff;
-      animation: scroll-left 20s linear infinite;
-    }
-
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+    .header {
+      background-color: #111;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: auto;
+      height: 60px;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 80vh;
+    .hero {
       text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to bottom, #002855, #000814);
     }
 
-    h1 {
-      font-size: 64px;
+    .hero h1 {
+      font-size: 60px;
       font-weight: bold;
-      margin-bottom: 30px;
-      color: #ffffff;
+      margin-bottom: 10px;
     }
 
-    .search-bar {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .tabs {
-      margin-top: 30px;
-    }
-
-    .tabs a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
+    .hero p {
       font-size: 18px;
-      border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
+      max-width: 700px;
+      margin: 10px auto 30px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .buttons a {
+      background-color: #e60000;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
       transition: background 0.3s;
     }
 
-    .tabs a:hover {
-      background-color: white;
-      color: black;
-    }
-
-    .coverage-button {
-      margin-top: 40px;
-      background-color: #e60000;
-      color: white;
-      font-size: 18px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .coverage-button:hover {
+    .buttons a:hover {
       background-color: #cc0000;
     }
 
+    .section {
+      background-color: #0d0d0d;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
     .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+      text-align: center;
       font-size: 12px;
       color: gray;
+      padding: 30px 10px 20px;
+      background-color: #000;
     }
   </style>
 </head>
-
 <body>
-  <!-- Special Election Banner -->
-  <div class="banner">
-    MNSO 2025 Leadership Election Coverage
-    <span class="live-badge">ELECTION MODE</span>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
+    <div style="font-size: 20px; font-weight: bold;">MNSO Official Site</div>
   </div>
 
-  <!-- Scrolling News Ticker -->
-  <div class="ticker">
-    <div class="ticker-text">
-      MNSO Elections Live on MNSO Website May 3, 2025 – Polls close 12:00 PM Saturday
-    </div>
-  </div>
-
-  <!-- Logo -->
-  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
-
-  <div class="container">
+  <!-- Hero Section -->
+  <div class="hero">
     <h1>MNSO</h1>
-    <input type="text" class="search-bar" placeholder="Search...">
-    <div class="tabs">
-      <a href="directory.html">Directory</a>
-      <a href="contact.html">Contact</a>
-      <a href="members.html">Members</a>
+    <p>An Independent Youth Political Society Committed to Progress, Privacy, and Power.</p>
+    <div class="buttons">
+      <a href="election-archive.html">2025 Election Archive</a>
+      <a href="contact.html">Contact Representatives</a>
+      <a href="messaging.html">Member Portal</a>
     </div>
-
-    <!-- Link to Election Coverage Page -->
-    <a class="coverage-button" href="https://jansenmnso.github.io/MNSOCORP/election.html">View Live Election Coverage</a>
   </div>
 
+  <!-- Mission Section -->
+  <div class="section">
+    <h2>Our Mission</h2>
+    <p>
+      The MNSO is a youth-led, invitation-based political organization and confidential society rooted in strategic leadership, bold ideas, and transformative influence. We exist to elevate new voices, promote political literacy, and develop young leaders with a commitment to discretion, discipline, and reform.
+    </p>
+  </div>
+
+  <!-- Footer -->
   <div class="footer">
-    classified website owned and operated by MNSO organization
+    MNSO Organization – Youth, Secrecy, Strategy. Est. 2023
   </div>
+
 </body>
 </html>
