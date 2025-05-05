@@ -1,131 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>MNSO – Youth. Leadership. Change.</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
       background: linear-gradient(to bottom, #001f3f, #0a0a0a);
       color: white;
-    }
-
-    .header {
-      background-color: #111;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-family: 'Roboto', sans-serif;
     }
 
     .logo {
-      height: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px 60px;
-      background: linear-gradient(to bottom, #002855, #000814);
-    }
-
-    .hero h1 {
-      font-size: 60px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 10px auto 30px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .buttons {
+    .container {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      height: 90vh;
+      text-align: center;
     }
 
-    .buttons a {
-      background-color: #e60000;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
+    h1 {
+      font-size: 64px;
       font-weight: bold;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+
+    .search-bar {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .tabs {
+      margin-top: 30px;
+    }
+
+    .tabs a {
+      margin: 0 10px;
+      color: white;
       text-decoration: none;
+      font-size: 18px;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 4px;
       transition: background 0.3s;
     }
 
-    .buttons a:hover {
+    .tabs a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .archive-button {
+      margin-top: 40px;
+      background-color: #e60000;
+      color: white;
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .archive-button:hover {
       background-color: #cc0000;
     }
 
-    .section {
-      background-color: #0d0d0d;
-      padding: 60px 30px;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 28px;
-      color: #ffcc00;
-      margin-bottom: 20px;
-    }
-
-    .section p {
-      font-size: 16px;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
-      color: #ccc;
-    }
-
     .footer {
-      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
       font-size: 12px;
       color: gray;
-      padding: 30px 10px 20px;
-      background-color: #000;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
-    <div style="font-size: 20px; font-weight: bold;">MNSO Official Site</div>
-  </div>
+  <!-- Logo -->
+  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
 
-  <!-- Hero Section -->
-  <div class="hero">
+  <!-- Main Content -->
+  <div class="container">
     <h1>MNSO</h1>
-    <p>An Independent Youth Political Society Committed to Progress, Privacy, and Power.</p>
-    <div class="buttons">
-      <a href="election-archive.html">2025 Election Archive</a>
-      <a href="contact.html">Contact Representatives</a>
-      <a href="messaging.html">Member Portal</a>
+    <input type="text" class="search-bar" placeholder="Search...">
+    
+    <div class="tabs">
+      <a href="directory.html">Directory</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html">Members</a>
     </div>
-  </div>
 
-  <!-- Mission Section -->
-  <div class="section">
-    <h2>Our Mission</h2>
-    <p>
-      The MNSO is a youth-led, invitation-based political organization and confidential society rooted in strategic leadership, bold ideas, and transformative influence. We exist to elevate new voices, promote political literacy, and develop young leaders with a commitment to discretion, discipline, and reform.
-    </p>
+    <a class="archive-button" href="election-archive.html">View 2025 Election Archive</a>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    MNSO Organization – Youth, Secrecy, Strategy. Est. 2023
+    classified website owned and operated by MNSO organization
   </div>
 
 </body>
