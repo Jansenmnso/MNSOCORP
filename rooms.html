@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MNSO Secure Video Command Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background-color: #002855;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,255,255,0.2), transparent 70%);
+      animation: pulse 5s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.08);
+      }
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    .container {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .button {
+      padding: 12px 30px;
+      background-color: #e60000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #cc0000;
+    }
+
+    .video-container {
+      display: none;
+      width: 100%;
+      height: 600px;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .clocks {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .clock-box {
+      background-color: #111;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      text-align: center;
+    }
+
+    .clock-box h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .clock {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: gray;
+      padding: 30px 10px;
+      background-color: #000;
+      margin-top: 60px;
+    }
+
+    /* ID Popup Styles */
+    #idPopup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #idPopupBox {
+      background-color: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    #idPopupBox input {
+      padding: 12px;
+      width: 240px;
+      font-size: 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      text-align: center;
+    }
+
+    #idPopupBox button {
+      margin-top: 20px;
+      padding: 10px 24px;
+      background-color: #004080;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #idPopupBox button:hover {
+      background-color: #0066cc;
+    }
+
+    #errorMsg {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="idPopup">
+    <div id="idPopupBox">
+      <h2>Enter MNSO Member ID to Proceed</h2>
+      <input type="text" id="memberID" placeholder="Example: 1234A" />
+      <div id="errorMsg"></div>
+      <button onclick="verifyID()">Access Portal</button>
+    </div>
+  </div>
+
+  <div class="header">
+    <h1>MNSO Secure Video Command Room</h1>
+    <div class="subtext">Private Encrypted Channel – MNSO Internal Use Only</div>
+  </div>
+
+  <div class="container">
+    <button class="button" onclick="startCall()">Join Secure Call</button>
+
+    <div class="video-container" id="videoSection">
+      <iframe
+        src="https://meet.jit.si/MNSOMeetingRoom"
+        allow="camera; microphone; fullscreen; display-capture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="clocks">
+      <div class="clock-box">
+        <h3>Dallas (CST)</h3>
+        <div class="clock" id="clockDallas"></div>
+      </div>
+      <div class="clock-box">
+        <h3>New York (EST)</h3>
+        <div class="clock" id="clockNY"></div>
+      </div>
+      <div class="clock-box">
+        <h3>Los Angeles (PST)</h3>
+        <div class="clock" id="clockLA"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    MNSO Video Communication Node – Operational Authority Restricted
+  </div>
+
+  <script>
+    const validIDs = ["A225C", "A234D", "A246E", "A278E", "A279C", "A262E", "A265D", "A353C"];
+
+    function verifyID() {
+      const enteredID = document.getElementById("memberID").value.trim().toUpperCase();
+      if (validIDs.includes(enteredID)) {
+        document.getElementById("idPopup").style.display = "none";
+      } else {
+        document.getElementById("errorMsg").textContent = "Invalid ID. Access denied.";
+      }
+    }
+
+    function startCall() {
+      document.getElementById('videoSection').style.display = 'block';
+    }
+
+    function updateClocks() {
+      const now = new Date();
+      const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+      document.getElementById('clockDallas').textContent = now.toLocaleTimeString('en-US', { ...options, timeZone: 'America/Chicago' });
+      document.getElementById('clockNY').textContent = now.toLocaleTimeString('en-US', { ...options, timeZone: 'America/New_York' });
+      document.getElementById('clockLA').textContent = now.toLocaleTimeString('en-US', { ...options, timeZone: 'America/Los_Angeles' });
+    }
+
+    setInterval(updateClocks, 1000);
+    updateClocks();
+  </script>
+
+</body>
+</html>
