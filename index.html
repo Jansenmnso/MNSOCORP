@@ -20,6 +20,18 @@
       height: auto;
     }
 
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      background-color: #002855;
+      border: 1px solid white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -95,25 +107,48 @@
   <!-- Logo -->
   <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
 
+  <!-- Language Toggle -->
+  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NO</div>
+
   <!-- Main Content -->
   <div class="container">
-    <h1>MNSO</h1>
-    <input type="text" class="search-bar" placeholder="Search...">
+    <h1 id="mainTitle">MNSO</h1>
+    <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
     
     <div class="tabs">
-      <a href="directory.html">Directory</a>
-      <a href="contact.html">Contact</a>
-      <a href="members.html">Members</a>
-      <a href="mnso-initiatives.html">Documents & Initiatives</a>
+      <a href="directory.html" id="linkDirectory">Directory</a>
+      <a href="contact.html" id="linkContact">Contact</a>
+      <a href="members.html" id="linkMembers">Members</a>
+      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
     </div>
 
-    <a class="archive-button" href="election.html">Archives</a>
+    <a class="archive-button" href="election.html" id="archiveBtn">Archives</a>
   </div>
 
   <!-- Footer -->
-  <div class="footer">
+  <div class="footer" id="footerText">
     classified website owned and operated by MNSO organization
   </div>
+
+  <!-- Language Toggle Script -->
+  <script>
+    let isNorwegian = false;
+
+    function toggleLanguage() {
+      isNorwegian = !isNorwegian;
+      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
+      document.getElementById("mainTitle").textContent = isNorwegian ? "MNSO" : "MNSO";
+      document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
+      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
+      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
+      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
+      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
+      document.getElementById("archiveBtn").textContent = isNorwegian ? "Arkiv" : "Archives";
+      document.getElementById("footerText").textContent = isNorwegian ?
+        "klassifisert nettsted eid og drevet av MNSO-organisasjonen" :
+        "classified website owned and operated by MNSO organization";
+    }
+  </script>
 
 </body>
 </html>
