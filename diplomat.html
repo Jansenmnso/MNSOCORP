@@ -90,6 +90,28 @@
       padding-bottom: 20px;
     }
   </style>
+
+  <script>
+    function sendEmail() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const q1 = document.getElementById('q1').value.trim();
+      const q2 = document.getElementById('q2').value.trim();
+      const q3 = document.getElementById('q3').value.trim();
+
+      const subject = encodeURIComponent('Youth Diplomat Application – ' + name);
+      const body = encodeURIComponent(
+        `Full Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n` +
+        `1. Why are you interested in youth diplomacy?\n${q1}\n\n` +
+        `2. Are you available to attend in-person meetings and commit at least 2 hours per week?\n${q2}\n\n` +
+        `3. What leadership qualities do you bring to a diplomatic setting?\n${q3}`
+      );
+
+      const mailtoLink = `mailto:Jcompany366@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
 </head>
 <body>
 
@@ -100,24 +122,24 @@
 
   <div class="container">
     <h2>Application Form</h2>
-    <form action="mailto:Jcompany366@gmail.com" method="post" enctype="text/plain">
+    <form onsubmit="sendEmail(); return false;">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="Full Name" required>
+      <input type="text" id="name" required>
 
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="Email" required>
+      <input type="email" id="email" required>
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="Phone" required>
+      <input type="tel" id="phone" required>
 
       <label for="q1">Why are you interested in youth diplomacy?</label>
-      <textarea id="q1" name="Why are you interested in youth diplomacy?" required></textarea>
+      <textarea id="q1" required></textarea>
 
       <label for="q2">Are you available to attend in-person meetings and commit at least 2 hours per week?</label>
-      <textarea id="q2" name="Availability and Weekly Commitment" required></textarea>
+      <textarea id="q2" required></textarea>
 
       <label for="q3">What leadership qualities do you bring to a diplomatic setting?</label>
-      <textarea id="q3" name="Leadership Qualities" required></textarea>
+      <textarea id="q3" required></textarea>
 
       <button type="submit">Submit Application</button>
     </form>
