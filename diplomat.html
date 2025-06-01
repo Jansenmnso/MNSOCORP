@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apply to Become a Youth Diplomat – MNSO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #f1f4f9, #e0eafc);
+      color: #111;
+    }
+
+    .header {
+      background-color: #002855;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: #cbd5e0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #002855;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin: 15px 0 5px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #002855;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004080;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: gray;
+      margin-top: 40px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Now Hiring: Youth Diplomats</h1>
+    <p>Join the MNSO and represent change, leadership, and international cooperation</p>
+  </div>
+
+  <div class="container">
+    <h2>Application Form</h2>
+    <form action="mailto:Jcompany366@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="Full Name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="Email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="Phone" required>
+
+      <label for="q1">Why are you interested in youth diplomacy?</label>
+      <textarea id="q1" name="Why are you interested in youth diplomacy?" required></textarea>
+
+      <label for="q2">Are you available to attend in-person meetings and commit at least 2 hours per week?</label>
+      <textarea id="q2" name="Availability and Weekly Commitment" required></textarea>
+
+      <label for="q3">What leadership qualities do you bring to a diplomatic setting?</label>
+      <textarea id="q3" name="Leadership Qualities" required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    MNSO Recruitment Office — All applications reviewed by the Office of the Chairman.
+  </div>
+
+</body>
+</html>
