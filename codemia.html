@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>CODE MIA – Emergency Protocol</title>
   <style>
-    /* General reset and base styling */
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +16,7 @@
       color: red;
     }
 
-    /* Intro screen styles */
+    /* Intro Screen */
     #intro-screen {
       position: fixed;
       width: 100%;
@@ -68,7 +67,7 @@
       100% { box-shadow: 0 0 10px red; opacity: 0.6; }
     }
 
-    /* Main content (hidden until intro is gone) */
+    /* Main Content */
     #main-content {
       display: none;
       padding: 30px;
@@ -112,19 +111,18 @@
   </style>
 
   <script>
-    // Hide intro screen after 5 seconds
     window.onload = function () {
       setTimeout(() => {
         document.getElementById("intro-screen").style.display = "none";
         document.getElementById("main-content").style.display = "block";
-        document.getElementById("alertVideo").play(); // autoplay after transition
+        // No need to play() directly since we're using autoplay
       }, 5000);
     };
   </script>
 </head>
 <body>
 
-  <!-- Intro Splash Screen -->
+  <!-- Splash Screen -->
   <div id="intro-screen">
     <div class="logo-wrapper">
       <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
@@ -132,14 +130,14 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Page -->
   <div id="main-content">
     <h1 style="font-size: 64px; margin-bottom: 10px;">CODE MIA</h1>
     <p style="font-size: 24px; margin-bottom: 40px;">This is not a drill</p>
 
     <div class="video-container">
-      <video id="alertVideo" autoplay muted controls>
-        <source src="CODE-MIA-ALERT.mp4" type="video/mp4">
+      <video autoplay loop controls>
+        <source src="CODE MIA ().mov" type="video/quicktime">
         Your browser does not support the video tag.
       </video>
     </div>
