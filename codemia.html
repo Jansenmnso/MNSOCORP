@@ -1,128 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CODE MIA – Emergency Alert</title>
+  <meta charset="UTF-8" />
+  <title>CODE MIA – Emergency Protocol</title>
   <style>
-    body {
+    /* General reset and base styling */
+    * {
       margin: 0;
-      font-family: 'Courier New', Courier, monospace;
-      color: red;
-      background-color: black;
-      animation: flashBg 1.5s infinite alternate;
-      overflow-x: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    @keyframes flashBg {
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: black;
+      color: red;
+    }
+
+    /* Intro screen styles */
+    #intro-screen {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      animation: flashRed 1s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    @keyframes flashRed {
       0% { background-color: black; }
       100% { background-color: #2b0000; }
     }
 
-    .logo-container {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      width: 120px;
-      height: 120px;
-      z-index: 10;
+    .logo-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
     }
 
-    .logo-container img {
+    .logo-wrapper img {
       width: 100%;
       height: auto;
-      border-radius: 50%;
-      animation: rotateCircle 3s linear infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glow-circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 180px;
       border: 5px solid red;
+      border-radius: 50%;
       box-shadow: 0 0 20px red;
+      animation: pulseGlow 2s linear infinite;
+      z-index: 1;
     }
 
-    @keyframes rotateCircle {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px red; opacity: 0.6; }
+      50% { box-shadow: 0 0 30px red; opacity: 1; }
+      100% { box-shadow: 0 0 10px red; opacity: 0.6; }
     }
 
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      margin-top: 180px;
+    /* Main content (hidden until intro is gone) */
+    #main-content {
+      display: none;
       padding: 30px;
-      border: 8px solid red;
       text-align: center;
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    h1 {
-      font-size: 72px;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-
-    .subheading {
-      font-size: 28px;
-      margin-bottom: 30px;
     }
 
     .video-container {
-      width: 100%;
-      height: 60vh;
-      margin-bottom: 30px;
+      width: 90%;
+      max-width: 800px;
+      margin: 50px auto 30px;
+      border: 3px solid red;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: 3px solid red;
-      border-radius: 8px;
+      height: auto;
+      display: block;
     }
 
-    .instructions {
-      font-size: 18px;
+    .alert-box {
       background-color: #1a1a1a;
-      padding: 20px;
       border: 2px solid red;
-      border-radius: 10px;
       color: #ff4d4d;
-      line-height: 1.7;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.6;
+      border-radius: 10px;
+      box-shadow: 0 0 10px red;
     }
 
     .footer {
       text-align: center;
-      margin-top: 50px;
-      font-size: 14px;
+      margin-top: 40px;
+      font-size: 12px;
       color: gray;
     }
   </style>
+
+  <script>
+    // Hide intro screen after 5 seconds
+    window.onload = function () {
+      setTimeout(() => {
+        document.getElementById("intro-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+        document.getElementById("alertVideo").play(); // autoplay after transition
+      }, 5000);
+    };
+  </script>
 </head>
 <body>
 
-  <!-- Logo + animated circle -->
-  <div class="logo-container">
-    <img src="IMG_4769.jpeg" alt="MNSO Logo">
+  <!-- Intro Splash Screen -->
+  <div id="intro-screen">
+    <div class="logo-wrapper">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+      <div class="glow-circle"></div>
+    </div>
   </div>
 
-  <div class="container">
-    <h1>CODE MIA</h1>
-    <p class="subheading">THIS IS NOT A TEST</p>
+  <!-- Main Content -->
+  <div id="main-content">
+    <h1 style="font-size: 64px; margin-bottom: 10px;">CODE MIA</h1>
+    <p style="font-size: 24px; margin-bottom: 40px;">This is not a drill</p>
 
     <div class="video-container">
-      <video autoplay loop muted controls>
+      <video id="alertVideo" autoplay muted controls>
         <source src="CODE-MIA-ALERT.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
 
-    <div class="instructions">
-      <strong>⚠️ EMERGENCY MESSAGE FROM MNSO ⚠️</strong><br><br>
-      All members must cease external communications and enter lockdown protocol. Await further instructions from central command.<br><br>
-      <strong>Do NOT:</strong> share any classified data<br>
-      <strong>Do:</strong> report suspicious activity to MNSO Security Oversight<br><br>
-      This message will repeat until the CODE MIA protocol is lifted by the Chairman.
+    <div class="alert-box">
+      <strong>🚨 CODE MIA ALERT</strong><br><br>
+      This is NOT A DRILL.<br>
+      Take all emergency precautions now!!<br>
+      Listen to the broadcast immediately for more information.
     </div>
-  </div>
 
-  <div class="footer">
-    MNSO Crisis Communications Department – All rights reserved.
+    <div class="footer">
+      MNSO National Emergency Communications – Property of the MNSO Chairman's Office
+    </div>
   </div>
 
 </body>
