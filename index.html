@@ -2,153 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MNSO – Youth. Leadership. Change.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>MNSO — Restricted Access</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
-      color: white;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: auto;
-    }
-
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 14px;
-      background-color: #002855;
-      border: 1px solid white;
-      padding: 6px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .container {
+      background-color: #0b0b0b;
+      color: #f5f5f5;
+      font-family: 'Courier New', Courier, monospace;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 90vh;
+      height: 100vh;
       text-align: center;
     }
 
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
     h1 {
-      font-size: 64px;
-      font-weight: bold;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #ff3333;
+      letter-spacing: 1px;
+    }
+
+    .notice {
+      font-size: 18px;
+      max-width: 600px;
       margin-bottom: 30px;
-      color: #ffffff;
+      color: #dddddd;
     }
 
-    .search-bar {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .tabs {
-      margin-top: 30px;
-    }
-
-    .tabs a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .tabs a:hover {
-      background-color: white;
-      color: black;
-    }
-
-    .archive-button {
-      margin-top: 40px;
-      background-color: #e60000;
-      color: white;
-      font-size: 18px;
+    .status {
+      background-color: #111;
       padding: 12px 25px;
-      border: none;
+      border: 2px solid #ff3333;
       border-radius: 6px;
-      cursor: pointer;
+      color: #ffcccc;
       font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .contact {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .contact a {
+      color: #ff3333;
       text-decoration: none;
     }
 
-    .archive-button:hover {
-      background-color: #cc0000;
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 12px;
-      color: gray;
+    .contact a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
-  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+  <!-- Official Crest -->
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Official Crest" class="logo" />
 
-  <!-- Language Toggle -->
-  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NORSK</div>
+  <h1>RESTRICTED ACCESS</h1>
 
-  <!-- Main Content -->
-  <div class="container">
-    <h1 id="mainTitle">MNSO</h1>
-    <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
-    
-    <div class="tabs">
-      <a href="directory.html" id="linkDirectory">Directory</a>
-      <a href="contact.html" id="linkContact">Contact</a>
-      <a href="members.html" id="linkMembers">Members</a>
-      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
-    </div>
-
-    <a class="archive-button" href="election.html" id="archiveBtn">Archives</a>
+  <div class="notice">
+    The MNSO website is currently under scheduled maintenance or temporarily secured due to elevated activity.
+    <br><br>
+    Access is restricted. Please check back later.
   </div>
 
-  <!-- Footer -->
-  <div class="footer" id="footerText">
-    classified website owned and operated by MNSO organization
+  <div class="status">SYSTEM STATUS: LOCKED</div>
+
+  <div class="contact">
+    For inquiries, contact the Office of Operations: <br>
+    <a href="mailto:Jcompany366@gmail.com">Jcompany366@gmail.com</a>
   </div>
-
-  <!-- Language Toggle Script -->
-  <script>
-    let isNorwegian = false;
-
-    function toggleLanguage() {
-      isNorwegian = !isNorwegian;
-      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("mainTitle").textContent = isNorwegian ? "MNSO" : "MNSO";
-      document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
-      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
-      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
-      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
-      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-      document.getElementById("archiveBtn").textContent = isNorwegian ? "Arkiv" : "Archives";
-      document.getElementById("footerText").textContent = isNorwegian ?
-        "klassifisert nettsted eid og drevet av MNSO-organisasjonen" :
-        "classified website owned and operated by MNSO organization";
-    }
-  </script>
 
 </body>
 </html>
