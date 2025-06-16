@@ -1,95 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Code MIA - MNSO</title>
+  <meta charset="UTF-8" />
+  <title>CODE MIA – EMERGENCY ALERT</title>
   <style>
     body {
       margin: 0;
       background-color: black;
       color: red;
-      font-family: 'Courier New', Courier, monospace; /* Typewriter font */
+      font-family: 'Courier New', Courier, monospace;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
+      animation: flashBg 1s infinite;
     }
 
-    /* Red border around the page */
-    .container {
-      border: 10px solid red;
-      width: 80%;
-      height: 80%;
+    @keyframes flashBg {
+      0%, 100% { background-color: black; }
+      50% { background-color: #330000; }
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
       position: relative;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
-    /* Heading styling */
-    h1 {
-      font-size: 72px;
-      font-weight: bold;
-      margin-bottom: 20px; /* Reduced margin to avoid overlap */
-      text-align: center;
-    }
-
-    /* Text below the heading */
-    .subheading {
-      font-size: 36px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* MNSO logo styling */
-    .logo {
+    .logo-container::before {
+      content: '';
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 100px;
-      height: auto;
+      width: 180px;
+      height: 180px;
+      border: 4px solid red;
+      border-radius: 50%;
+      animation: pulseCircle 2s infinite;
     }
 
-    /* Video container styling */
-    .video-container {
-      width: 100%;
-      height: 60%; /* Adjusted the height to be 60% of the red border */
+    @keyframes pulseCircle {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .logo {
+      width: 120px;
+      z-index: 1;
+    }
+
+    .content {
+      text-align: center;
       margin-top: 20px;
-      overflow: hidden; /* Prevents the video from overflowing */
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    /* Ensuring the video fits inside the box */
+    .video-container {
+      margin-top: 30px;
+    }
+
     video {
+      width: 80%;
+      max-width: 800px;
+      border: 4px solid red;
+      border-radius: 10px;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 20px;
+      background-color: #1a0000;
+      padding: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      border: 2px solid red;
+      color: #ffcccc;
+      box-shadow: 0 0 10px red;
+    }
+
+    .message h2 {
+      font-size: 26px;
+      color: #ff4444;
+      margin-bottom: 15px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
       width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensures the video fills the container while maintaining aspect ratio */
+      text-align: center;
+      font-size: 12px;
+      color: #aa0000;
     }
   </style>
 </head>
 <body>
 
-  <!-- MNSO logo placed at the top-right corner -->
-  <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo"> <!-- Correct image path -->
+  <!-- Animated Logo with Circle -->
+  <div class="logo-container">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo" />
+  </div>
 
-  <!-- Main container with red border -->
-  <div class="container">
-    <h1>CODE MIA</h1> <!-- Main heading -->
-    <p class="subheading">Code MIA - THIS IS NOT A TEST</p>
-
-    <!-- Video embedded inside the red box -->
+  <!-- Emergency Video Section -->
+  <div class="content">
     <div class="video-container">
-      <video autoplay loop controls>
-        <source src="CODE MIA ().mov" type="video/quicktime"> <!-- Video file name -->
+      <video autoplay controls>
+        <source src="IMG_8095_compressed.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
+
+    <!-- Emergency Message Box -->
+    <div class="message">
+      <h2>⚠ CODE MIA – EMERGENCY COMMUNICATION ⚠</h2>
+      <p>
+        This is an official activation of MNSO CODE MIA.<br>
+        All organizational operations are temporarily suspended.<br>
+        Members must secure communication lines, restrict all outward contact, and follow protocol MIA-7.<br><br>
+        Remain alert. Leadership will broadcast updates as cleared.<br>
+        This message is authorized by the MNSO Council of Security Affairs.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © MNSO Operations Command — Confidential Secure Systems
   </div>
 
 </body>
