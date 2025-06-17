@@ -1,35 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CODE RACHEL</title>
-    <style>
-        body {
-            background-color: white;
-            margin: 0;
-            height: 100vh;
-            border: 10px solid blue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Courier New", Courier, monospace;
-        }
-        .content {
-            text-align: center;
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>CODE RACHEL – MNSO Emergency Alert</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: black;
+      color: red;
+      overflow: hidden;
+    }
+
+    /* Loading screen */
+    .loading-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: flashBG 1s infinite;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    @keyframes flashBG {
+      0% { background-color: #330000; }
+      50% { background-color: #990000; }
+      100% { background-color: #330000; }
+    }
+
+    .circle-glow {
+      border: 8px solid red;
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      animation: pulse 2s infinite ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px red; }
+      50% { box-shadow: 0 0 40px red; }
+      100% { box-shadow: 0 0 10px red; }
+    }
+
+    .logo {
+      width: 100px;
+    }
+
+    .main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: alertFlash 1s infinite;
+    }
+
+    @keyframes alertFlash {
+      0%, 100% { background-color: black; }
+      50% { background-color: #1a0000; }
+    }
+
+    .alert-box {
+      margin-top: 30px;
+      background-color: #330000;
+      padding: 30px;
+      border: 4px solid red;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 700px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .main-logo {
+      width: 160px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <h1>CODE RACHEL</h1>
-        <p>CODE RACHEL =</p>
-        <p>Rockets<br>
-        Artillery<br>
-        Combat<br>
-        Hostilities<br>
-        Escalation<br>
-        Location</p>
+
+  <!-- Intro loading screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="circle-glow">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
     </div>
+  </div>
+
+  <!-- Main alert content -->
+  <div class="main-content" id="mainContent">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="main-logo">
+    <div class="alert-box">
+      CODE RACHEL EMERGENCY<br><br>
+      This Emergency stands for <strong>“Rocketfire Artillery Combat Hostilities Escalation Location”</strong><br><br>
+      Please shelter and listen to radio, television, and MNSO responses until further notice.<br><br>
+      A statement from the MNSO will soon follow with more information.
+    </div>
+  </div>
+
+  <script>
+    // Show loading screen for 5 seconds, then reveal main alert
+    setTimeout(function() {
+      document.getElementById("loadingScreen").style.display = "none";
+      document.getElementById("mainContent").style.display = "flex";
+    }, 5000);
+  </script>
+
 </body>
 </html>
