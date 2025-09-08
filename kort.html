@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MNSO Virtual ID Pass</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0a0f1a, #1c1c1c);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Pop-up security box */
+    #loginBox {
+      background: #111;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    }
+    #loginBox img {
+      max-width: 80px;
+      margin-bottom: 15px;
+    }
+    #loginBox input {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 180px;
+      text-align: center;
+      font-size: 16px;
+    }
+    #loginBox button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: red;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #loginBox button:hover {
+      background: darkred;
+    }
+
+    /* ID Card */
+    #idCard {
+      display: none;
+      width: 420px;
+      height: 250px;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+      padding: 20px;
+      position: relative;
+    }
+    #idCard img.logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+    }
+    #idCard img.seal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+    }
+    #idCard h2 {
+      margin-top: 100px;
+      font-size: 22px;
+    }
+    #idCard p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    .signature {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-style: italic;
+      font-size: 12px;
+    }
+    .qr {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Security Login -->
+  <div id="loginBox">
+    <img src="MNSO_Seal.png" alt="MNSO Seal">
+    <h2>MNSO Secure Access</h2>
+    <p>Enter Your ID Number</p>
+    <input type="password" id="idInput" placeholder="Enter ID">
+    <br>
+    <button onclick="checkID()">Access</button>
+  </div>
+
+  <!-- Virtual ID Card -->
+  <div id="idCard">
+    <img src="MNSO_Logo.png" class="logo" alt="MNSO Logo">
+    <img src="Chairman_Seal.png" class="seal" alt="Chairman Seal">
+
+    <h2>Jansen Monk</h2>
+    <p><strong>Title:</strong> Chairman</p>
+    <p><strong>ID Number:</strong> A225C</p>
+    <p><strong>Expiration:</strong> 12/2026</p>
+
+    <div class="signature">Authorized by MNSO Chairman</div>
+    <div class="qr">QR</div>
+  </div>
+
+  <script>
+    function checkID() {
+      const input = document.getElementById("idInput").value;
+      if (input === "A225C") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("idCard").style.display = "block";
+      } else {
+        alert("Access Denied");
+      }
+    }
+  </script>
+
+</body>
+</html>
