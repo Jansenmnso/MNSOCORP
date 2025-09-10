@@ -56,50 +56,77 @@
       display: none;
       width: 420px;
       height: 260px;
-      background: repeating-linear-gradient(
-        45deg,
-        #141e30,
-        #243b55 10px,
-        #1d2b40 20px
-      ); /* Subtle striped security pattern */
-      border-radius: 20px;
-      border: 2px solid #d4af37; /* gold border for authority look */
-      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+      background: linear-gradient(135deg, #f5f5f0, #eae6dc);
+      border-radius: 12px;
+      border: 1.5px solid #444;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
       padding: 20px;
       position: relative;
       overflow: hidden;
     }
 
+    /* Watermark logo */
+    #idCard::before {
+      content: "";
+      background: url("467CAA93-8809-4A02-AFA2-1749C9D78610.png") center/200px no-repeat;
+      opacity: 0.08;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
     /* Top Title */
     .card-header {
       text-align: center;
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: "Georgia", serif;
       font-weight: bold;
       font-size: 18px;
-      letter-spacing: 1px;
-      color: gold;
-      margin-bottom: 5px;
-      border-bottom: 2px solid gold; /* underline */
+      letter-spacing: 2px;
+      color: #1c1c1c;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #444;
       padding-bottom: 3px;
+      text-transform: uppercase;
     }
 
-    /* Fancy Serial Number */
+    /* Serial Numbers */
     .serial-number {
       position: absolute;
-      top: 10px;
+      top: 8px;
       left: 15px;
       font-family: "Courier New", monospace;
+      font-size: 13px;
       font-weight: bold;
-      font-size: 16px;
-      color: #d4af37;
-      letter-spacing: 2px;
-      text-shadow: 0 0 2px black;
+      color: #444;
+      letter-spacing: 1px;
+    }
+    .serial-number-bottom {
+      position: absolute;
+      bottom: 8px;
+      right: 15px;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      font-weight: bold;
+      color: #444;
+      letter-spacing: 1px;
     }
 
     /* Info Layout */
     .card-info {
-      margin-top: 80px;
-      margin-left: 100px;
+      margin-top: 65px;
+      margin-left: 110px;
+      color: #111;
+    }
+    .card-info h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #000;
+    }
+    .card-info p {
+      margin: 4px 0;
+      font-size: 14px;
     }
 
     /* Adjust Logo + Seal */
@@ -113,8 +140,8 @@
       position: absolute;
       top: 40px;
       right: 20px;
-      width: 70px;
-      opacity: 0.85; /* subtle emboss effect */
+      width: 65px;
+      opacity: 0.85;
     }
 
     /* Signature + QR */
@@ -123,16 +150,18 @@
       bottom: 20px;
       left: 20px;
       font-style: italic;
-      font-size: 12px;
+      font-size: 11px;
+      color: #333;
     }
     .qr {
       position: absolute;
-      bottom: 20px;
+      bottom: 15px;
       right: 20px;
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       background: white;
-      border-radius: 8px;
+      border: 1px solid #999;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -170,6 +199,7 @@
 
     <div class="signature">Authorized by MNSO Chairman</div>
     <div class="qr">QR</div>
+    <div class="serial-number-bottom">A225C</div>
   </div>
 
   <script>
