@@ -55,33 +55,69 @@
     #idCard {
       display: none;
       width: 420px;
-      height: 250px;
-      background: linear-gradient(135deg, #141e30, #243b55);
+      height: 260px;
+      background: repeating-linear-gradient(
+        45deg,
+        #141e30,
+        #243b55 10px,
+        #1d2b40 20px
+      ); /* Subtle striped security pattern */
       border-radius: 20px;
+      border: 2px solid #d4af37; /* gold border for authority look */
       box-shadow: 0 0 25px rgba(0,0,0,0.7);
       padding: 20px;
       position: relative;
+      overflow: hidden;
     }
+
+    /* Top Title */
+    .card-header {
+      text-align: center;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: gold;
+      margin-bottom: 5px;
+      border-bottom: 2px solid gold; /* underline */
+      padding-bottom: 3px;
+    }
+
+    /* Fancy Serial Number */
+    .serial-number {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-family: "Courier New", monospace;
+      font-weight: bold;
+      font-size: 16px;
+      color: #d4af37;
+      letter-spacing: 2px;
+      text-shadow: 0 0 2px black;
+    }
+
+    /* Info Layout */
+    .card-info {
+      margin-top: 80px;
+      margin-left: 100px;
+    }
+
+    /* Adjust Logo + Seal */
     #idCard img.logo {
       position: absolute;
-      top: 20px;
+      top: 60px;
       left: 20px;
-      width: 60px;
+      width: 70px;
     }
     #idCard img.seal {
       position: absolute;
-      top: 20px;
+      top: 40px;
       right: 20px;
-      width: 60px;
+      width: 70px;
+      opacity: 0.85; /* subtle emboss effect */
     }
-    #idCard h2 {
-      margin-top: 100px;
-      font-size: 22px;
-    }
-    #idCard p {
-      margin: 5px 0;
-      font-size: 16px;
-    }
+
+    /* Signature + QR */
     .signature {
       position: absolute;
       bottom: 20px;
@@ -119,13 +155,18 @@
 
   <!-- Virtual ID Card -->
   <div id="idCard">
+    <div class="serial-number">A225C</div>
+    <div class="card-header">The MNSO Organization</div>
+
     <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo" alt="MNSO Logo">
     <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal" alt="Chairman Seal">
 
-    <h2>Jansen Monk</h2>
-    <p><strong>Title:</strong> Chairman</p>
-    <p><strong>ID Number:</strong> A225C</p>
-    <p><strong>Expiration:</strong> 12/2026</p>
+    <div class="card-info">
+      <h2>Jansen Monk</h2>
+      <p><strong>Title:</strong> Chairman</p>
+      <p><strong>ID Number:</strong> A225C</p>
+      <p><strong>Expiration:</strong> 12/2026</p>
+    </div>
 
     <div class="signature">Authorized by MNSO Chairman</div>
     <div class="qr">QR</div>
