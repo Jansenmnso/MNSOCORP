@@ -1,141 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MNSO Security IDs</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MNSO Virtual ID Pass</title>
   <style>
+    /* Page */
     body {
-      font-family: 'Times New Roman', serif;
-      background: #f0f0f0;
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      background: linear-gradient(135deg, #0a0f1a, #1c1c1c);
+      color: white;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
+      height: 100vh;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Pop-up security box (original style preserved) */
+    #loginBox {
+      background: #111;
       padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+      z-index: 5;
     }
-
-    h1 {
-      font-family: 'Georgia', serif;
-      text-decoration: underline;
-      margin-bottom: 20px;
+    #loginBox img {
+      max-width: 80px;
+      margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
+    #loginBox h2 { margin: 8px 0 6px; font-size: 20px; }
+    #loginBox p { margin: 6px 0 12px; color: #ddd; }
 
-    .input-section {
-      margin-bottom: 30px;
-    }
-
-    input {
+    #loginBox input {
       padding: 10px;
-      font-size: 16px;
-      border: 2px solid #444;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-left: 10px;
-      cursor: pointer;
+      margin-top: 6px;
+      border-radius: 8px;
       border: none;
-      border-radius: 5px;
-      background: #2a2a2a;
-      color: #fff;
+      width: 180px;
+      text-align: center;
+      font-size: 16px;
+      outline: none;
     }
+    #loginBox button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: red;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #loginBox button:hover { background: darkred; }
 
-    .card {
-      width: 420px;
-      padding: 25px;
-      border-radius: 12px;
-      background: repeating-linear-gradient(
-        45deg,
-        #fdfcf9,
-        #fdfcf9 10px,
-        #f7f6f3 10px,
-        #f7f6f3 20px
-      );
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      border: 2px solid #ccc;
+    /* ID Card (the official-looking passport/paper style you approved) */
+    #idCard {
       display: none;
+      width: 420px;
+      height: 260px;
+      border-radius: 12px;
+      border: 1.5px solid #444;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      padding: 20px;
       position: relative;
-      font-family: 'Georgia', serif;
+      overflow: hidden;
+      z-index: 1;
+      /* Paper-like subtle gradient */
+      background: linear-gradient(180deg, #f7f4ef 0%, #efe9dc 100%);
+      color: #111;
+      margin-left: 20px;
     }
 
-    .serial {
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
+    /* watermark (light and centered) - behind everything */
+    #idCard::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background-image: url("467CAA93-8809-4A02-AFA2-1749C9D78610.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 220px;
+      opacity: 0.06;
+      pointer-events: none;
+      filter: saturate(0) contrast(0.9);
+    }
+
+    /* place actual card content above watermark */
+    .card-inner { position: relative; z-index: 1; height: 100%; }
+
+    /* Title */
+    .card-header {
+      text-align: center;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #111;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      padding-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    /* Serial numbers (top-left and bottom-right) */
+    .serial-top {
       position: absolute;
       top: 10px;
-      left: 15px;
-      color: #444;
+      left: 14px;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+    .serial-bottom {
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+      letter-spacing: 1px;
+      z-index: 2;
     }
 
-    .title {
-      text-align: center;
-      font-weight: bold;
+    /* Logo and seal */
+    #idCard img.logo {
+      position: absolute;
+      top: 58px;
+      left: 20px;
+      width: 72px;
+      border-radius: 6px;
+      box-shadow: none;
+      z-index: 2;
+      background: transparent;
+    }
+    #idCard img.seal {
+      position: absolute;
+      top: 44px;
+      right: 18px;
+      width: 68px;
+      opacity: 0.9;
+      z-index: 2;
+      background: transparent;
+    }
+
+    /* Personal info area (keeps the layout of the card you liked) */
+    .card-info {
+      margin-left: 110px;
+      margin-top: 56px;
+      z-index: 2;
+      position: relative;
+      color: #111;
+    }
+    .card-info h2 {
+      margin: 0 0 6px 0;
       font-size: 20px;
-      margin-bottom: 10px;
-      text-decoration: underline;
+      font-family: "Georgia", serif;
+      color: #000;
+    }
+    .card-info p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #222;
     }
 
-    .seal {
-      display: block;
-      margin: 15px auto;
-      max-width: 120px;
+    /* signature & QR */
+    .signature {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      font-style: italic;
+      font-size: 11px;
+      color: #333;
+      z-index: 2;
+    }
+    .qr {
+      position: absolute;
+      bottom: 15px;
+      right: 18px;
+      width: 56px;
+      height: 56px;
+      background: #fff;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #000;
+      z-index: 2;
     }
 
-    .name {
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
+    /* small responsive tweak */
+    @media (max-width: 820px) {
+      body { padding: 12px; flex-direction: column; gap: 14px; }
+      #idCard { margin-left: 0; margin-top: 18px; }
     }
   </style>
 </head>
 <body>
-  <h1>MNSO Security ID Verification</h1>
 
-  <div class="input-section">
-    <input type="text" id="idInput" placeholder="Enter your ID (e.g. A22A1)" />
-    <button onclick="showCard()">Get ID Card</button>
+  <!-- Security Login (original popup preserved) -->
+  <div id="loginBox">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
+    <h2>MNSO Secure Access</h2>
+    <p>Enter Your ID Number</p>
+    <!-- This input is still the password / ID field -->
+    <input type="password" id="idInput" placeholder="Enter ID (e.g. A22A1)" />
+    <br />
+    <button onclick="checkID()">Access</button>
   </div>
 
-  <div id="card" class="card">
-    <div class="serial" id="serial"></div>
-    <div class="title">The MNSO Organization</div>
-    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="seal" />
-    <div class="name" id="name"></div>
-    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="seal" />
+  <!-- ID Card (keeps the official paper/passport look you approved) -->
+  <div id="idCard" aria-hidden="true">
+    <div class="card-inner">
+      <div class="serial-top" id="serialTop">A22A1</div>
+      <div class="card-header">The MNSO Organization</div>
+
+      <!-- Logos (your provided filenames) -->
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo" alt="MNSO Logo">
+      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal" alt="Chairman Seal">
+
+      <div class="card-info">
+        <h2 id="memberName">Member Name</h2>
+        <p><strong>Title:</strong> Member</p>
+        <p><strong>ID Number:</strong> <span id="memberID">A22A1</span></p>
+        <p><strong>Expiration:</strong> 12/2026</p>
+      </div>
+
+      <div class="signature">Authorized by MNSO Chairman</div>
+      <div class="qr">QR</div>
+      <div class="serial-bottom" id="serialBottom">A22A1</div>
+    </div>
   </div>
 
   <script>
+    // Members: use the list you supplied.
     const members = {
-      "A22A1": "Jansen Monk",
-      "A22A2": "Krystal G.",
-      "A22A3": "Kendel Martin",
-      "A22A4": "Janathe L.",
-      "A22A5": "Reece Wsn.",
-      "A22A6": "Ross Lmb.",
-      "A22A7": "Horner Milton",
-      "A22A8": "Ella Shaw"
+      "A22A1": { name: "Jansen Monk", title: "Chairman" },
+      "A22A2": { name: "Krystal G.", title: "Member" },
+      "A22A3": { name: "Kendel Martin", title: "Member" },
+      "A22A4": { name: "Janathe L.", title: "Member" },
+      "A22A5": { name: "Reece Wsn.", title: "Member" },
+      "A22A6": { name: "Ross Lmb.", title: "Member" },
+      "A22A7": { name: "Horner Milton", title: "Member" },
+      "A22A8": { name: "Ella Shaw", title: "Member" }
     };
 
-    function showCard() {
-      const id = document.getElementById("idInput").value.trim().toUpperCase();
-      const card = document.getElementById("card");
-      const nameField = document.getElementById("name");
-      const serialField = document.getElementById("serial");
+    // This function keeps your original login UX: it validates the ID/password input
+    // against our members list and, if valid, hides the login box and reveals the card.
+    function checkID() {
+      const raw = document.getElementById("idInput").value || "";
+      const id = raw.trim().toUpperCase();
+
+      if (!id) {
+        alert("Please enter your ID.");
+        return;
+      }
 
       if (members[id]) {
-        nameField.textContent = members[id];
-        serialField.textContent = id;
+        // Populate the card with member data
+        const info = members[id];
+        document.getElementById("memberName").textContent = info.name;
+        document.getElementById("memberID").textContent = id;
+        document.getElementById("serialTop").textContent = id;
+        document.getElementById("serialBottom").textContent = id;
+
+        // Optional: use title if provided
+        const titleEl = document.querySelector(".card-info p strong");
+        // set the second line 'Title:' text properly
+        // We'll explicitly set the Title paragraph:
+        const cardInfo = document.querySelector(".card-info");
+        cardInfo.querySelectorAll("p")[0].innerHTML = "<strong>Title:</strong> " + (info.title || "Member");
+
+        // Show card, hide login box (preserves original behavior)
+        document.getElementById("loginBox").style.display = "none";
+        const card = document.getElementById("idCard");
         card.style.display = "block";
+        card.setAttribute("aria-hidden", "false");
       } else {
-        card.style.display = "none";
-        alert("Invalid ID. Please try again.");
+        alert("Access Denied");
       }
     }
+
+    // Optional: allow Enter key to submit from input
+    document.getElementById("idInput").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkID();
+    });
   </script>
 </body>
 </html>
