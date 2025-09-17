@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MNSO Documents</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0a0f1a, #1c1c1c);
+      color: white;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+    }
+    header img {
+      max-width: 80px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    nav button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: crimson;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav button:hover {
+      background: darkred;
+    }
+    .tabContent {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+    }
+    .tabContent ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tabContent li {
+      margin: 10px 0;
+    }
+    .tabContent a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+    .tabContent a:hover {
+      text-decoration: underline;
+    }
+    /* Private access box */
+    #privateLogin {
+      text-align: center;
+    }
+    #privateLogin input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+    #privateLogin button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: crimson;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="MNSO_Logo.png" alt="MNSO Logo">
+    <h1>MNSO Document Center</h1>
+    <p>Access official MNSO documents below.</p>
+  </header>
+
+  <nav>
+    <button onclick="showTab('public')">Public Documents</button>
+    <button onclick="showTab('private')">Private Documents</button>
+  </nav>
+
+  <!-- Public Documents -->
+  <div id="public" class="tabContent">
+    <h2>Public Documents</h2>
+    <ul>
+      <li><a href="public_doc1.pdf" target="_blank">📄 Public Charter</a></li>
+      <li><a href="public_doc2.pdf" target="_blank">📄 Annual Report</a></li>
+      <li><a href="public_doc3.pdf" target="_blank">📄 Member Guide</a></li>
+    </ul>
+  </div>
+
+  <!-- Private Documents -->
+  <div id="private" class="tabContent">
+    <div id="privateLogin">
+      <h2>Private Access</h2>
+      <p>Enter Password to Access Private Documents:</p>
+      <input type="password" id="privatePassword" placeholder="Enter Password">
+      <br>
+      <button onclick="checkPassword()">Unlock</button>
+    </div>
+
+    <div id="privateDocs" style="display:none;">
+      <h2>Private Documents</h2>
+      <ul>
+        <li><a href="private_doc1.pdf" target="_blank">🔒 Board Meeting Minutes</a></li>
+        <li><a href="private_doc2.pdf" target="_blank">🔒 Financial Reports</a></li>
+        <li><a href="private_doc3.pdf" target="_blank">🔒 Strategy Papers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabName) {
+      document.querySelectorAll('.tabContent').forEach(tab => {
+        tab.style.display = 'none';
+      });
+      document.getElementById(tabName).style.display = 'block';
+    }
+
+    function checkPassword() {
+      const input = document.getElementById("privatePassword").value;
+      if (input === "A22A1") {
+        document.getElementById("privateLogin").style.display = "none";
+        document.getElementById("privateDocs").style.display = "block";
+      } else {
+        alert("Incorrect Password");
+      }
+    }
+
+    // Show public tab by default
+    showTab('public');
+  </script>
+
+</body>
+</html>
