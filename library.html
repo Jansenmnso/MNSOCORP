@@ -1,77 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MNSO Docs</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <title>MNSO Official Documents Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
+      color: white;
+      text-align: center;
+    }
+
+    /* Fullscreen login overlay */
+    #loginOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #loginOverlay img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    #loginOverlay h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    #loginOverlay input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 15px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #loginOverlay button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #mainContent {
+      display: none;
+      padding: 20px;
+    }
+
+    .section {
+      margin: 40px 0;
+    }
+
+    .docBox {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    textarea {
+      width: 90%;
+      height: 120px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      padding: 10px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-primary { background: #007bff; color: white; }
+    .btn-danger { background: #dc3545; color: white; }
+  </style>
 </head>
 <body>
-  <h1>MNSO Secure Document System</h1>
 
-  <!-- Login -->
-  <div id="login">
-    <p>Enter your MNSO ID:</p>
-    <input type="text" id="userID" placeholder="Enter ID">
-    <button onclick="login()">Login</button>
+  <!-- Login Overlay -->
+  <div id="loginOverlay">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo">
+    <h1>MNSO Official Documents Library</h1>
+    <p>Enter Access Password:</p>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkLogin()">Enter Library</button>
   </div>
 
-  <!-- Document Dashboard -->
-  <div id="dashboard" style="display:none;">
-    <h2>Welcome to MNSO Docs</h2>
+  <!-- Main Library Content -->
+  <div id="mainContent">
+    <h1>MNSO Official Documents Library</h1>
 
-    <h3>Create New Document</h3>
-    <input type="text" id="docTitle" placeholder="Document Title"><br><br>
-    <textarea id="docContent" rows="10" cols="50" placeholder="Write your document..."></textarea><br>
-    <button onclick="saveDoc()">Save Document</button>
+    <!-- Public Documents -->
+    <div class="section">
+      <h2>📂 Public Documents</h2>
+      <div id="publicDocs"></div>
+      <h3>Create New Public Document</h3>
+      <input type="text" id="publicTitle" placeholder="Title"><br>
+      <textarea id="publicContent" placeholder="Write document..."></textarea><br>
+      <button class="btn btn-primary" onclick="saveDoc('public')">Save Public Document</button>
+    </div>
 
-    <h3>View Documents</h3>
-    <ul id="docList"></ul>
+    <!-- Private Documents -->
+    <div class="section">
+      <h2>🔒 Private Documents</h2>
+      <button class="btn btn-danger" onclick="unlockPrivate()">Enter Private Section</button>
+      <div id="privateSection" style="display:none;">
+        <div id="privateDocs"></div>
+        <h3>Create New Private Document</h3>
+        <input type="text" id="privateTitle" placeholder="Title"><br>
+        <textarea id="privateContent" placeholder="Write document..."></textarea><br>
+        <button class="btn btn-primary" onclick="saveDoc('private')">Save Private Document</button>
+      </div>
+    </div>
   </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
 
   <script>
-    // Firebase setup
+    // ✅ Replace with your Firebase project details
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
+      projectId: "YOUR_PROJECT_ID"
     };
     const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore(app);
+    const db = firebase.firestore();
 
-    let currentUserID = null;
-
-    function login() {
-      currentUserID = document.getElementById("userID").value.trim();
-      if(currentUserID) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-        loadDocs();
+    // 🔑 Initial login
+    function checkLogin() {
+      const pass = document.getElementById("passwordInput").value;
+      if(pass === "A22A1") {
+        document.getElementById("loginOverlay").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+        loadDocs("public");
+      } else {
+        alert("Incorrect password!");
       }
     }
 
-    function saveDoc() {
-      const title = document.getElementById("docTitle").value;
-      const content = document.getElementById("docContent").value;
-
-      db.collection("documents").add({
-        title: title,
-        content: content,
-        authorID: currentUserID,
-        timestamp: new Date()
-      });
-      alert("Document saved!");
-      loadDocs();
+    // 🔓 Unlock private tab
+    function unlockPrivate() {
+      const pass = prompt("Enter private access password:");
+      if(pass === "A22A1") {
+        document.getElementById("privateSection").style.display = "block";
+        loadDocs("private");
+      } else {
+        alert("Incorrect password!");
+      }
     }
 
-    function loadDocs() {
-      const list = document.getElementById("docList");
-      list.innerHTML = "";
+    // 💾 Save document
+    function saveDoc(type) {
+      let title, content;
+      if(type === "public") {
+        title = document.getElementById("publicTitle").value;
+        content = document.getElementById("publicContent").value;
+      } else {
+        title = document.getElementById("privateTitle").value;
+        content = document.getElementById("privateContent").value;
+      }
 
-      db.collection("documents").orderBy("timestamp", "desc").get().then(snapshot => {
+      if(title && content) {
+        db.collection(type + "Docs").add({
+          title: title,
+          content: content,
+          timestamp: new Date()
+        }).then(() => {
+          alert("Document saved!");
+          loadDocs(type);
+        });
+      }
+    }
+
+    // 📂 Load documents
+    function loadDocs(type) {
+      const container = document.getElementById(type + "Docs");
+      container.innerHTML = "";
+      db.collection(type + "Docs").orderBy("timestamp", "desc").get().then(snapshot => {
         snapshot.forEach(doc => {
-          let li = document.createElement("li");
-          li.textContent = doc.data().title + " (by " + doc.data().authorID + ")";
-          list.appendChild(li);
+          let div = document.createElement("div");
+          div.classList.add("docBox");
+          div.innerHTML = "<h4>" + doc.data().title + "</h4><p>" + doc.data().content + "</p>";
+          container.appendChild(div);
         });
       });
     }
