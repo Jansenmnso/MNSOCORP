@@ -241,49 +241,100 @@
   </div>
 
   <script>
+    // members list now supports a "disabled" flag and optional bottomText
     const members = {
-      "A22A1": { name: "Jansen Monk", title: "Chairman" },
-      "A22A2": { name: "Krystal G.", title: "Member" },
-      "A22A3": { name: "Kendel Martin", title: "Member" },
-      "A22A4": { name: "Janathe L.", title: "Member" },
-      "A22A5": { name: "Reece Wsn.", title: "Member" },
-      "A22A6": { name: "Ross Lmb.", title: "Member" },
-      "A22A7": { name: "Horner Milton", title: "Member" },
-      "A22A8": { name: "Ella Shaw", title: "Member" },
-      "B10A1": { name: "Ole H. Frostad", title: "Chapter Leader (Møre og Romsdal)", bottomText: "MNSO Norway" }
+      "A22A1": { name: "Jansen Monk", title: "Chairman", disabled: false },
+      "A22A2": { name: "Krystal G.", title: "Member", disabled: true }, // example: temporarily suspended
+      "A22A3": { name: "Kendel Martin", title: "Member", disabled: false },
+      "A22A4": { name: "Janathe L.", title: "Member", disabled: false },
+      "A22A5": { name: "Reece Wsn.", title: "Member", disabled: false },
+      "A22A6": { name: "Ross Lmb.", title: "Member", disabled: false },
+      "A22A7": { name: "Horner Milton", title: "Member", disabled: false },
+      "A22A8": { name: "Ella Shaw", title: "Member", disabled: false },
+      "B10A1": { name: "Ole H. Frostad", title: "Chapter Leader (Møre og Romsdal)", bottomText: "MNSO Norway", disabled: false }
     };
 
+    // simple audit log (keeps actions in-memory - for production, send to server or database)
+    const auditLog = [];
+
+    function logAudit(action, id, actor = 'admin-console') {
+      const entry = { action, id, actor, timestamp: new Date().toISOString() };
+      auditLog.push(entry);
+      console.log('Audit:', entry);
+    }
+
+    // Admin helper functions: call these from the browser console to suspend/reinstate
+    function suspendUser(id, actor) {
+      id = (id || '').trim().toUpperCase();
+      if (!members[id]) return console.warn('No such ID:', id);
+      members[id].disabled = true;
+      logAudit('suspend', id, actor);
+      console.info(`User ${id} suspended.`);
+    }
+    function reinstateUser(id, actor) {
+      id = (id || '').trim().toUpperCase();
+      if (!members[id]) return console.warn('No such ID:', id);
+      members[id].disabled = false;
+      logAudit('reinstate', id, actor);
+      console.info(`User ${id} reinstated.`);
+    }
+
+    // Public-facing check
     function checkID() {
       const raw = document.getElementById("idInput").value || "";
       const id = raw.trim().toUpperCase();
       if (!id) { alert("Please enter your ID."); return; }
 
-      if (members[id]) {
-        const info = members[id];
-        document.getElementById("memberName").textContent = info.name;
-        document.getElementById("memberID").textContent = id;
-        document.getElementById("serialTop").textContent = id;
-        document.getElementById("serialBottom").textContent = id;
-
-        const cardInfo = document.querySelector(".card-info");
-        cardInfo.querySelectorAll("p")[0].innerHTML = "<strong>Title:</strong> " + (info.title || "Member");
-
-        const bottomEl = document.getElementById("centerBottom");
-        if (info.bottomText) { bottomEl.textContent = info.bottomText; } 
-        else { bottomEl.textContent = ""; }
-
-        document.getElementById("loginBox").style.display = "none";
-        const card = document.getElementById("idCard");
-        card.style.display = "block";
-        card.setAttribute("aria-hidden", "false");
-      } else {
+      const member = members[id];
+      if (!member) {
         alert("Access Denied");
+        return;
       }
+
+      if (member.disabled) {
+        // Friendly, non-specific message
+        alert("Account temporarily suspended. Contact admin.");
+        logAudit('login_attempt_suspended', id, 'public-attempt');
+        return;
+      }
+
+      // Populate card
+      document.getElementById("memberName").textContent = member.name;
+      document.getElementById("memberID").textContent = id;
+      document.getElementById("serialTop").textContent = id;
+      document.getElementById("serialBottom").textContent = id;
+
+      const cardInfo = document.querySelector(".card-info");
+      cardInfo.querySelectorAll("p")[0].innerHTML = "<strong>Title:</strong> " + (member.title || "Member");
+
+      const bottomEl = document.getElementById("centerBottom");
+      if (member.bottomText) { bottomEl.textContent = member.bottomText; } 
+      else { bottomEl.textContent = "MNSO"; }
+
+      document.getElementById("loginBox").style.display = "none";
+      const card = document.getElementById("idCard");
+      card.style.display = "block";
+      card.setAttribute("aria-hidden", "false");
+
+      logAudit('successful_login', id, 'public');
     }
 
     document.getElementById("idInput").addEventListener("keydown", function(e){
       if(e.key==="Enter") checkID();
     });
+
+    // Optional: Expose audit and members for admin debugging (read-only)
+    window.__MNSO = {
+      members,
+      auditLog,
+      suspendUser,
+      reinstateUser
+    };
+
+    // Example usage:
+    // In console: suspendUser('A22A2', 'HR-Jane');
+    // In console: reinstateUser('A22A2', 'HR-Jane');
+    // In console: console.table(__MNSO.auditLog);
   </script>
 </body>
 </html>
