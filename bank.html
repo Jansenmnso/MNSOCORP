@@ -107,7 +107,7 @@
   }
 
   .header-logo {
-    height: 100px; /* make left MNSO logo bigger */
+    height: 100px; /* left MNSO logo bigger */
   }
 
   .header-title {
@@ -117,13 +117,39 @@
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   }
 
+  /* Ticker line */
+  .ticker {
+    width: 100%;
+    background-color: #f1f5f9;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    height: 28px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker p {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #004aad;
+    animation: tickerMove 12s linear infinite;
+  }
+
+  @keyframes tickerMove {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+
   /* Sidebar Menu */
   .sidebar {
     position: fixed;
-    top: 90px;
+    top: 118px; /* 90px header + 28px ticker */
     left: 0;
     width: 180px;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 118px);
     background-color: #f4f7fb;
     border-right: 1px solid #ddd;
     padding-top: 30px;
@@ -259,7 +285,6 @@
     50% { transform: translateY(-3px); }
     100% { transform: translateY(0); }
   }
-
 </style>
 </head>
 <body>
@@ -283,6 +308,11 @@
     <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="header-logo">
     <div class="header-title">MNSO BANK</div>
     <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
+  </div>
+
+  <!-- Ticker -->
+  <div class="ticker">
+    <p>MNSO Markets close at all time highs for the fall season at 2.1% a day! - Stay up to date at Bank.MNSO.LIVE</p>
   </div>
 
   <div class="sidebar">
