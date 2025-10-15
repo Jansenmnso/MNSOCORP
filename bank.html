@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MNSO Bank | Secure Portfolio</title>
 <style>
   body {
@@ -86,35 +86,40 @@
   /* --- DASHBOARD PAGE --- */
   .dashboard {
     display: none;
+    font-family: "Times New Roman", Times, serif;
   }
 
+  /* Header with Gradient and Shadow */
   .header {
-    background-color: #004aad;
+    background: linear-gradient(90deg, #00317a, #0052c1);
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 24px;
-    height: 70px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    height: 90px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    position: relative;
   }
 
   .header img {
-    height: 48px;
+    height: 70px;
   }
 
   .header-title {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   }
 
+  /* Sidebar Menu */
   .sidebar {
     position: fixed;
-    top: 70px;
+    top: 90px;
     left: 0;
     width: 180px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 90px);
     background-color: #f4f7fb;
     border-right: 1px solid #ddd;
     padding-top: 30px;
@@ -126,41 +131,49 @@
   .sidebar button {
     width: 140px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 8px;
     background-color: #004aad;
     color: white;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
     transition: background 0.3s;
   }
 
   .sidebar button:hover {
-    background-color: #003d91;
+    background-color: #00306a;
   }
 
+  /* Main Content */
   .main {
     margin-left: 200px;
     padding: 40px;
   }
 
-  .profile {
+  .profile-section {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    align-items: flex-start;
+    gap: 25px;
   }
 
-  .profile img {
+  .profile-section img.portrait {
     width: 200px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  .profile-section img.seal {
+    width: 80px;
+    margin-left: 15px;
+    align-self: flex-start;
   }
 
   .info {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .info h1 {
@@ -173,32 +186,35 @@
     margin: 2px 0;
   }
 
+  /* Account Summary */
   .account-summary {
     margin-top: 40px;
     background-color: #f8faff;
     border: 1px solid #e2e6ef;
     border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 28px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
 
   .summary-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
   }
 
   .summary-item {
     background-color: white;
     border: 1px solid #e3e8f0;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
   .summary-item h3 {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
     color: #004aad;
+    font-size: 20px;
+    letter-spacing: 1px;
   }
 
   .summary-item p {
@@ -226,7 +242,7 @@
 <div class="dashboard" id="dashboard">
   <div class="header">
     <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
-    <div class="header-title">MNSO Bank</div>
+    <div class="header-title">MNSO BANK</div>
     <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
   </div>
 
@@ -238,8 +254,9 @@
   </div>
 
   <div class="main">
-    <div class="profile">
-      <img src="IMG_8402.jpeg" alt="Jansen Monk Portrait">
+    <div class="profile-section">
+      <img src="IMG_8402.jpeg" alt="Jansen Monk Portrait" class="portrait">
+      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="seal">
       <div class="info">
         <h1>Jansen Monk</h1>
         <p><strong>Position:</strong> Chairman of MNSO</p>
