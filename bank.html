@@ -1,199 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MNSO Bank | Secure Access</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: linear-gradient(135deg, #0a0f2c, #1a1f47);
-      color: #fff;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MNSO Bank | Secure Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+  }
 
-    .centered {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  /* --- LOGIN PAGE --- */
+  .login-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0f2c, #1a1f47);
+    color: white;
+  }
 
-    .box {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 18px;
-      padding: 40px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
+  .login-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 40px;
+    width: 360px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    text-align: center;
+    backdrop-filter: blur(8px);
+  }
 
-    .box img {
-      max-width: 110px;
-      margin: 10px;
-    }
+  .login-box img {
+    max-width: 110px;
+    margin: 10px;
+  }
 
-    input[type="password"] {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      text-align: center;
-    }
+  .login-box h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
 
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #4cafef;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+  .login-box h2 {
+    font-weight: 400;
+    color: #cfd8ff;
+  }
 
-    button:hover {
-      background: #2a90d8;
-    }
+  .login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+  }
 
-    h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
+  .login-box button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #4cafef;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
 
-    h2 {
-      margin-top: 0;
-      font-weight: 400;
-      color: #cfd8ff;
-    }
+  .login-box button:hover {
+    background: #2a90d8;
+  }
 
-    .dashboard {
-      display: none;
-      max-width: 900px;
-      margin: auto;
-      padding: 40px;
-      text-align: center;
-    }
+  .login-error {
+    color: #ff6b6b;
+    display: none;
+    margin-top: 10px;
+  }
 
-    .dashboard-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
+  /* --- DASHBOARD PAGE --- */
+  .dashboard {
+    display: none;
+  }
 
-    .dashboard-header img {
-      max-width: 120px;
-    }
+  .header {
+    background-color: #004aad;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    height: 70px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
 
-    .portrait {
-      max-width: 180px;
-      border-radius: 50%;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.7);
-    }
+  .header img {
+    height: 48px;
+  }
 
-    .portfolio {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+  .header-title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
 
-    .portfolio-card {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
-      text-align: left;
-    }
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 180px;
+    height: calc(100vh - 70px);
+    background-color: #f4f7fb;
+    border-right: 1px solid #ddd;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .portfolio-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
+  .sidebar button {
+    width: 140px;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #004aad;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
 
-    .portfolio-card p {
-      margin: 5px 0;
-    }
+  .sidebar button:hover {
+    background-color: #003d91;
+  }
 
-    .signature {
-      margin-top: 40px;
-      font-style: italic;
-      color: #aeb8ff;
-    }
-  </style>
+  .main {
+    margin-left: 200px;
+    padding: 40px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .profile img {
+    width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .info h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .info p {
+    font-size: 18px;
+    margin: 2px 0;
+  }
+
+  .account-summary {
+    margin-top: 40px;
+    background-color: #f8faff;
+    border: 1px solid #e2e6ef;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .summary-item {
+    background-color: white;
+    border: 1px solid #e3e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .summary-item h3 {
+    margin: 0 0 8px;
+    color: #004aad;
+  }
+
+  .summary-item p {
+    font-size: 16px;
+    color: #333;
+  }
+</style>
 </head>
 <body>
 
-  <!-- Login Screen -->
-  <div class="centered" id="login-screen">
-    <div class="box">
-      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
-      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
-      <h1>MNSO Bank</h1>
-      <h2>Secure Login Portal</h2>
-      <input type="password" id="password" placeholder="Enter Access Code">
-      <button onclick="login()">Access Account</button>
-      <p id="error" style="color:#ff6b6b; display:none;">Invalid password. Try again.</p>
-    </div>
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
+    <h1>MNSO Bank</h1>
+    <h2>Secure Login Portal</h2>
+    <input type="password" id="password" placeholder="Enter Access Code">
+    <button onclick="login()">Access Account</button>
+    <p class="login-error" id="error">Invalid password. Try again.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="header">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+    <div class="header-title">MNSO Bank</div>
+    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
   </div>
 
-  <!-- Dashboard -->
-  <div class="dashboard" id="dashboard">
-    <div class="dashboard-header">
-      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
-      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
-    </div>
-    <h1>Chairman Portfolio</h1>
-    <img src="IMG_8402.jpeg" alt="Jansen Monk" class="portrait">
-
-    <div class="portfolio">
-      <div class="portfolio-card">
-        <h3>Account Overview</h3>
-        <p><strong>Chairman:</strong> Jansen Monk</p>
-        <p><strong>Status:</strong> Active</p>
-        <p><strong>Years in Office:</strong> 3</p>
-      </div>
-      <div class="portfolio-card">
-        <h3>Assets Under Management</h3>
-        <p>Total Funds: $2,500,000</p>
-        <p>Equity Holdings: $1,200,000</p>
-        <p>Bond Portfolio: $800,000</p>
-        <p>Other Assets: $500,000</p>
-      </div>
-      <div class="portfolio-card">
-        <h3>Recent Activity</h3>
-        <p>- Quarterly Report Submitted</p>
-        <p>- New Delegates Added</p>
-        <p>- Youth Initiatives Funded</p>
-      </div>
-    </div>
-
-    <p class="signature">Authorized by MNSO Executive Board</p>
+  <div class="sidebar">
+    <button>Home</button>
+    <button>Investments</button>
+    <button>ID</button>
+    <button>Info</button>
   </div>
 
-  <script>
-    function login() {
-      const password = document.getElementById("password").value;
-      const error = document.getElementById("error");
-      if (password === "A22A1") {
-        document.getElementById("login-screen").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-      } else {
-        error.style.display = "block";
-      }
-    }
-  </script>
+  <div class="main">
+    <div class="profile">
+      <img src="IMG_8402.jpeg" alt="Jansen Monk Portrait">
+      <div class="info">
+        <h1>Jansen Monk</h1>
+        <p><strong>Position:</strong> Chairman of MNSO</p>
+        <p><strong>Balance:</strong> $12,234</p>
+        <p><strong>Investments:</strong> $3,900</p>
+        <p><strong>Status:</strong> Active Member</p>
+      </div>
+    </div>
+
+    <div class="account-summary">
+      <h2>Account Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h3>Recent Transactions</h3>
+          <p>• Transfer to Youth Fund — $500</p>
+          <p>• Incoming Sponsorship — $2,000</p>
+          <p>• Event Allocation — $750</p>
+        </div>
+        <div class="summary-item">
+          <h3>Investment Portfolio</h3>
+          <p>Equity Holdings: $2,100</p>
+          <p>Fixed Assets: $1,800</p>
+          <p>Growth Rate: +4.3%</p>
+        </div>
+        <div class="summary-item">
+          <h3>Account Notes</h3>
+          <p>Next Report Due: Dec 12, 2025</p>
+          <p>Board Review Scheduled: Q1 2026</p>
+          <p>Chairman Tenure: 2024–2027</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function login() {
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+  if (password === "A22A1") {
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+  } else {
+    error.style.display = "block";
+  }
+}
+</script>
 
 </body>
 </html>
