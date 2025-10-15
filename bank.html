@@ -103,7 +103,11 @@
   }
 
   .header img {
-    height: 90px;
+    height: 70px;
+  }
+
+  .header-logo {
+    height: 100px; /* make left MNSO logo bigger */
   }
 
   .header-title {
@@ -221,6 +225,41 @@
     font-size: 16px;
     color: #333;
   }
+
+  /* Stock Market Animation */
+  .stock-arrow {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 5px;
+    animation: arrowUpDown 1s infinite alternate;
+  }
+
+  .stock-arrow.green {
+    color: #28a745;
+  }
+
+  .stock-arrow.red {
+    color: #dc3545;
+    animation-duration: 1.2s;
+  }
+
+  @keyframes arrowUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+
+  .stock-number {
+    display: inline-block;
+    animation: numberPulse 2s infinite alternate;
+  }
+
+  @keyframes numberPulse {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+  }
+
 </style>
 </head>
 <body>
@@ -241,7 +280,7 @@
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
   <div class="header">
-    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="header-logo">
     <div class="header-title">MNSO BANK</div>
     <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
   </div>
@@ -276,10 +315,13 @@
           <p>• Event Allocation — $750</p>
         </div>
         <div class="summary-item">
-          <h3>Investment Portfolio</h3>
-          <p>Equity Holdings: $2,100</p>
-          <p>Fixed Assets: $1,800</p>
-          <p>Growth Rate: +4.3%</p>
+          <h3>Investment Portfolio 
+            <span class="stock-arrow green">↑</span>
+            <span class="stock-arrow red">↓</span>
+          </h3>
+          <p class="stock-number">Equity Holdings: $2,100</p>
+          <p class="stock-number">Fixed Assets: $1,800</p>
+          <p class="stock-number">Growth Rate: +4.3%</p>
         </div>
         <div class="summary-item">
           <h3>Account Notes</h3>
