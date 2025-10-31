@@ -1,76 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reading Tracker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSO Read</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex flex-col items-center min-h-screen font-sans">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen font-sans">
 
-  <!-- Header -->
-  <header class="bg-blue-600 w-full text-white py-4 text-center text-2xl font-semibold shadow-md">
-    Reading Tracker 📚
-  </header>
+  <!-- PASSWORD SCREEN -->
+  <div id="passwordScreen" class="flex flex-col items-center justify-center w-full h-screen bg-white">
+    <h1 class="text-2xl font-semibold mb-4 text-gray-800">Enter Password</h1>
+    <input id="passwordInput" type="password" placeholder="Password" class="border border-gray-300 rounded-lg p-2 mb-3 text-center w-48 focus:ring-2 focus:ring-blue-400 outline-none" />
+    <button id="passwordButton" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition">Enter</button>
+    <p id="errorMsg" class="text-red-500 mt-2 hidden">Incorrect password</p>
+  </div>
 
-  <main class="w-full flex flex-col items-center gap-6 mt-6 mb-10">
-    <!-- Jansen Tracker -->
-    <section id="jansenTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
-      <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center">Jansen</h2>
+  <!-- LOADING SCREEN -->
+  <div id="loadingScreen" class="hidden flex flex-col items-center justify-center w-full h-screen bg-white">
+    <div class="relative flex items-center justify-center mb-6">
+      <div class="absolute w-32 h-32 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="w-20 h-20 z-10" />
+    </div>
+    <h1 class="text-2xl font-semibold text-gray-800">MNSO Read</h1>
+  </div>
 
-      <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
-        <div id="progressJansen" class="bg-blue-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
-      </div>
+  <!-- MAIN APP -->
+  <div id="app" class="hidden flex flex-col items-center min-h-screen w-full">
+    <header class="bg-blue-600 w-full text-white py-4 text-center text-2xl font-semibold shadow-md">
+      Reading Tracker 📚
+    </header>
 
-      <div class="flex flex-col gap-3">
-        <label class="text-sm text-gray-600">
-          📖 Pages Read So Far:
-          <input id="readJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-        </label>
-
-        <label class="text-sm text-gray-600">
-          📘 Total Pages:
-          <input id="totalJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-        </label>
-
-        <button id="saveJansen" class="bg-blue-600 text-white rounded-lg py-2 mt-2 hover:bg-blue-700 transition">💾 Save Progress</button>
-      </div>
-
-      <p id="percentJansen" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
-    </section>
-
-    <!-- Ella Tracker -->
-    <section id="ellaTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
-      <h2 class="text-xl font-semibold mb-4 text-pink-600 text-center">Ella</h2>
-
-      <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
-        <div id="progressElla" class="bg-pink-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <label class="text-sm text-gray-600">
-          📖 Pages Read So Far:
-          <input id="readElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
-        </label>
+    <main class="w-full flex flex-col items-center gap-6 mt-6 mb-10">
+      <!-- Jansen Tracker -->
+      <section id="jansenTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
+        <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center">Jansen</h2>
 
         <label class="text-sm text-gray-600">
-          📘 Total Pages:
-          <input id="totalElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          📕 Book Title:
+          <input id="titleJansen" type="text" placeholder="Enter book title" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400" />
         </label>
 
-        <button id="saveElla" class="bg-pink-600 text-white rounded-lg py-2 mt-2 hover:bg-pink-700 transition">💾 Save Progress</button>
-      </div>
+        <div class="w-full bg-gray-200 rounded-full h-6 my-4">
+          <div id="progressJansen" class="bg-blue-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
 
-      <p id="percentElla" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
-    </section>
-  </main>
+        <div class="flex flex-col gap-3">
+          <label class="text-sm text-gray-600">
+            📖 Pages Read So Far:
+            <input id="readJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          </label>
 
-  <!-- Firebase + Logic -->
+          <label class="text-sm text-gray-600">
+            📘 Total Pages:
+            <input id="totalJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          </label>
+
+          <button id="saveJansen" class="bg-blue-600 text-white rounded-lg py-2 mt-2 hover:bg-blue-700 transition">💾 Save Progress</button>
+        </div>
+
+        <p id="percentJansen" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+      </section>
+
+      <!-- Ella Tracker -->
+      <section id="ellaTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
+        <h2 class="text-xl font-semibold mb-4 text-pink-600 text-center">Ella</h2>
+
+        <label class="text-sm text-gray-600">
+          📕 Book Title:
+          <input id="titleElla" type="text" placeholder="Enter book title" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+        </label>
+
+        <div class="w-full bg-gray-200 rounded-full h-6 my-4">
+          <div id="progressElla" class="bg-pink-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <label class="text-sm text-gray-600">
+            📖 Pages Read So Far:
+            <input id="readElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </label>
+
+          <label class="text-sm text-gray-600">
+            📘 Total Pages:
+            <input id="totalElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </label>
+
+          <button id="saveElla" class="bg-pink-600 text-white rounded-lg py-2 mt-2 hover:bg-pink-700 transition">💾 Save Progress</button>
+        </div>
+
+        <p id="percentElla" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Script -->
   <script type="module">
+    // === PASSWORD + LOADING FLOW ===
+    const passwordScreen = document.getElementById("passwordScreen");
+    const loadingScreen = document.getElementById("loadingScreen");
+    const app = document.getElementById("app");
+    const passwordInput = document.getElementById("passwordInput");
+    const passwordButton = document.getElementById("passwordButton");
+    const errorMsg = document.getElementById("errorMsg");
+
+    passwordButton.addEventListener("click", () => {
+      if (passwordInput.value === "123") {
+        passwordScreen.classList.add("hidden");
+        loadingScreen.classList.remove("hidden");
+        setTimeout(() => {
+          loadingScreen.classList.add("hidden");
+          app.classList.remove("hidden");
+        }, 2500);
+      } else {
+        errorMsg.classList.remove("hidden");
+      }
+    });
+
+    // === FIREBASE ===
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-    // 🔧 Replace this with your actual Firebase config once ready
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -80,14 +136,15 @@
       appId: "YOUR_APP_ID"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const appFB = initializeApp(firebaseConfig);
+    const db = getFirestore(appFB);
 
-    // --- Helper function to build tracker logic ---
-    function initTracker(name, color) {
+    // === TRACKER FUNCTION ===
+    function initTracker(name) {
       const docRef = doc(db, "reading", name);
       const readInput = document.getElementById(`read${name}`);
       const totalInput = document.getElementById(`total${name}`);
+      const titleInput = document.getElementById(`title${name}`);
       const progressBar = document.getElementById(`progress${name}`);
       const percentText = document.getElementById(`percent${name}`);
       const saveBtn = document.getElementById(`save${name}`);
@@ -98,25 +155,24 @@
         percentText.textContent = `Progress: ${Math.round(percent)}%`;
       }
 
-      // Live updates
       onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
           readInput.value = data.pagesRead || 0;
           totalInput.value = data.totalPages || 0;
+          titleInput.value = data.title || "";
           updateUI(data.pagesRead, data.totalPages);
         }
       });
 
-      // Save updates
       saveBtn.addEventListener("click", async () => {
         const pagesRead = parseInt(readInput.value) || 0;
         const totalPages = parseInt(totalInput.value) || 0;
-        await setDoc(docRef, { pagesRead, totalPages, updatedAt: new Date() });
+        const title = titleInput.value || "";
+        await setDoc(docRef, { pagesRead, totalPages, title, updatedAt: new Date() });
       });
     }
 
-    // Initialize both trackers
     initTracker("Jansen");
     initTracker("Ella");
   </script>
