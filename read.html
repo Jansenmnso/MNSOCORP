@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-600 w-full text-white py-4 text-center text-2xl font-semibold shadow-md">
+    Reading Tracker 📚
+  </header>
+
+  <!-- Main Card -->
+  <main class="bg-white mt-6 p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
+    <h2 class="text-lg font-semibold mb-4 text-gray-700">Progress Overview</h2>
+
+    <!-- Progress Bar -->
+    <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
+      <div id="progressBar" class="bg-blue-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="flex flex-col gap-3">
+      <label class="text-sm text-gray-600">
+        📖 Pages Read So Far:
+        <input id="pagesRead" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </label>
+
+      <label class="text-sm text-gray-600">
+        📘 Total Pages:
+        <input id="totalPages" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </label>
+
+      <button id="saveButton" class="bg-blue-600 text-white rounded-lg py-2 mt-2 hover:bg-blue-700 transition">💾 Save Progress</button>
+    </div>
+
+    <p id="percentageText" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+  </main>
+
+  <!-- Firebase + JS Logic -->
+  <script type="module">
+    // Import Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // TODO: replace with your Firebase config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const trackerRef = doc(db, "reading", "sharedProgress");
+
+    // Elements
+    const pagesReadInput = document.getElementById("pagesRead");
+    const totalPagesInput = document.getElementById("totalPages");
+    const progressBar = document.getElementById("progressBar");
+    const percentageText = document.getElementById("percentageText");
+    const saveButton = document.getElementById("saveButton");
+
+    // Update the UI
+    function updateUI(pagesRead, totalPages) {
+      const percent = totalPages > 0 ? Math.min((pagesRead / totalPages) * 100, 100) : 0;
+      progressBar.style.width = percent + "%";
+      percentageText.textContent = `Progress: ${Math.round(percent)}%`;
+    }
+
+    // Listen for live changes
+    onSnapshot(trackerRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        pagesReadInput.value = data.pagesRead || 0;
+        totalPagesInput.value = data.totalPages || 0;
+        updateUI(data.pagesRead, data.totalPages);
+      }
+    });
+
+    // Save updates
+    saveButton.addEventListener("click", async () => {
+      const pagesRead = parseInt(pagesReadInput.value) || 0;
+      const totalPages = parseInt(totalPagesInput.value) || 0;
+      await setDoc(trackerRef, { pagesRead, totalPages, updatedAt: new Date() });
+    });
+  </script>
+</body>
+</html>
