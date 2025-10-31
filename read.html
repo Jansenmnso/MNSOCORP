@@ -13,40 +13,64 @@
     Reading Tracker 📚
   </header>
 
-  <!-- Main Card -->
-  <main class="bg-white mt-6 p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
-    <h2 class="text-lg font-semibold mb-4 text-gray-700">Progress Overview</h2>
+  <main class="w-full flex flex-col items-center gap-6 mt-6 mb-10">
+    <!-- Jansen Tracker -->
+    <section id="jansenTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600 text-center">Jansen</h2>
 
-    <!-- Progress Bar -->
-    <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
-      <div id="progressBar" class="bg-blue-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
-    </div>
+      <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
+        <div id="progressJansen" class="bg-blue-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
+      </div>
 
-    <!-- Inputs -->
-    <div class="flex flex-col gap-3">
-      <label class="text-sm text-gray-600">
-        📖 Pages Read So Far:
-        <input id="pagesRead" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      </label>
+      <div class="flex flex-col gap-3">
+        <label class="text-sm text-gray-600">
+          📖 Pages Read So Far:
+          <input id="readJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </label>
 
-      <label class="text-sm text-gray-600">
-        📘 Total Pages:
-        <input id="totalPages" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      </label>
+        <label class="text-sm text-gray-600">
+          📘 Total Pages:
+          <input id="totalJansen" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </label>
 
-      <button id="saveButton" class="bg-blue-600 text-white rounded-lg py-2 mt-2 hover:bg-blue-700 transition">💾 Save Progress</button>
-    </div>
+        <button id="saveJansen" class="bg-blue-600 text-white rounded-lg py-2 mt-2 hover:bg-blue-700 transition">💾 Save Progress</button>
+      </div>
 
-    <p id="percentageText" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+      <p id="percentJansen" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+    </section>
+
+    <!-- Ella Tracker -->
+    <section id="ellaTracker" class="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-md">
+      <h2 class="text-xl font-semibold mb-4 text-pink-600 text-center">Ella</h2>
+
+      <div class="w-full bg-gray-200 rounded-full h-6 mb-4">
+        <div id="progressElla" class="bg-pink-500 h-6 rounded-full transition-all duration-300" style="width: 0%;"></div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <label class="text-sm text-gray-600">
+          📖 Pages Read So Far:
+          <input id="readElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
+        </label>
+
+        <label class="text-sm text-gray-600">
+          📘 Total Pages:
+          <input id="totalElla" type="number" class="w-full border rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-pink-400">
+        </label>
+
+        <button id="saveElla" class="bg-pink-600 text-white rounded-lg py-2 mt-2 hover:bg-pink-700 transition">💾 Save Progress</button>
+      </div>
+
+      <p id="percentElla" class="text-center mt-4 text-gray-700 font-medium">Progress: 0%</p>
+    </section>
   </main>
 
-  <!-- Firebase + JS Logic -->
+  <!-- Firebase + Logic -->
   <script type="module">
-    // Import Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-    // TODO: replace with your Firebase config
+    // 🔧 Replace this with your actual Firebase config once ready
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -58,38 +82,43 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const trackerRef = doc(db, "reading", "sharedProgress");
 
-    // Elements
-    const pagesReadInput = document.getElementById("pagesRead");
-    const totalPagesInput = document.getElementById("totalPages");
-    const progressBar = document.getElementById("progressBar");
-    const percentageText = document.getElementById("percentageText");
-    const saveButton = document.getElementById("saveButton");
+    // --- Helper function to build tracker logic ---
+    function initTracker(name, color) {
+      const docRef = doc(db, "reading", name);
+      const readInput = document.getElementById(`read${name}`);
+      const totalInput = document.getElementById(`total${name}`);
+      const progressBar = document.getElementById(`progress${name}`);
+      const percentText = document.getElementById(`percent${name}`);
+      const saveBtn = document.getElementById(`save${name}`);
 
-    // Update the UI
-    function updateUI(pagesRead, totalPages) {
-      const percent = totalPages > 0 ? Math.min((pagesRead / totalPages) * 100, 100) : 0;
-      progressBar.style.width = percent + "%";
-      percentageText.textContent = `Progress: ${Math.round(percent)}%`;
+      function updateUI(read, total) {
+        const percent = total > 0 ? Math.min((read / total) * 100, 100) : 0;
+        progressBar.style.width = percent + "%";
+        percentText.textContent = `Progress: ${Math.round(percent)}%`;
+      }
+
+      // Live updates
+      onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          readInput.value = data.pagesRead || 0;
+          totalInput.value = data.totalPages || 0;
+          updateUI(data.pagesRead, data.totalPages);
+        }
+      });
+
+      // Save updates
+      saveBtn.addEventListener("click", async () => {
+        const pagesRead = parseInt(readInput.value) || 0;
+        const totalPages = parseInt(totalInput.value) || 0;
+        await setDoc(docRef, { pagesRead, totalPages, updatedAt: new Date() });
+      });
     }
 
-    // Listen for live changes
-    onSnapshot(trackerRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        pagesReadInput.value = data.pagesRead || 0;
-        totalPagesInput.value = data.totalPages || 0;
-        updateUI(data.pagesRead, data.totalPages);
-      }
-    });
-
-    // Save updates
-    saveButton.addEventListener("click", async () => {
-      const pagesRead = parseInt(pagesReadInput.value) || 0;
-      const totalPages = parseInt(totalPagesInput.value) || 0;
-      await setDoc(trackerRef, { pagesRead, totalPages, updatedAt: new Date() });
-    });
+    // Initialize both trackers
+    initTracker("Jansen");
+    initTracker("Ella");
   </script>
 </body>
 </html>
