@@ -2,153 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MNSO – Youth. Leadership. Change.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSO | System Status</title>
   <style>
     body {
-      margin: 0;
-      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
+      background-color: #0078d7; /* Microsoft blue */
       color: white;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: auto;
-    }
-
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 14px;
-      background-color: #002855;
-      border: 1px solid white;
-      padding: 6px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 90vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
+      padding-top: 12%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .sad-face {
+      width: 120px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 64px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      color: #ffffff;
+      font-size: 2.8rem;
+      font-weight: 400;
     }
 
-    .search-bar {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .tabs {
-      margin-top: 30px;
-    }
-
-    .tabs a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .tabs a:hover {
-      background-color: white;
-      color: black;
-    }
-
-    .archive-button {
-      margin-top: 40px;
-      background-color: #e60000;
-      color: white;
-      font-size: 18px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .archive-button:hover {
-      background-color: #cc0000;
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
     }
 
     .footer {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 12px;
-      color: gray;
+      bottom: 30px;
+      width: 100%;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Logo placement */
+    .mnso-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 130px;
+    }
+
+    .chairman-seal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 130px;
+    }
+
+    /* Glowing animation for logos */
+    .glow-logo {
+      filter: drop-shadow(0 0 15px rgba(0, 153, 255, 0.7))
+              drop-shadow(0 0 30px rgba(0, 153, 255, 0.5));
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from {
+        filter: drop-shadow(0 0 10px rgba(0, 153, 255, 0.7))
+                drop-shadow(0 0 20px rgba(0, 153, 255, 0.4));
+      }
+      to {
+        filter: drop-shadow(0 0 25px rgba(0, 153, 255, 1))
+                drop-shadow(0 0 40px rgba(0, 153, 255, 0.8));
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Top Logos -->
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="mnso-logo glow-logo">
+  <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="chairman-seal glow-logo">
 
-  <!-- Logo -->
-  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+  <!-- Sad Face -->
+  <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
 
-  <!-- Language Toggle -->
-  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NORSK</div>
+  <!-- Main Message -->
+  <h1>:(</h1>
+  <h1>MNSO Systems Are Temporarily Offline</h1>
+  <p>
+    A system disruption or cyber-related threat has been detected.<br>
+    Access to the MNSO Network and Documents is temporarily suspended<br>
+    while our team works to secure all data and restore normal operations.
+  </p>
 
-  <!-- Main Content -->
-  <div class="container">
-    <h1 id="mainTitle">MNSO</h1>
-    <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
-    
-    <div class="tabs">
-      <a href="directory.html" id="linkDirectory">Directory</a>
-      <a href="contact.html" id="linkContact">Contact</a>
-      <a href="members.html" id="linkMembers">Members</a>
-      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
-    </div>
+  <p>Please check back later or contact your MNSO administrator for updates.</p>
 
-    <a class="archive-button" href="election.html" id="archiveBtn">Archives</a>
+  <div class="footer">
+    <p>© 2025 Modern Nonprofit Student Organization | System Security Division</p>
   </div>
-
-  <!-- Footer -->
-  <div class="footer" id="footerText">
-    classified website owned and operated by MNSO organization
-  </div>
-
-  <!-- Language Toggle Script -->
-  <script>
-    let isNorwegian = false;
-
-    function toggleLanguage() {
-      isNorwegian = !isNorwegian;
-      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("mainTitle").textContent = isNorwegian ? "MNSO" : "MNSO";
-      document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
-      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
-      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
-      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
-      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-      document.getElementById("archiveBtn").textContent = isNorwegian ? "Arkiv" : "Archives";
-      document.getElementById("footerText").textContent = isNorwegian ?
-        "klassifisert nettsted eid og drevet av MNSO-organisasjonen" :
-        "classified website owned and operated by MNSO organization";
-    }
-  </script>
-
 </body>
 </html>
