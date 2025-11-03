@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠️ MNSO Emergency Notice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #1a0000, #000000);
+      color: white;
+      font-family: 'Roboto Condensed', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 40px;
+      border: 2px solid red;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.7);
+      box-shadow: 0 0 20px red;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px red; }
+      50% { box-shadow: 0 0 25px red; }
+      100% { box-shadow: 0 0 10px red; }
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: red;
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .notice {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #ffcccc;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .statusBox {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      margin-top: 25px;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .statusBox h3 {
+      color: #ff4d4d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
+    <h1>MNSO SYSTEM ALERT</h1>
+    <p>
+      The Modern Nonprofit Student Organization’s systems are temporarily unavailable.<br>
+      Access to internal files, communications, and databases has been <strong>suspended</strong> for security reasons.
+    </p>
+
+    <div class="statusBox">
+      <h3>Latest Status Update</h3>
+      <p id="statusText">Monitoring and containment protocols are active.<br>
+      Please do not attempt to log in or submit any forms until further notice.</p>
+    </div>
+
+    <p class="notice">
+      This page will automatically restore access when normal service resumes.
+    </p>
+
+    <div class="footer">
+      © 2025 Modern Nonprofit Student Organization (MNSO) | Emergency Response Division
+    </div>
+  </div>
+</body>
+</html>
