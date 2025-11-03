@@ -2,103 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>⚠️ MNSO Emergency Notice</title>
+  <title>MNSO SYSTEM LOCKDOWN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #1a0000, #000000);
-      color: white;
-      font-family: 'Roboto Condensed', sans-serif;
+      background-color: #0078D7; /* Microsoft blue */
+      color: #ffffff;
+      font-family: 'Consolas', 'Courier New', monospace;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      text-align: center;
+      text-align: left;
+      overflow: hidden;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 750px;
       padding: 40px;
-      border: 2px solid red;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.7);
-      box-shadow: 0 0 20px red;
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 10px red; }
-      50% { box-shadow: 0 0 25px red; }
-      100% { box-shadow: 0 0 10px red; }
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
     }
 
-    .logo {
-      width: 120px;
-      margin-bottom: 15px;
+    .logos img {
+      height: 90px;
     }
 
     h1 {
-      color: red;
-      font-size: 32px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
     }
 
     p {
       font-size: 18px;
-      line-height: 1.5;
+      line-height: 1.6;
+      margin: 10px 0;
     }
 
-    .notice {
-      margin-top: 30px;
+    .status {
+      margin-top: 25px;
       font-size: 16px;
-      color: #ffcccc;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 15px;
+    }
+
+    .code {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #b0d7ff;
     }
 
     .footer {
-      margin-top: 40px;
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
       font-size: 14px;
-      opacity: 0.7;
-    }
-
-    .statusBox {
-      background: rgba(255,255,255,0.05);
-      padding: 15px;
-      margin-top: 25px;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .statusBox h3 {
-      color: #ff4d4d;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="IMG_4769.jpeg" alt="MNSO Logo" class="logo">
-    <h1>MNSO SYSTEM ALERT</h1>
-    <p>
-      The Modern Nonprofit Student Organization’s systems are temporarily unavailable.<br>
-      Access to internal files, communications, and databases has been <strong>suspended</strong> for security reasons.
-    </p>
-
-    <div class="statusBox">
-      <h3>Latest Status Update</h3>
-      <p id="statusText">Monitoring and containment protocols are active.<br>
-      Please do not attempt to log in or submit any forms until further notice.</p>
+    <div class="logos">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
+      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
     </div>
 
-    <p class="notice">
-      This page will automatically restore access when normal service resumes.
-    </p>
+    <h1>:(  The MNSO has encountered a critical system event</h1>
 
-    <div class="footer">
-      © 2025 Modern Nonprofit Student Organization (MNSO) | Emergency Response Division
+    <p>All operational systems have been temporarily locked to protect the network and its data integrity.</p>
+    <p>Containment and verification procedures are currently in progress. Please stand by until the system is declared safe by the MNSO Security Division.</p>
+
+    <div class="status">
+      <p>Do not attempt to reload or access restricted services until this page is lifted.</p>
+      <p class="code">[STATUS CODE: CYBER-LOCKDOWN / 0xMNSO_001]</p>
     </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Modern Nonprofit Student Organization | Security Response Command
   </div>
 </body>
 </html>
