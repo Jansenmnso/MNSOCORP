@@ -24,11 +24,20 @@
       padding: 40px;
     }
 
+    .sadface {
+      display: block;
+      margin: 0 auto 30px auto;
+      height: 100px;
+      width: auto;
+      opacity: 0.9;
+    }
+
     .logos {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 40px;
+      margin-top: 40px;
       margin-bottom: 40px;
     }
 
@@ -69,23 +78,40 @@
       font-size: 14px;
       opacity: 0.8;
     }
+
+    /* Optional blinking cursor effect for realism */
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: white;
+      margin-left: 5px;
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logos">
-      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
-      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
-    </div>
+    <img src="IMG_1468.webp" alt="Sad Computer Face" class="sadface">
 
-    <h1>:(  The MNSO has encountered a critical system event</h1>
-
+    <h1>The MNSO has encountered a critical system event</h1>
     <p>All operational systems have been temporarily locked to protect the network and its data integrity.</p>
     <p>Containment and verification procedures are currently in progress. Please stand by until the system is declared safe by the MNSO Security Division.</p>
 
     <div class="status">
       <p>Do not attempt to reload or access restricted services until this page is lifted.</p>
       <p class="code">[STATUS CODE: CYBER-LOCKDOWN / 0xMNSO_001]</p>
+      <p>> Waiting for system integrity verification<span class="cursor"></span></p>
+    </div>
+
+    <div class="logos">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
+      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
     </div>
   </div>
 
