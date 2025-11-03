@@ -1,122 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MNSO SYSTEM LOCKDOWN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSO | System Status</title>
   <style>
     body {
+      background-color: #0078d7; /* Microsoft blue */
+      color: white;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding-top: 12%;
       margin: 0;
-      background-color: #0078D7; /* Microsoft blue */
-      color: #ffffff;
-      font-family: 'Consolas', 'Courier New', monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: left;
       overflow: hidden;
     }
 
-    .container {
-      max-width: 750px;
-      padding: 40px;
-    }
-
-    .sadface {
-      display: block;
-      margin: 0 auto 30px auto;
-      height: 100px;
-      width: auto;
-      opacity: 0.9;
-    }
-
-    .logos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-top: 40px;
-      margin-bottom: 40px;
-    }
-
-    .logos img {
-      height: 90px;
+    .sad-face {
+      width: 120px;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      font-weight: bold;
+      font-size: 2.8rem;
+      font-weight: 400;
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 10px 0;
-    }
-
-    .status {
-      margin-top: 25px;
-      font-size: 16px;
-      border-top: 1px solid rgba(255,255,255,0.3);
-      padding-top: 15px;
-    }
-
-    .code {
+      font-size: 1.2rem;
       margin-top: 20px;
-      font-size: 16px;
-      color: #b0d7ff;
     }
 
     .footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 30px;
       width: 100%;
-      text-align: center;
-      font-size: 14px;
+      font-size: 0.9rem;
       opacity: 0.8;
     }
 
-    /* Optional blinking cursor effect for realism */
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: white;
-      margin-left: 5px;
-      animation: blink 1s steps(2, start) infinite;
+    /* Logo placement */
+    .mnso-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 130px;
     }
 
-    @keyframes blink {
+    .chairman-seal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 130px;
+    }
+
+    /* Glowing animation for logos */
+    .glow-logo {
+      filter: drop-shadow(0 0 15px rgba(0, 153, 255, 0.7))
+              drop-shadow(0 0 30px rgba(0, 153, 255, 0.5));
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from {
+        filter: drop-shadow(0 0 10px rgba(0, 153, 255, 0.7))
+                drop-shadow(0 0 20px rgba(0, 153, 255, 0.4));
+      }
       to {
-        visibility: hidden;
+        filter: drop-shadow(0 0 25px rgba(0, 153, 255, 1))
+                drop-shadow(0 0 40px rgba(0, 153, 255, 0.8));
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="IMG_1468.webp" alt="Sad Computer Face" class="sadface">
+  <!-- Top Logos -->
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="mnso-logo glow-logo">
+  <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="chairman-seal glow-logo">
 
-    <h1>The MNSO has encountered a critical system event</h1>
-    <p>All operational systems have been temporarily locked to protect the network and its data integrity.</p>
-    <p>Containment and verification procedures are currently in progress. Please stand by until the system is declared safe by the MNSO Security Division.</p>
+  <!-- Sad Face -->
+  <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
 
-    <div class="status">
-      <p>Do not attempt to reload or access restricted services until this page is lifted.</p>
-      <p class="code">[STATUS CODE: CYBER-LOCKDOWN / 0xMNSO_001]</p>
-      <p>> Waiting for system integrity verification<span class="cursor"></span></p>
-    </div>
+  <!-- Main Message -->
+  <h1>:(</h1>
+  <h1>MNSO Systems Are Temporarily Offline</h1>
+  <p>
+    A system disruption or cyber-related threat has been detected.<br>
+    Access to the MNSO Network and Documents is temporarily suspended<br>
+    while our team works to secure all data and restore normal operations.
+  </p>
 
-    <div class="logos">
-      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
-      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal">
-    </div>
-  </div>
+  <p>Please check back later or contact your MNSO administrator for updates.</p>
 
   <div class="footer">
-    © 2025 Modern Nonprofit Student Organization | Security Response Command
+    <p>© 2025 Modern Nonprofit Student Organization | System Security Division</p>
   </div>
 </body>
 </html>
