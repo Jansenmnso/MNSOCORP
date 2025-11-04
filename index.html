@@ -10,24 +10,53 @@
       color: white;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      padding-top: 12%;
+      padding-top: 10%;
       margin: 0;
       overflow: hidden;
     }
 
+    .sad-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 25px;
+    }
+
     .sad-face {
       width: 120px;
-      margin-bottom: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* White loading ring animation */
+    .loading-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      height: 160px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 2s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     h1 {
       font-size: 2.8rem;
       font-weight: 400;
+      margin: 0;
     }
 
     p {
       font-size: 1.2rem;
       margin-top: 20px;
+      line-height: 1.5;
     }
 
     .footer {
@@ -70,6 +99,34 @@
                 drop-shadow(0 0 40px rgba(0, 153, 255, 0.8));
       }
     }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 25%;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+        margin: 10px 20px;
+      }
+      .mnso-logo, .chairman-seal {
+        width: 90px;
+      }
+      .sad-face {
+        width: 90px;
+      }
+      .loading-ring {
+        width: 120px;
+        height: 120px;
+      }
+      .footer {
+        font-size: 0.8rem;
+        bottom: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -77,8 +134,11 @@
   <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="mnso-logo glow-logo">
   <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="chairman-seal glow-logo">
 
-  <!-- Sad Face -->
-  <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
+  <!-- Sad Face + Loading Ring -->
+  <div class="sad-container">
+    <div class="loading-ring"></div>
+    <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
+  </div>
 
   <!-- Main Message -->
   <h1>:(</h1>
