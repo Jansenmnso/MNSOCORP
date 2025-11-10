@@ -2,157 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MNSO | System Status</title>
+  <title>MNSO – Youth. Leadership. Change.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #0078d7; /* Microsoft blue */
-      color: white;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      padding-top: 10%;
       margin: 0;
-      overflow: hidden;
+      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
+      color: white;
+      font-family: 'Roboto', sans-serif;
     }
 
-    .sad-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 25px;
-    }
-
-    .sad-face {
-      width: 120px;
-      z-index: 2;
-      position: relative;
-    }
-
-    /* White loading ring animation */
-    .loading-ring {
+    .logo {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 160px;
-      height: 160px;
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-top: 4px solid white;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: spin 2s linear infinite;
-      z-index: 1;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
     }
 
-    @keyframes spin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      background-color: #002855;
+      border: 1px solid white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      text-align: center;
     }
 
     h1 {
-      font-size: 2.8rem;
-      font-weight: 400;
-      margin: 0;
+      font-size: 64px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #ffffff;
     }
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      line-height: 1.5;
+    .search-bar {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .tabs {
+      margin-top: 30px;
+    }
+
+    .tabs a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border: 1px solid white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .tabs a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .archive-button {
+      margin-top: 40px;
+      background-color: #e60000;
+      color: white;
+      font-size: 18px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .archive-button:hover {
+      background-color: #cc0000;
     }
 
     .footer {
       position: absolute;
-      bottom: 30px;
-      width: 100%;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* Logo placement */
-    .mnso-logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 130px;
-    }
-
-    .chairman-seal {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 130px;
-    }
-
-    /* Glowing animation for logos */
-    .glow-logo {
-      filter: drop-shadow(0 0 15px rgba(0, 153, 255, 0.7))
-              drop-shadow(0 0 30px rgba(0, 153, 255, 0.5));
-      animation: glowPulse 3s infinite alternate;
-    }
-
-    @keyframes glowPulse {
-      from {
-        filter: drop-shadow(0 0 10px rgba(0, 153, 255, 0.7))
-                drop-shadow(0 0 20px rgba(0, 153, 255, 0.4));
-      }
-      to {
-        filter: drop-shadow(0 0 25px rgba(0, 153, 255, 1))
-                drop-shadow(0 0 40px rgba(0, 153, 255, 0.8));
-      }
-    }
-
-    /* MOBILE RESPONSIVENESS */
-    @media (max-width: 768px) {
-      body {
-        padding-top: 25%;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
-        margin: 10px 20px;
-      }
-      .mnso-logo, .chairman-seal {
-        width: 90px;
-      }
-      .sad-face {
-        width: 90px;
-      }
-      .loading-ring {
-        width: 120px;
-        height: 120px;
-      }
-      .footer {
-        font-size: 0.8rem;
-        bottom: 15px;
-      }
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: gray;
     }
   </style>
 </head>
 <body>
-  <!-- Top Logos -->
-  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="mnso-logo glow-logo">
-  <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="chairman-seal glow-logo">
 
-  <!-- Sad Face + Loading Ring -->
-  <div class="sad-container">
-    <div class="loading-ring"></div>
-    <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
+  <!-- Logo -->
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+
+  <!-- Language Toggle -->
+  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NORSK</div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 id="mainTitle">MNSO</h1>
+    <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
+    
+    <div class="tabs">
+      <a href="directory.html" id="linkDirectory">Directory</a>
+      <a href="contact.html" id="linkContact">Contact</a>
+      <a href="members.html" id="linkMembers">Members</a>
+      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
+    </div>
+
+    <a class="archive-button" href="election.html" id="archiveBtn">Archives</a>
   </div>
 
-  <!-- Main Message -->
-  <h1>:(</h1>
-  <h1>MNSO Systems Are Temporarily Offline</h1>
-  <p>
-    A system disruption or cyber-related threat has been detected.<br>
-    Access to the MNSO Network and Documents is temporarily suspended<br>
-    while our team works to secure all data and restore normal operations.
-  </p>
-
-  <p>Please check back later or contact your MNSO administrator for updates.</p>
-
-  <div class="footer">
-    <p>© 2025 Modern Nonprofit Student Organization | System Security Division</p>
+  <!-- Footer -->
+  <div class="footer" id="footerText">
+    classified website owned and operated by MNSO organization
   </div>
+
+  <!-- Language Toggle Script -->
+  <script>
+    let isNorwegian = false;
+
+    function toggleLanguage() {
+      isNorwegian = !isNorwegian;
+      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
+      document.getElementById("mainTitle").textContent = isNorwegian ? "MNSO" : "MNSO";
+      document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
+      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
+      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
+      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
+      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
+      document.getElementById("archiveBtn").textContent = isNorwegian ? "Arkiv" : "Archives";
+      document.getElementById("footerText").textContent = isNorwegian ?
+        "klassifisert nettsted eid og drevet av MNSO-organisasjonen" :
+        "classified website owned and operated by MNSO organization";
+    }
+  </script>
+
 </body>
 </html>
