@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The MNSO Review</title>
 
-  <!-- Newspaper-style font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Serious newspaper fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -26,7 +26,7 @@
     .top-bar {
       background-color: var(--mnso-blue);
       color: white;
-      height: 82px;
+      height: 86px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -35,10 +35,12 @@
     }
 
     .top-bar h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 32px;
-      letter-spacing: 1px;
+      font-family: "Libre Baskerville", serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       margin: 0;
+      text-transform: uppercase;
     }
 
     .top-bar img {
@@ -58,8 +60,8 @@
 
     /* ===== Layout ===== */
     .container {
-      max-width: 1100px;
-      margin: 40px auto;
+      max-width: 1150px;
+      margin: 44px auto;
       padding: 0 20px;
     }
 
@@ -72,45 +74,51 @@
       overflow: hidden;
     }
 
-    .image-placeholder {
+    .story-box a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .story-image {
       width: 100%;
       height: 260px;
-      background-color: #dbe2ea;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #555;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
     }
 
     .story-title {
-      padding: 16px;
-      font-family: "Playfair Display", serif;
+      padding: 18px;
+      font-family: "Libre Baskerville", serif;
       font-size: 22px;
+      font-weight: 700;
       border-top: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .story-title:hover {
+      text-decoration: underline;
     }
 
     /* ===== Featured Story ===== */
     .featured {
-      margin-bottom: 40px;
+      margin-bottom: 44px;
     }
 
-    .featured .image-placeholder {
-      height: 360px;
-      font-size: 16px;
+    .featured .story-image {
+      height: 380px;
     }
 
     .featured .story-title {
-      font-size: 28px;
+      font-size: 30px;
     }
 
     /* ===== Secondary Stories ===== */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 26px;
     }
 
     /* ===== Responsive ===== */
@@ -127,9 +135,8 @@
 </head>
 <body>
 
-  <!-- ===== Top Header ===== -->
+  <!-- ===== Header ===== -->
   <header class="top-bar">
-    <!-- MNSO Modern Logo -->
     <img 
       src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" 
       alt="MNSO Modern Logo" 
@@ -138,7 +145,6 @@
 
     <h1>The MNSO Review</h1>
 
-    <!-- Chairman Seal -->
     <img 
       src="7C60C8A7-1997-4A86-BC77-122697B82929.png" 
       alt="Chairman Seal" 
@@ -146,35 +152,65 @@
     >
   </header>
 
-  <!-- ===== Main Content ===== -->
+  <!-- ===== Content ===== -->
   <main class="container">
 
-    <!-- Featured Story -->
+    <!-- ===== Featured Story ===== -->
     <section class="story-box featured">
-      <div class="image-placeholder">
-        Featured Story Image
-      </div>
-      <div class="story-title">
-        Headline of the Primary MNSO Story Goes Here
-      </div>
+      <a href="https://www.mnso.live">
+        <img 
+          src="PASTE_FEATURED_IMAGE_URL_HERE"
+          alt="Featured Story"
+          class="story-image"
+        >
+        <div class="story-title">
+          Primary Headline of Major MNSO Coverage
+        </div>
+      </a>
     </section>
 
-    <!-- Secondary Stories -->
+    <!-- ===== Secondary Stories ===== -->
     <section class="grid">
+
       <div class="story-box">
-        <div class="image-placeholder">Story Image</div>
-        <div class="story-title">Secondary Story Headline</div>
+        <a href="https://www.mnso.live">
+          <img 
+            src="PASTE_IMAGE_URL_HERE"
+            alt="Story Image"
+            class="story-image"
+          >
+          <div class="story-title">
+            Secondary Story Headline
+          </div>
+        </a>
       </div>
 
       <div class="story-box">
-        <div class="image-placeholder">Story Image</div>
-        <div class="story-title">Secondary Story Headline</div>
+        <a href="https://www.mnso.live">
+          <img 
+            src="PASTE_IMAGE_URL_HERE"
+            alt="Story Image"
+            class="story-image"
+          >
+          <div class="story-title">
+            Secondary Story Headline
+          </div>
+        </a>
       </div>
 
       <div class="story-box">
-        <div class="image-placeholder">Story Image</div>
-        <div class="story-title">Secondary Story Headline</div>
+        <a href="https://www.mnso.live">
+          <img 
+            src="PASTE_IMAGE_URL_HERE"
+            alt="Story Image"
+            class="story-image"
+          >
+          <div class="story-title">
+            Secondary Story Headline
+          </div>
+        </a>
       </div>
+
     </section>
 
   </main>
