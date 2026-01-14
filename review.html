@@ -30,8 +30,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      position: sticky; /* sticky top */
+      top: 0;
+      z-index: 999;
       border-bottom: 3px solid var(--mnso-gold);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .top-bar h1 {
@@ -62,6 +65,10 @@
       justify-content: center;
       gap: 40px;
       padding: 12px 0;
+      position: sticky; /* sticky below top bar */
+      top: 86px;        /* below top bar */
+      z-index: 998;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .nav-bar span {
@@ -170,6 +177,10 @@
 
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .nav-bar {
+        top: 68px; /* adjust for mobile top bar height */
       }
     }
   </style>
