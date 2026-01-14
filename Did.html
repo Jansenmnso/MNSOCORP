@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSO Internal Records</title>
+  <style>
+    :root {
+      --blue-dark: #0b2545;
+      --blue-mid: #133b6f;
+      --gold: #c9a24d;
+      --white: #ffffff;
+      --gray-light: #f4f6f8;
+      --gray-border: #d0d6dc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: var(--gray-light);
+      color: #111;
+    }
+
+    /* Top Header */
+    .top-header {
+      background-color: var(--white);
+      border-bottom: 3px solid var(--gold);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-header h1 {
+      margin: 0 auto;
+      font-size: 28px;
+      letter-spacing: 1px;
+      font-weight: normal;
+    }
+
+    .logo-left, .seal-right {
+      width: 64px;
+      height: 64px;
+    }
+
+    .logo-left img, .seal-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Layout */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 94px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: var(--blue-dark);
+      color: var(--white);
+      padding: 24px 20px;
+      border-right: 4px solid var(--gold);
+    }
+
+    .sidebar h2 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 8px;
+    }
+
+    .sidebar .user {
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .clock {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 32px;
+    }
+
+    .panel {
+      background-color: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .panel-title {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: var(--blue-dark);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Arial", sans-serif;
+      font-size: 14px;
+    }
+
+    thead {
+      background-color: var(--blue-mid);
+      color: var(--white);
+    }
+
+    th, td {
+      border: 1px solid var(--gray-border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    tbody tr:hover {
+      background-color: #eef3f8;
+    }
+
+    td[contenteditable="true"] {
+      background-color: #fffef8;
+      cursor: text;
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="logo-left">
+      <!-- Replace src with actual MNSO logo path -->
+      <img src="https://via.placeholder.com/64x64?text=MNSO" alt="MNSO Logo">
+    </div>
+
+    <h1>MNSO Organization</h1>
+
+    <div class="seal-right">
+      <!-- Replace src with actual MNSO seal path -->
+      <img src="https://via.placeholder.com/64x64?text=Seal" alt="MNSO Seal">
+    </div>
+  </div>
+
+  <!-- Layout -->
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Session</h2>
+      <div class="user">Signed in as <strong>Jansen Monk</strong></div>
+
+      <h2>Local Time</h2>
+      <div class="clock" id="clock">--:--:--</div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <div class="panel">
+        <div class="panel-title">Internal Records Database (Test Environment)</div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Record ID</th>
+              <th>Full Name</th>
+              <th>Department</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Last Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">001</td>
+              <td contenteditable="true">Jane Doe</td>
+              <td contenteditable="true">Administration</td>
+              <td contenteditable="true">Director</td>
+              <td contenteditable="true">Active</td>
+              <td contenteditable="true">2026-01-14</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">002</td>
+              <td contenteditable="true">John Smith</td>
+              <td contenteditable="true">Policy</td>
+              <td contenteditable="true">Analyst</td>
+              <td contenteditable="true">Active</td>
+              <td contenteditable="true">2026-01-14</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">003</td>
+              <td contenteditable="true">—</td>
+              <td contenteditable="true">—</td>
+              <td contenteditable="true">—</td>
+              <td contenteditable="true">—</td>
+              <td contenteditable="true">—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer-note">
+          This interface is a non-production demonstration of an internal MNSO records system. Data entered is not persisted.
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
