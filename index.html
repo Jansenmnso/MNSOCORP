@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <title>MNSO – Youth. Leadership. Change.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
       background: linear-gradient(to bottom, #001f3f, #0a0a0a);
       color: white;
       font-family: 'Roboto', sans-serif;
-      overflow-x: hidden;
     }
 
+    /* Logo */
     .logo {
       position: absolute;
       top: 20px;
       left: 20px;
       width: 100px;
+      z-index: 10;
     }
 
+    /* Language Toggle */
     .language-toggle {
       position: absolute;
       top: 20px;
@@ -36,25 +39,44 @@
       z-index: 10;
     }
 
+    /* Main Container */
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;     /* FIX */
-      padding-top: 120px;   /* FIX */
-      padding-bottom: 80px;
+      min-height: 100vh;
       text-align: center;
     }
 
     h1 {
       font-size: 64px;
       font-weight: bold;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
+    /* Review Button */
+    .review-button {
+      font-family: "Times New Roman", serif;
+      font-size: 18px;
+      background: transparent;
+      color: white;
+      border: 2px solid #d4af37;
+      padding: 14px 36px;
+      border-radius: 6px;
+      margin-bottom: 35px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .review-button:hover {
+      background-color: #d4af37;
+      color: black;
+    }
+
+    /* Tabs */
     .tabs {
-      margin-bottom: 36px;
+      margin-top: 10px;
     }
 
     .tabs a {
@@ -73,26 +95,7 @@
       color: black;
     }
 
-    .review-button {
-      background-color: white;
-      color: black;
-      font-size: 20px;
-      padding: 14px 38px;
-      border-radius: 6px;
-      border: 2px solid #c9a24d;
-      font-family: "Times New Roman", Times, serif;
-      letter-spacing: 1.6px;
-      text-decoration: none;
-      text-transform: uppercase;
-      box-shadow: 0 0 0 3px rgba(201,162,77,0.25);
-      transition: all 0.25s ease;
-    }
-
-    .review-button:hover {
-      box-shadow: 0 0 0 4px rgba(201,162,77,0.45);
-      transform: translateY(-1px);
-    }
-
+    /* Footer */
     .footer {
       position: absolute;
       bottom: 10px;
@@ -101,27 +104,45 @@
       color: gray;
     }
 
+    /* Mobile Adjustments */
     @media (max-width: 600px) {
       h1 {
-        font-size: 44px;
+        font-size: 48px;
+      }
+
+      .review-button {
+        font-size: 16px;
+        padding: 12px 28px;
       }
 
       .tabs a {
-        display: inline-block;
-        margin: 6px;
-        font-size: 16px;
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
       }
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Logo -->
   <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
 
+  <!-- Language Toggle -->
   <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NO</div>
 
+  <!-- Main Content -->
   <div class="container">
     <h1 id="mainTitle">MNSO</h1>
+
+    <a
+      class="review-button"
+      href="https://www.mnso.live/review"
+      id="reviewBtn"
+    >
+      The MNSO Review
+    </a>
 
     <div class="tabs">
       <a href="directory.html" id="linkDirectory">Directory</a>
@@ -129,27 +150,38 @@
       <a href="members.html" id="linkMembers">Members</a>
       <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
     </div>
-
-    <a class="review-button" href="https://www.mnso.live/review" id="reviewBtn">
-      The MNSO Review
-    </a>
   </div>
 
+  <!-- Footer -->
   <div class="footer" id="footerText">
     classified website owned and operated by MNSO organization
   </div>
 
+  <!-- Language Toggle Script -->
   <script>
     let isNorwegian = false;
 
     function toggleLanguage() {
       isNorwegian = !isNorwegian;
+
       document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
-      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
-      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
-      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-      document.getElementById("reviewBtn").textContent = isNorwegian ? "MNSO-REVIEWEN" : "The MNSO Review";
+      document.getElementById("mainTitle").textContent = "MNSO";
+
+      document.getElementById("reviewBtn").textContent =
+        isNorwegian ? "MNSO-gjennomgangen" : "The MNSO Review";
+
+      document.getElementById("linkDirectory").textContent =
+        isNorwegian ? "Katalog" : "Directory";
+
+      document.getElementById("linkContact").textContent =
+        isNorwegian ? "Kontakt" : "Contact";
+
+      document.getElementById("linkMembers").textContent =
+        isNorwegian ? "Medlemmer" : "Members";
+
+      document.getElementById("linkDocs").textContent =
+        isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
+
       document.getElementById("footerText").textContent = isNorwegian
         ? "klassifisert nettsted eid og drevet av MNSO-organisasjonen"
         : "classified website owned and operated by MNSO organization";
