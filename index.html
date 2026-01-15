@@ -2,123 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MNSO – Youth. Leadership. Change.</title>
+  <title>The MNSO Review</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
-      color: white;
       font-family: 'Roboto', sans-serif;
+      color: white;
+      background: 
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+        url("IMG_1661.jpeg") center / cover no-repeat fixed;
+      min-height: 100vh;
     }
 
-    /* Logo */
+    /* ================= TOP GLASS BAR ================= */
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 1000;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      z-index: 10;
+      height: 42px;
     }
 
-    /* Language Toggle */
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    .review-title {
+      font-family: "Times New Roman", serif;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+    }
+
+    .nav-buttons a {
+      margin-left: 18px;
       font-size: 14px;
-      background-color: #002855;
-      border: 1px solid white;
-      padding: 6px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 10;
+      text-decoration: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: all 0.3s ease;
     }
 
-    /* Main Container */
-    .container {
+    .nav-buttons a:hover {
+      background: rgba(212, 175, 55, 0.9);
+      color: black;
+      border-color: #d4af37;
+    }
+
+    /* ================= HERO CONTENT ================= */
+
+    .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
+      padding-top: 160px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
-    h1 {
-      font-size: 64px;
-      font-weight: bold;
-      margin-bottom: 30px;
+    .hero h1 {
+      font-family: "Times New Roman", serif;
+      font-size: 56px;
+      font-weight: normal;
+      margin-bottom: 14px;
     }
 
-    /* Review Button */
-    .review-button {
+    .hero p {
+      max-width: 720px;
+      font-size: 18px;
+      color: #dddddd;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 30px;
       font-family: "Times New Roman", serif;
       font-size: 18px;
+      padding: 14px 40px;
       background: transparent;
       color: white;
       border: 2px solid #d4af37;
-      padding: 14px 36px;
       border-radius: 6px;
-      margin-bottom: 35px;
       text-decoration: none;
       transition: all 0.3s ease;
     }
 
-    .review-button:hover {
-      background-color: #d4af37;
+    .cta:hover {
+      background: #d4af37;
       color: black;
     }
 
-    /* Tabs */
-    .tabs {
-      margin-top: 10px;
-    }
+    /* ================= FOOTER ================= */
 
-    .tabs a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .tabs a:hover {
-      background-color: white;
-      color: black;
-    }
-
-    /* Footer */
     .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+      margin-top: 120px;
+      text-align: center;
       font-size: 12px;
-      color: gray;
+      color: #aaaaaa;
+      padding-bottom: 20px;
     }
 
-    /* Mobile Adjustments */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 48px;
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+      .review-title {
+        display: none;
       }
 
-      .review-button {
-        font-size: 16px;
-        padding: 12px 28px;
+      .nav-buttons a {
+        margin-left: 10px;
+        font-size: 13px;
+        padding: 6px 10px;
       }
 
-      .tabs a {
-        display: block;
-        margin: 10px auto;
-        width: fit-content;
+      .hero h1 {
+        font-size: 42px;
       }
     }
   </style>
@@ -126,67 +152,39 @@
 
 <body>
 
-  <!-- Logo -->
-  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+      <div class="review-title">The MNSO Review</div>
+    </div>
 
-  <!-- Language Toggle -->
-  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NO</div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <h1 id="mainTitle">MNSO</h1>
-
-    <a
-      class="review-button"
-      href="https://www.mnso.live/review"
-      id="reviewBtn"
-    >
-      The MNSO Review
-    </a>
-
-    <div class="tabs">
-      <a href="directory.html" id="linkDirectory">Directory</a>
-      <a href="contact.html" id="linkContact">Contact</a>
-      <a href="members.html" id="linkMembers">Members</a>
-      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
+    <div class="nav-buttons">
+      <a href="https://www.mnso.live/review">Review</a>
+      <a href="#">Opinion</a>
+      <a href="#">Fact</a>
+      <a href="#">Discussion</a>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer" id="footerText">
-    classified website owned and operated by MNSO organization
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Independent Youth Journalism</h1>
+    <p>
+      The MNSO Review is a student-led publication committed to serious analysis,
+      cultural commentary, and principled debate — covering policy, youth movements,
+      and the ideas shaping the next generation.
+    </p>
+
+    <a href="https://www.mnso.live/review" class="cta">
+      Enter The Review
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © MNSO Organization — Independent Student Publication
   </div>
-
-  <!-- Language Toggle Script -->
-  <script>
-    let isNorwegian = false;
-
-    function toggleLanguage() {
-      isNorwegian = !isNorwegian;
-
-      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("mainTitle").textContent = "MNSO";
-
-      document.getElementById("reviewBtn").textContent =
-        isNorwegian ? "MNSO-gjennomgangen" : "The MNSO Review";
-
-      document.getElementById("linkDirectory").textContent =
-        isNorwegian ? "Katalog" : "Directory";
-
-      document.getElementById("linkContact").textContent =
-        isNorwegian ? "Kontakt" : "Contact";
-
-      document.getElementById("linkMembers").textContent =
-        isNorwegian ? "Medlemmer" : "Members";
-
-      document.getElementById("linkDocs").textContent =
-        isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-
-      document.getElementById("footerText").textContent = isNorwegian
-        ? "klassifisert nettsted eid og drevet av MNSO-organisasjonen"
-        : "classified website owned and operated by MNSO organization";
-    }
-  </script>
 
 </body>
 </html>
