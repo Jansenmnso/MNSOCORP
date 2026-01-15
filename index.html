@@ -46,20 +46,12 @@
     h1 {
       font-size: 64px;
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       color: #ffffff;
     }
 
-    .search-bar {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-    }
-
     .tabs {
-      margin-top: 30px;
+      margin-bottom: 36px;
     }
 
     .tabs a {
@@ -80,23 +72,25 @@
 
     /* ================= MNSO REVIEW BUTTON ================= */
     .review-button {
-      margin-top: 40px;
-      background-color: white;
-      color: black;
+      background-color: #ffffff;
+      color: #000000;
       font-size: 20px;
-      padding: 12px 34px;
-      border: 1px solid #000;
-      border-radius: 4px;
-      cursor: pointer;
+      padding: 14px 38px;
+      border-radius: 6px;
+      border: 2px solid #c9a24d; /* MNSO gold */
       font-family: "Times New Roman", Times, serif;
       font-weight: 400;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.6px;
       text-decoration: none;
       text-transform: uppercase;
+      box-shadow: 0 0 0 3px rgba(201,162,77,0.25);
+      transition: all 0.25s ease;
     }
 
     .review-button:hover {
-      background-color: #f2f2f2;
+      background-color: #f9f9f9;
+      box-shadow: 0 0 0 4px rgba(201,162,77,0.45);
+      transform: translateY(-1px);
     }
 
     .footer {
@@ -106,63 +100,21 @@
       font-size: 12px;
       color: gray;
     }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 44px;
+      }
+
+      .tabs a {
+        font-size: 16px;
+        margin: 6px;
+        display: inline-block;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Logo -->
-  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
-
-  <!-- Language Toggle -->
-  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NO</div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <h1 id="mainTitle">MNSO</h1>
-
-    <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
-
-    <div class="tabs">
-      <a href="directory.html" id="linkDirectory">Directory</a>
-      <a href="contact.html" id="linkContact">Contact</a>
-      <a href="members.html" id="linkMembers">Members</a>
-      <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
-    </div>
-
-    <!-- REPLACED ARCHIVES -->
-    <a class="review-button" href="mnso-review.html" id="reviewBtn">
-      The MNSO Review
-    </a>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer" id="footerText">
-    classified website owned and operated by MNSO organization
-  </div>
-
-  <!-- Language Toggle Script -->
-  <script>
-    let isNorwegian = false;
-
-    function toggleLanguage() {
-      isNorwegian = !isNorwegian;
-
-      document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("mainTitle").textContent = "MNSO";
-      document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
-      document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
-      document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
-      document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
-      document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-
-      document.getElementById("reviewBtn").textContent =
-        isNorwegian ? "MNSO-REVIEWEN" : "The MNSO Review";
-
-      document.getElementById("footerText").textContent = isNorwegian
-        ? "klassifisert nettsted eid og drevet av MNSO-organisasjonen"
-        : "classified website owned and operated by MNSO organization";
-    }
-  </script>
-
-</body>
-</html>
+  <
