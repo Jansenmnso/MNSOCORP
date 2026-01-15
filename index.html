@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <title>MNSO – Youth. Leadership. Change.</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -76,21 +78,25 @@
       color: black;
     }
 
-    .archive-button {
+    /* ================= MNSO REVIEW BUTTON ================= */
+    .review-button {
       margin-top: 40px;
-      background-color: #e60000;
-      color: white;
-      font-size: 18px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
+      background-color: white;
+      color: black;
+      font-size: 20px;
+      padding: 12px 34px;
+      border: 1px solid #000;
+      border-radius: 4px;
       cursor: pointer;
-      font-weight: bold;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: 400;
+      letter-spacing: 1.5px;
       text-decoration: none;
+      text-transform: uppercase;
     }
 
-    .archive-button:hover {
-      background-color: #cc0000;
+    .review-button:hover {
+      background-color: #f2f2f2;
     }
 
     .footer {
@@ -108,13 +114,14 @@
   <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
 
   <!-- Language Toggle -->
-  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NORSK</div>
+  <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">NO</div>
 
   <!-- Main Content -->
   <div class="container">
     <h1 id="mainTitle">MNSO</h1>
+
     <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
-    
+
     <div class="tabs">
       <a href="directory.html" id="linkDirectory">Directory</a>
       <a href="contact.html" id="linkContact">Contact</a>
@@ -122,7 +129,10 @@
       <a href="mnso-initiatives.html" id="linkDocs">Documents & Initiatives</a>
     </div>
 
-    <a class="archive-button" href="election.html" id="archiveBtn">Archives</a>
+    <!-- REPLACED ARCHIVES -->
+    <a class="review-button" href="mnso-review.html" id="reviewBtn">
+      The MNSO Review
+    </a>
   </div>
 
   <!-- Footer -->
@@ -136,17 +146,21 @@
 
     function toggleLanguage() {
       isNorwegian = !isNorwegian;
+
       document.getElementById("langToggle").textContent = isNorwegian ? "ENG" : "NO";
-      document.getElementById("mainTitle").textContent = isNorwegian ? "MNSO" : "MNSO";
+      document.getElementById("mainTitle").textContent = "MNSO";
       document.getElementById("searchBar").placeholder = isNorwegian ? "Søk..." : "Search...";
       document.getElementById("linkDirectory").textContent = isNorwegian ? "Katalog" : "Directory";
       document.getElementById("linkContact").textContent = isNorwegian ? "Kontakt" : "Contact";
       document.getElementById("linkMembers").textContent = isNorwegian ? "Medlemmer" : "Members";
       document.getElementById("linkDocs").textContent = isNorwegian ? "Dokumenter og Initiativer" : "Documents & Initiatives";
-      document.getElementById("archiveBtn").textContent = isNorwegian ? "Arkiv" : "Archives";
-      document.getElementById("footerText").textContent = isNorwegian ?
-        "klassifisert nettsted eid og drevet av MNSO-organisasjonen" :
-        "classified website owned and operated by MNSO organization";
+
+      document.getElementById("reviewBtn").textContent =
+        isNorwegian ? "MNSO-REVIEWEN" : "The MNSO Review";
+
+      document.getElementById("footerText").textContent = isNorwegian
+        ? "klassifisert nettsted eid og drevet av MNSO-organisasjonen"
+        : "classified website owned and operated by MNSO organization";
     }
   </script>
 
