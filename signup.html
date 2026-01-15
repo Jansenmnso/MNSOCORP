@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscribe — The MNSO Review</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --mnso-blue: #0b2a4a;
+      --mnso-gold: #c9a24d;
+      --light-gray: #f4f6f8;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(
+        rgba(11,42,74,0.85),
+        rgba(11,42,74,0.85)
+      ),
+      url("IMG_1661.jpeg") center/cover no-repeat;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ================= SIGNUP CARD ================= */
+    .signup-card {
+      background: white;
+      max-width: 520px;
+      width: 90%;
+      padding: 44px 42px;
+      text-align: center;
+      border-top: 6px solid var(--mnso-gold);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .signup-card h1 {
+      font-family: "Libre Baskerville", serif;
+      font-size: 34px;
+      letter-spacing: 1.2px;
+      margin: 0 0 18px;
+      color: var(--mnso-blue);
+      text-transform: uppercase;
+    }
+
+    .signup-card p.subtitle {
+      font-family: "Libre Baskerville", serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 36px;
+    }
+
+    /* ================= FORM ================= */
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .signup-form input {
+      padding: 14px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      font-family: "Inter", sans-serif;
+    }
+
+    .signup-form input:focus {
+      outline: none;
+      border-color: var(--mnso-blue);
+    }
+
+    .signup-form button {
+      margin-top: 10px;
+      padding: 14px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--mnso-blue);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .signup-form button:hover {
+      background: #091f36;
+    }
+
+    /* ================= FOOTNOTE ================= */
+    .footnote {
+      margin-top: 22px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .footnote span {
+      color: var(--mnso-blue);
+      font-weight: 500;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 600px) {
+      .signup-card {
+        padding: 36px 26px;
+      }
+
+      .signup-card h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="signup-card">
+    <h1>6-Month Free Offer</h1>
+
+    <p class="subtitle">
+      This is a once in a lifetime chance to enjoy our work and newsletters for free.
+    </p>
+
+    <!-- FORM (placeholder for now) -->
+    <form class="signup-form">
+      <input type="text" placeholder="Full Name" disabled>
+      <input type="email" placeholder="Email Address" disabled>
+      <button type="button" disabled>
+        Claim Free Access
+      </button>
+    </form>
+
+    <div class="footnote">
+      No payment required. <span>The MNSO Review</span> reserves the right to modify
+      subscription eligibility in accordance with organizational policy.
+    </div>
+  </div>
+
+</body>
+</html>
