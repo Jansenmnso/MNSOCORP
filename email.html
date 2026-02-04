@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MNSO Admin Email Database</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #001f3f, #0a0a0a);
+  color: white;
+  min-height: 100vh;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  background: rgba(0, 31, 63, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  z-index: 1000;
+}
+
+.top-bar img {
+  height: 52px;
+}
+
+.top-title {
+  font-family: "Times New Roman", serif;
+  font-size: 22px;
+  letter-spacing: 0.6px;
+}
+
+/* ===== BUTTONS ===== */
+.top-actions a {
+  margin-left: 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+
+.top-actions a:hover {
+  background: #d4af37;
+  color: black;
+  border-color: #d4af37;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding-top: 120px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.content h1 {
+  font-family: "Times New Roman", serif;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.content p {
+  color: #dddddd;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+/* ===== EMAIL FRAME ===== */
+.email-frame-wrapper {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+.email-frame {
+  width: 100%;
+  height: 75vh;
+  border: none;
+}
+
+/* ===== FALLBACK ===== */
+.fallback {
+  text-align: center;
+  padding: 40px;
+}
+
+.fallback a {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 36px;
+  border: 2px solid #d4af37;
+  color: white;
+  text-decoration: none;
+  font-family: "Times New Roman", serif;
+  font-size: 17px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.fallback a:hover {
+  background: #d4af37;
+  color: black;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .top-title { font-size: 18px; }
+  .top-bar img { height: 46px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+  <div class="top-title">Admin Email Database</div>
+  <div class="top-actions">
+    <a href="https://www.mnso.live">Homepage</a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <h1>MNSO Official Email Access</h1>
+  <p>
+    This portal provides secure access to MNSO’s official email system.
+    All communications are handled through PrivateEmail and governed by
+    organizational policy and administrative oversight.
+  </p>
+
+  <div class="email-frame-wrapper">
+    <!-- Attempt iframe embed -->
+    <iframe 
+      class="email-frame"
+      src="https://privateemail.com"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+    ></iframe>
+
+    <!-- Fallback message -->
+    <div class="fallback">
+      <p>
+        If the email client does not load due to security restrictions,
+        please use the secure access button below.
+      </p>
+      <a href="https://privateemail.com" target="_blank">
+        Open Secure Email Portal
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
