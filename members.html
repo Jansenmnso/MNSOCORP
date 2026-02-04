@@ -125,10 +125,15 @@ body {
   font-size: 15px;
 }
 
-/* ===== CARD BUTTON ===== */
-.card-button {
+/* ===== ACTION BUTTONS ===== */
+.portal-actions {
   margin-top: 40px;
-  display: inline-block;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.portal-actions a {
   font-family: "Times New Roman", serif;
   font-size: 17px;
   padding: 14px 36px;
@@ -139,7 +144,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.card-button:hover {
+.portal-actions a:hover {
   background: #d4af37;
   color: black;
 }
@@ -186,9 +191,10 @@ body {
     <div class="member"><span>Ella Shaw</span><span>A22A8</span></div>
   </div>
 
-  <a href="https://www.mnso.live/kort" class="card-button">
-    MNSO Legitimation Card
-  </a>
+  <div class="portal-actions">
+    <a href="https://www.mnso.live/kort">MNSO Legitimation Card</a>
+    <a href="https://www.mnso.live/email">Admin Email Database</a>
+  </div>
 </div>
 
 <script>
