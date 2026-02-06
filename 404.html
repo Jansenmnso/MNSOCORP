@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page Not Found | MNSO</title>
+<title>404 | MNSO Organization</title>
 
 <style>
 :root {
@@ -13,9 +13,9 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #f5f7fa;
-  color: #1f2933;
+  background: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  color: #111827;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,46 +25,83 @@ body {
 .top-bar {
   background: var(--primary);
   border-bottom: 2px solid var(--gold);
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 0;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
   color: white;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
-/* Center Content */
+/* Main Section */
 .container {
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  text-align: center;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+/* 404 Text */
+.error-code {
+  font-size: 6rem;
+  font-weight: bold;
   color: var(--primary);
+  letter-spacing: 4px;
 }
 
-p {
-  max-width: 500px;
-  margin-bottom: 2rem;
+/* Logos */
+.logo {
+  height: 6rem;
+  width: auto;
+}
+
+/* Bottom Message */
+.message {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.message p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: #6b7280;
+  margin-bottom: 1.5rem;
 }
 
-a.button {
+.message a {
+  text-decoration: none;
   background: var(--primary);
   color: white;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
   transition: 0.2s ease;
 }
 
-a.button:hover {
+.message a:hover {
   background: #082c6c;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .error-code {
+    font-size: 4rem;
+  }
+
+  .logo {
+    height: 4rem;
+  }
 }
 </style>
 </head>
@@ -75,12 +112,16 @@ a.button:hover {
 </div>
 
 <div class="container">
-  <h1>404</h1>
-  <p>
-    The page you are looking for could not be found.
-    It may have been moved or removed.
-  </p>
-  <a href="/" class="button">Return to Homepage</a>
+  <div class="content">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+    <div class="error-code">404</div>
+    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="logo">
+  </div>
+</div>
+
+<div class="message">
+  <p>The requested page could not be located within the MNSO domain.</p>
+  <a href="/">Return to Homepage</a>
 </div>
 
 </body>
