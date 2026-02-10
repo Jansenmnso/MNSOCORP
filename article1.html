@@ -32,7 +32,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
-      background: rgba(0, 31, 63, 0.9); /* Dark blue glass */
+      background: rgba(0, 31, 63, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -83,7 +83,7 @@
     /* ================= STORY CONTAINER ================= */
     .story-container {
       max-width: 900px;
-      margin: 140px auto 60px auto; /* leave space for sticky top bar */
+      margin: 140px auto 60px auto;
       padding: 0 20px;
       background: white;
       border-radius: 8px;
@@ -95,7 +95,7 @@
       display: inline-block;
       margin-top: 20px;
       margin-left: 20px;
-      background: #001f3f; /* Dark blue */
+      background: #001f3f;
       color: white;
       font-family: "Times New Roman", serif;
       font-weight: bold;
@@ -120,6 +120,35 @@
       color: #555;
     }
 
+    /* ================= REACTIONS ================= */
+    .reactions {
+      display: flex;
+      gap: 15px;
+      margin: 12px 20px 0 20px;
+    }
+
+    .reaction-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1px solid #ccc;
+      padding: 5px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .reaction-btn.active {
+      background: black;
+      color: white;
+      border-color: black;
+    }
+
+    .reaction-btn:hover {
+      border-color: black;
+    }
+
     .story-image {
       width: 100%;
       max-height: 500px;
@@ -136,7 +165,6 @@
       color: #222;
     }
 
-    /* ================= MOBILE ================= */
     @media (max-width: 700px) {
       .review-title {
         display: none;
@@ -178,33 +206,80 @@
 
   <!-- STORY CONTAINER -->
   <div class="story-container">
-    <!-- Story Label -->
+
     <div class="story-label">Opinion</div>
 
-    <!-- Story Title -->
     <h1 class="story-title">Austin Passes New City-Wide Law: What You Need to Know</h1>
 
-    <!-- Author -->
     <p class="story-author">Author: Jansen Monk</p>
 
-    <!-- Main Story Image -->
+    <!-- LIKE / DISLIKE -->
+    <div class="reactions">
+      <button class="reaction-btn" id="likeBtn">
+        👍 <span id="likeCount">24</span>
+      </button>
+
+      <button class="reaction-btn" id="dislikeBtn">
+        👎 <span id="dislikeCount">3</span>
+      </button>
+    </div>
+
     <img src="IMG_1661.jpeg" alt="Story Main Image" class="story-image">
 
-    <!-- Story Content -->
     <div class="story-content">
       <p>
-        This is where your main story begins. You can add paragraphs of text, quotes, and analysis here. 
-        Each paragraph will automatically have proper line spacing and serif styling for a clean, official look.
+        This is where your main story begins. You can add paragraphs of text, quotes, and analysis here.
       </p>
       <p>
-        You can also add <strong>bold text</strong>, <em>italics</em>, or even <a href="#">inline links</a> to other content. 
-        Keep your paragraphs organized and professional — this layout is designed to make the story feel like a real newspaper or journal.
+        You can also add <strong>bold text</strong>, <em>italics</em>, or even <a href="#">inline links</a>.
       </p>
       <p>
-        Continue writing your story here. This template supports images, headings, and long-form articles while maintaining the MNSO Review’s aesthetic and readability.
+        Continue writing your story here.
       </p>
     </div>
+
   </div>
+
+<script>
+let likeBtn = document.getElementById("likeBtn");
+let dislikeBtn = document.getElementById("dislikeBtn");
+
+let likeCount = document.getElementById("likeCount");
+let dislikeCount = document.getElementById("dislikeCount");
+
+let liked = false;
+let disliked = false;
+
+likeBtn.addEventListener("click", function() {
+  if (!liked) {
+    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+    likeBtn.classList.add("active");
+
+    if (disliked) {
+      dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+      dislikeBtn.classList.remove("active");
+      disliked = false;
+    }
+
+    liked = true;
+  }
+});
+
+dislikeBtn.addEventListener("click", function() {
+  if (!disliked) {
+    dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
+    dislikeBtn.classList.add("active");
+
+    if (liked) {
+      likeCount.textContent = parseInt(likeCount.textContent) - 1;
+      likeBtn.classList.remove("active");
+      liked = false;
+    }
+
+    disliked = true;
+  }
+});
+</script>
 
 </body>
 </html>
