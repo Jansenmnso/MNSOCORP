@@ -30,7 +30,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: sticky; /* sticky top */
+      position: sticky;
       top: 0;
       z-index: 999;
       border-bottom: 3px solid var(--mnso-gold);
@@ -56,7 +56,7 @@
     .logo-left { left: 20px; }
     .seal-right { right: 20px; }
 
-    /* ================= GLASS NAV ================= */
+    /* ================= NAV ================= */
     .nav-bar {
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(10px);
@@ -65,8 +65,8 @@
       justify-content: center;
       gap: 40px;
       padding: 12px 0;
-      position: sticky; /* sticky below top bar */
-      top: 86px;        /* below top bar */
+      position: sticky;
+      top: 86px;
       z-index: 998;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
@@ -156,7 +156,7 @@
       gap: 26px;
     }
 
-    /* ================= MOBILE FIX ================= */
+    /* ================= MOBILE ================= */
     @media (max-width: 900px) {
       .top-bar {
         height: auto;
@@ -180,7 +180,7 @@
       }
 
       .nav-bar {
-        top: 68px; /* adjust for mobile top bar height */
+        top: 68px;
       }
     }
   </style>
@@ -195,7 +195,7 @@
     <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="seal-right">
   </header>
 
-  <!-- ================= GLASS NAV ================= -->
+  <!-- ================= NAV ================= -->
   <nav class="nav-bar">
     <span>Opinion</span>
     <span>Fact</span>
@@ -210,7 +210,7 @@
 
     <!-- FEATURED STORY -->
     <section class="story-box featured">
-      <a href="https://www.mnso.live">
+      <a href="https://www.mnso.live/article1.html">
         <img src="IMG_1661.jpeg" alt="Austin passes new city-wide law" class="story-image">
         <div class="story-title">
           Austin passes new city-wide law. Why this may affect you..
@@ -222,23 +222,29 @@
     <section class="grid">
 
       <div class="story-box">
-        <a href="https://www.mnso.live">
+        <a href="https://www.mnso.live/article2.html">
           <img src="IMG_1666.jpeg" class="story-image" alt="Christian youth culture in Texas">
-          <div class="story-title">Is Texas’s Christian youth culture growing or declining?</div>
+          <div class="story-title">
+            Is Texas’s Christian youth culture growing or declining?
+          </div>
         </a>
       </div>
 
       <div class="story-box">
-        <a href="https://www.mnso.live">
-          <img src="IMG_1664.jpeg" class="story-image" alt="Jansen Monk story">
-          <div class="story-title">Can we come together as one nation again?</div>
+        <a href="https://www.mnso.live/article3.html">
+          <img src="IMG_1664.jpeg" class="story-image" alt="National unity discussion">
+          <div class="story-title">
+            Can we come together as one nation again?
+          </div>
         </a>
       </div>
 
       <div class="story-box">
-        <a href="https://www.mnso.live">
+        <a href="https://www.mnso.live/article4.html">
           <img src="IMG_1662.jpeg" class="story-image" alt="Texas moral stronghold">
-          <div class="story-title">Is Texas really the last moral stronghold in America?</div>
+          <div class="story-title">
+            Is Texas really the last moral stronghold in America?
+          </div>
         </a>
       </div>
 
@@ -261,6 +267,7 @@
           second: "2-digit"
         });
     }
+
     updateTime();
     setInterval(updateTime, 1000);
   </script>
