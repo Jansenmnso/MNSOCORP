@@ -1,340 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MNSO Virtual ID Pass</title>
-  <style>
-    /* Page */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", system-ui, -apple-system, "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-      background: linear-gradient(135deg, #0a0f1a, #1c1c1c);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MNSO Virtual ID Pass</title>
 
-    /* Pop-up security box */
-    #loginBox {
-      background: #111;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(255,0,0,0.6);
-      z-index: 5;
-    }
-    #loginBox img {
-      max-width: 80px;
-      margin-bottom: 15px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    #loginBox h2 { margin: 8px 0 6px; font-size: 20px; }
-    #loginBox p { margin: 6px 0 12px; color: #ddd; }
-    #loginBox input {
-      padding: 10px;
-      margin-top: 6px;
-      border-radius: 8px;
-      border: none;
-      width: 180px;
-      text-align: center;
-      font-size: 16px;
-      outline: none;
-    }
-    #loginBox button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: red;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    #loginBox button:hover { background: darkred; }
+<style>
+body{
+margin:0;
+font-family:"Segoe UI",system-ui;
+background:linear-gradient(135deg,#0a0f1a,#1c1c1c);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
+}
 
-    /* ID Card */
-    #idCard {
-      display: none;
-      width: 420px;
-      height: 260px;
-      border-radius: 12px;
-      border: 1.5px solid #444;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      background: linear-gradient(180deg, #f7f4ef 0%, #efe9dc 100%);
-      color: #111;
-      margin-left: 20px;
-    }
-    #idCard::before {
-      content: "";
-      position: absolute;
-      z-index: 0;
-      inset: 0;
-      background-image: url("467CAA93-8809-4A02-AFA2-1749C9D78610.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 220px;
-      opacity: 0.06;
-      pointer-events: none;
-      filter: saturate(0) contrast(0.9);
-    }
-    .card-inner { position: relative; z-index: 1; height: 100%; }
+/* LOGIN BOX */
+#loginBox{
+background:#111;
+padding:30px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 0 20px rgba(255,0,0,0.6);
+}
 
-    .card-header {
-      text-align: center;
-      font-family: "Georgia", "Times New Roman", serif;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: #111;
-      margin-bottom: 8px;
-      border-bottom: 1px solid rgba(0,0,0,0.12);
-      padding-bottom: 6px;
-      text-transform: uppercase;
-    }
-    .serial-top {
-      position: absolute;
-      top: 10px;
-      left: 14px;
-      font-family: "Courier New", monospace;
-      font-size: 13px;
-      font-weight: 700;
-      color: #333;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
-    .serial-bottom {
-      position: absolute;
-      bottom: 10px;
-      right: 14px;
-      font-family: "Courier New", monospace;
-      font-size: 12px;
-      font-weight: 600;
-      color: #333;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
+#loginBox img{
+max-width:80px;
+margin-bottom:15px;
+}
 
-    #idCard img.logo {
-      position: absolute;
-      top: 58px;
-      left: 20px;
-      width: 72px;
-      border-radius: 6px;
-      box-shadow: none;
-      z-index: 2;
-      background: transparent;
-    }
-    #idCard img.seal {
-      position: absolute;
-      top: 44px;
-      right: 18px;
-      width: 68px;
-      opacity: 0.9;
-      z-index: 2;
-      background: transparent;
-    }
+#loginBox input{
+padding:10px;
+border-radius:8px;
+border:none;
+width:180px;
+text-align:center;
+font-size:16px;
+}
 
-    .card-info {
-      margin-left: 110px;
-      margin-top: 56px;
-      z-index: 2;
-      position: relative;
-      color: #111;
-    }
-    .card-info h2 {
-      margin: 0 0 6px 0;
-      font-size: 20px;
-      font-family: "Georgia", serif;
-      color: #000;
-    }
-    .card-info p {
-      margin: 4px 0;
-      font-size: 14px;
-      color: #222;
-    }
+#loginBox button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background:red;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
 
-    .signature {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      font-style: italic;
-      font-size: 11px;
-      color: #333;
-      z-index: 2;
-    }
-    .qr {
-      position: absolute;
-      bottom: 15px;
-      right: 18px;
-      width: 56px;
-      height: 56px;
-      background: #fff;
-      border: 1px solid #bbb;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #000;
-      z-index: 2;
-    }
+/* CARD */
+#idCard{
+display:none;
+width:420px;
+height:260px;
+border-radius:12px;
+border:1.5px solid #444;
+box-shadow:0 12px 30px rgba(0,0,0,0.6);
+padding:20px;
+position:relative;
+overflow:hidden;
+background:linear-gradient(180deg,#f7f4ef 0%,#efe9dc 100%);
+color:#111;
+}
 
-    .center-bottom {
-      position: absolute;
-      bottom: -2px; /* lowered to avoid overlap */
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: "Georgia", serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #333;
-      z-index: 2;
-    }
+#idCard::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:url("467CAA93-8809-4A02-AFA2-1749C9D78610.png");
+background-repeat:no-repeat;
+background-position:center;
+background-size:220px;
+opacity:.06;
+}
 
-    @media (max-width: 820px) {
-      body { padding: 12px; flex-direction: column; gap: 14px; }
-      #idCard { margin-left: 0; margin-top: 18px; }
-    }
-  </style>
+.card-header{
+text-align:center;
+font-family:Georgia,serif;
+font-weight:700;
+font-size:18px;
+letter-spacing:2px;
+margin-bottom:8px;
+border-bottom:1px solid rgba(0,0,0,.12);
+padding-bottom:6px;
+text-transform:uppercase;
+}
+
+.serial-top{
+position:absolute;
+top:10px;
+left:14px;
+font-family:"Courier New",monospace;
+font-weight:700;
+}
+
+.serial-bottom{
+position:absolute;
+bottom:10px;
+right:14px;
+font-family:"Courier New",monospace;
+}
+
+.logo{
+position:absolute;
+top:58px;
+left:20px;
+width:72px;
+}
+
+.seal{
+position:absolute;
+top:44px;
+right:18px;
+width:68px;
+}
+
+.card-info{
+margin-left:110px;
+margin-top:56px;
+}
+
+.signature{
+position:absolute;
+bottom:18px;
+left:18px;
+font-size:11px;
+font-style:italic;
+}
+
+.qr{
+position:absolute;
+bottom:15px;
+right:18px;
+width:56px;
+height:56px;
+background:#fff;
+border:1px solid #bbb;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.center-bottom{
+position:absolute;
+bottom:-2px;
+left:50%;
+transform:translateX(-50%);
+font-family:Georgia,serif;
+font-size:13px;
+font-weight:600;
+}
+</style>
 </head>
+
 <body>
 
-  <div id="loginBox">
-    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Modern Logo">
-    <h2>MNSO Secure Access</h2>
-    <p>Enter Your ID Number</p>
-    <input type="password" id="idInput" placeholder="Enter ID (e.g. A00A0)" />
-    <br />
-    <button onclick="checkID()">Access</button>
-  </div>
+<div id="loginBox">
+<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png">
+<h2>MNSO Secure Access</h2>
+<p>Enter Your ID Number</p>
+<input type="password" id="idInput" placeholder="Enter ID"/>
+<br>
+<button onclick="checkID()">Access</button>
+</div>
 
-  <div id="idCard" aria-hidden="true">
-    <div class="card-inner">
-      <div class="serial-top" id="serialTop">A22A1</div>
-      <div class="card-header">The MNSO Organization</div>
-      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo" alt="MNSO Logo">
-      <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal" alt="Chairman Seal">
-      <div class="card-info">
-        <h2 id="memberName">Member Name</h2>
-        <p><strong>Title:</strong> Member</p>
-        <p><strong>ID Number:</strong> <span id="memberID">A22A1</span></p>
-        <p><strong>Expiration:</strong> 12/2026</p>
-      </div>
-      <div class="signature">Authorized by MNSO Chairman</div>
-      <div class="qr">QR</div>
-      <div class="serial-bottom" id="serialBottom">A22A1</div>
-      <div class="center-bottom" id="centerBottom">MNSO</div>
-    </div>
-  </div>
+<div id="idCard">
+<div class="serial-top" id="serialTop">A22A1</div>
+<div class="card-header">The MNSO Organization</div>
 
-  <script>
-    // members list now supports a "disabled" flag and optional bottomText
-    const members = {
-      "A22A1": { name: "Jansen Monk", title: "Chairman", disabled: false },
-      "A22A2": { name: "Krystal G.", title: "Member", disabled: true }, // example: temporarily suspended
-      "A22A3": { name: "Kendel Martin", title: "Member", disabled: false },
-      "A22A4": { name: "Janathe L.", title: "Member", disabled: false },
-      "A22A5": { name: "Reece Wsn.", title: "Member", disabled: false },
-      "A22A6": { name: "Ross Lmb.", title: "Member", disabled: false },
-      "A22A7": { name: "Horner Milton", title: "Member", disabled: false },
-      "A22A8": { name: "Ella Shaw", title: "Member", disabled: false },
-      "XX": { name: "Ole H. Frostad", title: "Chapter Leader (Møre og Romsdal)", bottomText: "MNSO Norway", disabled: false }
-    };
+<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo">
+<img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal">
 
-    // simple audit log (keeps actions in-memory - for production, send to server or database)
-    const auditLog = [];
+<div class="card-info">
+<h2 id="memberName">Member Name</h2>
+<p><strong>Title:</strong> Member</p>
+<p><strong>ID Number:</strong> <span id="memberID">A22A1</span></p>
+<p><strong>Expiration:</strong> 12/2026</p>
+</div>
 
-    function logAudit(action, id, actor = 'admin-console') {
-      const entry = { action, id, actor, timestamp: new Date().toISOString() };
-      auditLog.push(entry);
-      console.log('Audit:', entry);
-    }
+<div class="signature">Authorized by MNSO Chairman</div>
+<div class="qr">QR</div>
+<div class="serial-bottom" id="serialBottom">A22A1</div>
+<div class="center-bottom" id="centerBottom">MNSO</div>
+</div>
 
-    // Admin helper functions: call these from the browser console to suspend/reinstate
-    function suspendUser(id, actor) {
-      id = (id || '').trim().toUpperCase();
-      if (!members[id]) return console.warn('No such ID:', id);
-      members[id].disabled = true;
-      logAudit('suspend', id, actor);
-      console.info(`User ${id} suspended.`);
-    }
-    function reinstateUser(id, actor) {
-      id = (id || '').trim().toUpperCase();
-      if (!members[id]) return console.warn('No such ID:', id);
-      members[id].disabled = false;
-      logAudit('reinstate', id, actor);
-      console.info(`User ${id} reinstated.`);
-    }
+<script>
 
-    // Public-facing check
-    function checkID() {
-      const raw = document.getElementById("idInput").value || "";
-      const id = raw.trim().toUpperCase();
-      if (!id) { alert("Please enter your ID."); return; }
+/* =========================
+   MEMBERS DATABASE
+========================= */
 
-      const member = members[id];
-      if (!member) {
-        alert("Access Denied");
-        return;
-      }
+const members = {
 
-      if (member.disabled) {
-        // Friendly, non-specific message
-        alert("Account temporarily suspended. Contact admin.");
-        logAudit('login_attempt_suspended', id, 'public-attempt');
-        return;
-      }
+"A22A1":{name:"Jansen Monk",title:"Chairman",disabled:false},
+"A22A2":{name:"Krystal G.",title:"Member",disabled:true},
+"A22A3":{name:"Kendel Martin",title:"Member",disabled:false},
+"A22A4":{name:"Janathe L.",title:"Member",disabled:false},
+"A22A5":{name:"Reece Wsn.",title:"Member",disabled:false},
+"A22A6":{name:"Ross Lmb.",title:"Member",disabled:false},
+"A22A7":{name:"Horner Milton",title:"Member",disabled:false},
+"A22A8":{name:"Ella Shaw",title:"Member",disabled:false},
 
-      // Populate card
-      document.getElementById("memberName").textContent = member.name;
-      document.getElementById("memberID").textContent = id;
-      document.getElementById("serialTop").textContent = id;
-      document.getElementById("serialBottom").textContent = id;
+/* ✅ NEW TEMPORARY MEMBERS */
+"B22A1":{name:"Jaquez Jones",title:"Temporary Member",disabled:false},
+"B22A2":{name:"Dallas Jackson",title:"Temporary Member",disabled:false},
 
-      const cardInfo = document.querySelector(".card-info");
-      cardInfo.querySelectorAll("p")[0].innerHTML = "<strong>Title:</strong> " + (member.title || "Member");
+"XX":{
+name:"Ole H. Frostad",
+title:"Chapter Leader (Møre og Romsdal)",
+bottomText:"MNSO Norway",
+disabled:false
+}
 
-      const bottomEl = document.getElementById("centerBottom");
-      if (member.bottomText) { bottomEl.textContent = member.bottomText; } 
-      else { bottomEl.textContent = "MNSO"; }
+};
 
-      document.getElementById("loginBox").style.display = "none";
-      const card = document.getElementById("idCard");
-      card.style.display = "block";
-      card.setAttribute("aria-hidden", "false");
+/* =========================
+   AUDIT LOG
+========================= */
 
-      logAudit('successful_login', id, 'public');
-    }
+const auditLog=[];
 
-    document.getElementById("idInput").addEventListener("keydown", function(e){
-      if(e.key==="Enter") checkID();
-    });
+function logAudit(action,id){
+auditLog.push({
+action,
+id,
+timestamp:new Date().toISOString()
+});
+}
 
-    // Optional: Expose audit and members for admin debugging (read-only)
-    window.__MNSO = {
-      members,
-      auditLog,
-      suspendUser,
-      reinstateUser
-    };
+/* =========================
+   LOGIN CHECK
+========================= */
 
-    // Example usage:
-    // In console: suspendUser('A22A2', 'HR-Jane');
-    // In console: reinstateUser('A22A2', 'HR-Jane');
-    // In console: console.table(__MNSO.auditLog);
-  </script>
+function checkID(){
+
+const id=document.getElementById("idInput")
+.value.trim().toUpperCase();
+
+const member=members[id];
+
+if(!member){
+alert("Access Denied");
+return;
+}
+
+if(member.disabled){
+alert("Account temporarily suspended.");
+return;
+}
+
+document.getElementById("memberName").textContent=member.name;
+document.getElementById("memberID").textContent=id;
+document.getElementById("serialTop").textContent=id;
+document.getElementById("serialBottom").textContent=id;
+
+document.querySelector(".card-info p")
+.innerHTML="<strong>Title:</strong> "+member.title;
+
+document.getElementById("centerBottom")
+.textContent=member.bottomText||"MNSO";
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("idCard").style.display="block";
+
+logAudit("login",id);
+}
+
+document.getElementById("idInput")
+.addEventListener("keydown",e=>{
+if(e.key==="Enter")checkID();
+});
+
+</script>
+
 </body>
 </html>
