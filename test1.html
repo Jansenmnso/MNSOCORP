@@ -1,112 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>The MNSO Organization</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MNSO | Independent Youth Journalism</title>
 
 <style>
 
-* { box-sizing: border-box; }
-
 body{
 margin:0;
-font-family:'Roboto',sans-serif;
-color:white;
-background:
-linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
-url("IMG_1661.jpeg") center / cover no-repeat fixed;
-min-height:100vh;
+font-family:"Times New Roman", serif;
+background:white;
+color:#111;
 }
 
-/* TOP BAR */
-
-.top-bar{
-position:fixed;
-top:0;
-width:100%;
-height:72px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 26px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,0.15);
-z-index:1000;
-}
-
-.top-left{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.logo{
-height:42px;
-}
-
-.review-title{
-font-family:"Times New Roman",serif;
-font-size:20px;
-letter-spacing:0.6px;
-white-space:nowrap;
-}
-
-.nav-buttons{
-display:flex;
-align-items:center;
-gap:12px;
-flex-wrap:wrap;
-}
-
-.nav-buttons a{
-font-size:14px;
-text-decoration:none;
-color:white;
-padding:6px 14px;
-border-radius:4px;
-border:1px solid rgba(255,255,255,0.4);
-transition:all 0.3s ease;
-white-space:nowrap;
-}
-
-.nav-buttons a:hover{
-background:rgba(212,175,55,0.9);
-color:black;
-border-color:#d4af37;
-}
-
-/* HERO */
+/* HERO SECTION */
 
 .hero{
+height:95vh;
+background-image:url("IMG_1661.jpeg");
+background-size:cover;
+background-position:center;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding-top:160px;
-padding-left:20px;
-padding-right:20px;
+}
+
+.hero-overlay{
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(6px);
+padding:70px 90px;
+border-radius:10px;
+color:white;
+max-width:850px;
 }
 
 .hero h1{
-font-family:"Times New Roman",serif;
-font-size:56px;
-font-weight:normal;
-margin-bottom:14px;
+font-size:52px;
+margin-bottom:20px;
+font-weight:500;
 }
 
 .hero p{
-max-width:720px;
-font-size:18px;
-color:#dddddd;
+font-size:20px;
 line-height:1.6;
 }
 
-/* HERO BUTTONS */
+/* BUTTONS */
 
 .cta-container{
 display:flex;
@@ -117,181 +61,71 @@ justify-content:center;
 }
 
 .cta{
-font-family:"Times New Roman",serif;
-font-size:18px;
-padding:14px 40px;
-background:transparent;
+padding:14px 32px;
+background:#0b2a59;
 color:white;
-border:2px solid #d4af37;
-border-radius:6px;
 text-decoration:none;
-transition:all 0.3s ease;
+font-size:16px;
+border-radius:4px;
+border:1px solid gold;
+transition:0.25s;
 }
 
 .cta:hover{
-background:#d4af37;
-color:black;
+background:#163c78;
 }
 
-/* PLATFORM SECTION */
+/* CONTENT SECTION */
 
-.platform-section{
-margin-top:120px;
-padding:60px 20px;
-background:rgba(0,0,0,0.55);
-backdrop-filter:blur(6px);
-}
-
-.platform-grid{
-max-width:1000px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-}
-
-.platform-card{
-text-align:center;
-padding:30px;
-border:1px solid rgba(255,255,255,0.25);
-border-radius:6px;
-}
-
-.platform-card h2{
-font-family:"Times New Roman",serif;
-font-weight:normal;
-font-size:28px;
-margin-bottom:10px;
-}
-
-.platform-card p{
-color:#d0d0d0;
-font-size:15px;
-margin-bottom:18px;
-}
-
-.platform-card a{
-text-decoration:none;
-border:2px solid #d4af37;
-padding:10px 26px;
+.content-section{
+background:#0b2a59;
 color:white;
-font-family:"Times New Roman",serif;
-transition:0.3s;
-}
-
-.platform-card a:hover{
-background:#d4af37;
-color:black;
-}
-
-/* LATEST SECTION */
-
-.latest-section{
-margin-top:120px;
-padding:60px 20px;
-}
-
-.latest-container{
-max-width:1100px;
-margin:auto;
-}
-
-.latest-title{
-font-family:"Times New Roman",serif;
-font-size:32px;
+padding:90px 12%;
 text-align:center;
-margin-bottom:40px;
 }
 
-.latest-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:26px;
+.content-section h2{
+font-size:36px;
+margin-bottom:20px;
+font-weight:500;
 }
 
-.latest-card{
-padding:22px;
-border:1px solid rgba(255,255,255,0.25);
-border-radius:6px;
-background:rgba(0,0,0,0.35);
-}
-
-.latest-card h3{
+.content-section p{
 font-size:18px;
-margin-bottom:8px;
-}
-
-.latest-card p{
-font-size:14px;
-color:#d0d0d0;
-}
-
-.latest-card a{
-display:inline-block;
-margin-top:12px;
-text-decoration:none;
-color:#d4af37;
+line-height:1.7;
+max-width:900px;
+margin:auto;
 }
 
 /* FOOTER */
 
-.footer{
-margin-top:120px;
+footer{
+background:#081c3d;
+color:white;
 text-align:center;
-font-size:12px;
-color:#aaaaaa;
-padding-bottom:20px;
-}
-
-/* MOBILE */
-
-@media (max-width:700px){
-
-.review-title{ display:none; }
-
-.top-bar{
-height:auto;
-padding:14px 18px;
-flex-direction:column;
-gap:10px;
-}
-
-.nav-buttons{ justify-content:center; }
-
-.hero h1{ font-size:42px; }
-
-.platform-grid{ grid-template-columns:1fr; }
-
+padding:25px;
+font-size:14px;
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="top-bar">
-<div class="top-left">
-<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo">
-<div class="review-title">The MNSO Organization</div>
-</div>
 
-<div class="nav-buttons">
-<a href="https://www.mnso.live/review">Review</a>
-<a href="directory.html">Directory</a>
-<a href="mnso-initiatives.html">Documents</a>
-<a href="members.html">Members</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
+<!-- HERO WITH AUSTIN SKYLINE -->
 
 <section class="hero">
+
+<div class="hero-overlay">
 
 <h1>Independent Youth Journalism</h1>
 
 <p>
-The MNSO Review is a student-led publication committed to serious analysis,
-cultural commentary, and principled debate — covering policy, youth movements,
-and the ideas shaping the next generation.
+The Modern Nonpartisan Student Organization empowers young voices
+through journalism, civic education, and open political discussion.
 </p>
 
 <div class="cta-container">
@@ -306,71 +140,35 @@ Uncoated Podcast
 
 </div>
 
+</div>
+
 </section>
 
-<section class="platform-section">
 
-<div class="platform-grid">
+<!-- MAIN SECTION BELOW IMAGE -->
 
-<div class="platform-card">
-<h2>The MNSO Review</h2>
+<section class="content-section">
+
+<h2>About the MNSO</h2>
+
 <p>
-A student-led publication focused on policy analysis,
-youth political movements, and cultural commentary.
+The Modern Nonpartisan Student Organization (MNSO) is a youth-led initiative
+focused on civic education, journalism, and political dialogue. Through
+publications, podcasts, and educational programs, the MNSO encourages
+students to engage thoughtfully with public policy, government,
+and the democratic process.
 </p>
-<a href="https://www.mnso.live/review">Visit The Review</a>
-</div>
-
-<div class="platform-card">
-<h2>Uncoated Podcast</h2>
-<p>
-Long-form discussions and interviews exploring politics,
-civic engagement, and the ideas shaping the next generation.
-</p>
-<a href="https://www.uncoated.us">Listen to Uncoated</a>
-</div>
-
-</div>
 
 </section>
 
-<section class="latest-section">
 
-<div class="latest-container">
+<footer>
 
-<div class="latest-title">
-Latest From MNSO
-</div>
+© 2026 Modern Nonpartisan Student Organization
 
-<div class="latest-grid">
+</footer>
 
-<div class="latest-card">
-<h3>Why Youth Political Engagement Is Rising</h3>
-<p>Analysis of new generational political participation trends.</p>
-<a href="https://www.mnso.live/review">Read Article</a>
-</div>
-
-<div class="latest-card">
-<h3>Episode 1: The Future of Civic Debate</h3>
-<p>The Uncoated podcast discusses political dialogue among Gen Z.</p>
-<a href="https://www.uncoated.us">Listen Now</a>
-</div>
-
-<div class="latest-card">
-<h3>Student Movements and Policy Influence</h3>
-<p>How youth organizations are shaping legislative conversations.</p>
-<a href="https://www.mnso.live/review">Read Article</a>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<div class="footer">
-© MNSO Organization — Independent Student Publication
-</div>
 
 </body>
+
 </html>
