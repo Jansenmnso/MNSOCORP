@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>MNSO Article Submissions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:'Roboto',sans-serif;
+background:#f4f4f4;
+color:#111;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+background:#001f3f;
+color:white;
+padding:18px 25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.header-left{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo{
+height:42px;
+}
+
+.site-title{
+font-family:"Times New Roman",serif;
+font-size:20px;
+letter-spacing:.4px;
+}
+
+.seal{
+height:50px;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.container{
+max-width:720px;
+margin:60px auto;
+background:white;
+padding:40px;
+border-radius:6px;
+box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* title */
+
+.page-title{
+font-family:"Times New Roman",serif;
+font-size:34px;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:15px;
+color:#555;
+margin-bottom:30px;
+}
+
+/* ================= FORM ================= */
+
+form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+label{
+font-weight:500;
+font-size:14px;
+}
+
+input{
+padding:12px;
+font-size:15px;
+border:1px solid #ccc;
+border-radius:4px;
+width:100%;
+}
+
+textarea{
+padding:12px;
+font-size:15px;
+border:1px solid #ccc;
+border-radius:4px;
+width:100%;
+min-height:220px;
+resize:vertical;
+}
+
+/* submit button */
+
+button{
+margin-top:10px;
+padding:12px;
+font-size:16px;
+border:none;
+background:#001f3f;
+color:white;
+cursor:pointer;
+border-radius:4px;
+}
+
+button:hover{
+background:#003366;
+}
+
+/* notice */
+
+.notice{
+margin-top:25px;
+font-size:14px;
+color:#666;
+line-height:1.6;
+}
+
+/* footer */
+
+.footer{
+text-align:center;
+font-size:13px;
+color:#777;
+margin-top:40px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+.container{
+margin:30px 15px;
+padding:25px;
+}
+
+.page-title{
+font-size:28px;
+}
+
+.seal{
+display:none;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="header-left">
+<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo">
+<div class="site-title">The MNSO Review</div>
+</div>
+
+<img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal">
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+<h1 class="page-title">Article Submission</h1>
+
+<p class="subtitle">
+The MNSO Review publishes commentary and analysis from emerging writers, youth leaders, and MNSO members.  
+Submit your article below for editorial review.
+</p>
+
+<form id="submissionForm">
+
+<div>
+<label>Author Name</label>
+<input type="text" id="author" required>
+</div>
+
+<div>
+<label>Article Title</label>
+<input type="text" id="title" required>
+</div>
+
+<div>
+<label>Article Text</label>
+<textarea id="article" placeholder="Paste your article here..." required></textarea>
+</div>
+
+<button type="submit">Submit Article</button>
+
+</form>
+
+<p class="notice">
+All articles are reviewed by our editorial team.  
+Submissions are selected on the basis of professionalism, clarity, and relevance to the interests of our readership.
+</p>
+
+<div class="footer">
+Modern Nonprofit Student Organization • MNSO Review
+</div>
+
+</div>
+
+
+<script>
+
+document.getElementById("submissionForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let author = document.getElementById("author").value;
+let title = document.getElementById("title").value;
+let article = document.getElementById("article").value;
+
+let subject = encodeURIComponent("MNSO Article Submission: " + title);
+
+let body = encodeURIComponent(
+"Author: " + author + "\n\n" +
+"Title: " + title + "\n\n" +
+"Article Submission:\n\n" +
+article
+);
+
+window.location.href =
+"mailto:admin@mnso.live?subject=" + subject + "&body=" + body;
+
+});
+
+</script>
+
+</body>
+</html>
