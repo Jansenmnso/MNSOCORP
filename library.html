@@ -1,210 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MNSO Official Documents Library</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom, #001f3f, #0a0a0a);
-      color: white;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MNSO Library</title>
 
-    /* Fullscreen login overlay */
-    #loginOverlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    #loginOverlay img {
-      width: 150px;
-      margin-bottom: 20px;
-    }
+<style>
 
-    #loginOverlay h1 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
+:root{
+--mnso-blue:#0b2a4a;
+--mnso-gold:#c9a24d;
+--light-gray:#f4f6f8;
+}
 
-    #loginOverlay input {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-      margin-bottom: 15px;
-      width: 200px;
-      text-align: center;
-    }
+body{
+margin:0;
+background:var(--light-gray);
+font-family:"Inter",sans-serif;
+color:#111;
+}
 
-    #loginOverlay button {
-      background: red;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+/* ================= HEADER ================= */
 
-    #mainContent {
-      display: none;
-      padding: 20px;
-    }
+.top-bar{
+background:var(--mnso-blue);
+color:white;
+height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:sticky;
+top:0;
+border-bottom:3px solid var(--mnso-gold);
+flex-direction:column;
+}
 
-    .section {
-      margin: 40px 0;
-    }
+.header-title{
+font-family:"Times New Roman",serif;
+font-size:34px;
+font-weight:300;
+letter-spacing:1.5px;
+margin:0;
+color:white;
+}
 
-    .docBox {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
+.header-subtitle{
+font-family:"Times New Roman",serif;
+font-size:15px;
+font-weight:300;
+letter-spacing:1px;
+margin-top:4px;
+opacity:0.9;
+}
 
-    textarea {
-      width: 90%;
-      height: 120px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: none;
-      padding: 10px;
-    }
+.top-bar img{
+height:46px;
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+}
 
-    .btn {
-      padding: 10px 18px;
-      margin: 5px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .btn-primary { background: #007bff; color: white; }
-    .btn-danger { background: #dc3545; color: white; }
-  </style>
+.logo-left{ left:20px; }
+.seal-right{ right:20px; }
+
+/* ================= PAGE TITLE ================= */
+
+.page-title{
+text-align:center;
+font-family:"Times New Roman",serif;
+font-size:26px;
+margin:32px 0 8px;
+letter-spacing:.8px;
+}
+
+/* ================= TOP BUTTONS ================= */
+
+.top-buttons{
+display:flex;
+justify-content:center;
+gap:22px;
+margin:25px auto 40px;
+flex-wrap:wrap;
+}
+
+.top-buttons a{
+background:var(--mnso-blue);
+color:white;
+padding:12px 20px;
+text-decoration:none;
+border-radius:4px;
+font-weight:500;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.top-buttons a:hover{
+background:#143b63;
+}
+
+/* ================= LIBRARY CONTAINER ================= */
+
+.library-container{
+max-width:900px;
+margin:0 auto 60px;
+background:white;
+border:1px solid #ddd;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+padding:25px 30px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+margin-bottom:25px;
+font-size:15px;
+}
+
+/* ================= LINK LIST ================= */
+
+.link-list{
+max-height:420px;
+overflow-y:auto;
+}
+
+.link-item{
+margin:14px 0;
+font-size:17px;
+font-family:"Times New Roman",serif;
+}
+
+.link-item a{
+color:#1a4fa3;
+text-decoration:none;
+border-bottom:1px solid #1a4fa3;
+padding-bottom:1px;
+}
+
+.link-item a:hover{
+opacity:.7;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+.top-bar{
+height:auto;
+padding:14px 0;
+}
+
+.top-bar img{
+position:static;
+transform:none;
+height:34px;
+}
+
+.header-title{
+font-size:22px;
+}
+
+.library-container{
+margin:0 15px 40px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- Login Overlay -->
-  <div id="loginOverlay">
-    <img src="IMG_4769.jpeg" alt="MNSO Logo">
-    <h1>MNSO Official Documents Library</h1>
-    <p>Enter Access Password:</p>
-    <input type="password" id="passwordInput" placeholder="Enter password">
-    <button onclick="checkLogin()">Enter Library</button>
-  </div>
+<!-- HEADER -->
 
-  <!-- Main Library Content -->
-  <div id="mainContent">
-    <h1>MNSO Official Documents Library</h1>
+<header class="top-bar">
 
-    <!-- Public Documents -->
-    <div class="section">
-      <h2>📂 Public Documents</h2>
-      <div id="publicDocs"></div>
-      <h3>Create New Public Document</h3>
-      <input type="text" id="publicTitle" placeholder="Title"><br>
-      <textarea id="publicContent" placeholder="Write document..."></textarea><br>
-      <button class="btn btn-primary" onclick="saveDoc('public')">Save Public Document</button>
-    </div>
+<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo-left">
 
-    <!-- Private Documents -->
-    <div class="section">
-      <h2>🔒 Private Documents</h2>
-      <button class="btn btn-danger" onclick="unlockPrivate()">Enter Private Section</button>
-      <div id="privateSection" style="display:none;">
-        <div id="privateDocs"></div>
-        <h3>Create New Private Document</h3>
-        <input type="text" id="privateTitle" placeholder="Title"><br>
-        <textarea id="privateContent" placeholder="Write document..."></textarea><br>
-        <button class="btn btn-primary" onclick="saveDoc('private')">Save Private Document</button>
-      </div>
-    </div>
-  </div>
+<h1 class="header-title">MNSO Library</h1>
+<div class="header-subtitle">Modern Nonpartisan Student Organization</div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+<img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal-right">
 
-  <script>
-    // ✅ Replace with your Firebase project details
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID"
-    };
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+</header>
 
-    // 🔑 Initial login
-    function checkLogin() {
-      const pass = document.getElementById("passwordInput").value;
-      if(pass === "A22A1") {
-        document.getElementById("loginOverlay").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-        loadDocs("public");
-      } else {
-        alert("Incorrect password!");
-      }
-    }
+<h2 class="page-title">Organizational Archive & Resources</h2>
 
-    // 🔓 Unlock private tab
-    function unlockPrivate() {
-      const pass = prompt("Enter private access password:");
-      if(pass === "A22A1") {
-        document.getElementById("privateSection").style.display = "block";
-        loadDocs("private");
-      } else {
-        alert("Incorrect password!");
-      }
-    }
+<!-- TOP BUTTONS -->
 
-    // 💾 Save document
-    function saveDoc(type) {
-      let title, content;
-      if(type === "public") {
-        title = document.getElementById("publicTitle").value;
-        content = document.getElementById("publicContent").value;
-      } else {
-        title = document.getElementById("privateTitle").value;
-        content = document.getElementById("privateContent").value;
-      }
+<div class="top-buttons">
 
-      if(title && content) {
-        db.collection(type + "Docs").add({
-          title: title,
-          content: content,
-          timestamp: new Date()
-        }).then(() => {
-          alert("Document saved!");
-          loadDocs(type);
-        });
-      }
-    }
+<a href="https://www.mnso.live/contact">Contact</a>
 
-    // 📂 Load documents
-    function loadDocs(type) {
-      const container = document.getElementById(type + "Docs");
-      container.innerHTML = "";
-      db.collection(type + "Docs").orderBy("timestamp", "desc").get().then(snapshot => {
-        snapshot.forEach(doc => {
-          let div = document.createElement("div");
-          div.classList.add("docBox");
-          div.innerHTML = "<h4>" + doc.data().title + "</h4><p>" + doc.data().content + "</p>";
-          container.appendChild(div);
-        });
-      });
-    }
-  </script>
+<a href="https://www.mnso.live/directory">Directory</a>
+
+<a href="https://www.mnso.live/members">Members</a>
+
+</div>
+
+<!-- LIBRARY -->
+
+<div class="library-container">
+
+<input type="text" id="searchInput" class="search-box" placeholder="Search the MNSO Library...">
+
+<div class="link-list" id="libraryList">
+
+<div class="link-item">Election Archive: 
+<a href="https://www.mnso.live/archive">www.mnso.live/archive</a>
+</div>
+
+<div class="link-item">Legitimization: 
+<a href="https://www.mnso.live/kort">www.mnso.live/kort</a>
+</div>
+
+<div class="link-item">The Review: 
+<a href="https://www.mnso.live/review">www.mnso.live/review</a>
+</div>
+
+<div class="link-item">Uncoated Podcast: 
+<a href="https://www.mnso.live/uncoated">www.mnso.live/uncoated</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+const items = document.querySelectorAll(".link-item");
+
+searchInput.addEventListener("keyup", function(){
+
+let filter = searchInput.value.toLowerCase();
+
+items.forEach(item => {
+
+let text = item.textContent.toLowerCase();
+
+item.style.display = text.includes(filter) ? "block" : "none";
+
+});
+
+});
+
+</script>
+
 </body>
 </html>
