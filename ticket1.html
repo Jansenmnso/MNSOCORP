@@ -11,7 +11,7 @@
 
 body{
     margin:0;
-    font-family: 'Inter', sans-serif;
+    font-family:'Inter',sans-serif;
     background:#f4f6f8;
     display:flex;
     justify-content:center;
@@ -19,7 +19,7 @@ body{
     height:100vh;
 }
 
-/* Wallet Card */
+/* Ticket Card */
 
 .ticket-card{
     width:380px;
@@ -36,24 +36,31 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
-.ticket-header img{
-    height:36px;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    height:40px;
 }
 
 .ticket-title{
     font-weight:600;
-    font-size:15px;
-    letter-spacing:.5px;
+    font-size:14px;
+    letter-spacing:.6px;
+    color:#111;
 }
 
-/* Match */
+/* Match Info */
 
 .match{
     text-align:center;
-    margin-top:8px;
+    margin-top:10px;
     margin-bottom:24px;
 }
 
@@ -116,13 +123,13 @@ body{
     background:#005fcc;
 }
 
-/* Seal */
+/* Chairman seal */
 
 .seal{
     position:absolute;
     bottom:20px;
     right:20px;
-    opacity:.85;
+    opacity:.9;
 }
 
 .seal img{
@@ -167,13 +174,18 @@ body{
 <div class="ticket-card">
 
     <div class="ticket-header">
-        <img src="mnso-logo.png">
+
+        <div class="logo">
+            <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo">
+        </div>
+
         <div class="ticket-title">MNSO Official Ticket</div>
+
     </div>
 
     <div class="match">
         <h1>Molde v Rosenborg</h1>
-        <p>Aker Stadion • Match Entry</p>
+        <p>Aker Stadion • Official Entry Ticket</p>
     </div>
 
     <div class="info-grid">
@@ -200,13 +212,13 @@ body{
 
 </div>
 
-<!-- Modal -->
+<!-- QR Ticket Modal -->
 
 <div id="ticketModal" class="modal">
 
 <span class="close" onclick="closeTicket()">&times;</span>
 
-<img src="IMG_4373.jpeg">
+<img src="IMG_4373.jpeg" alt="Ticket QR">
 
 </div>
 
