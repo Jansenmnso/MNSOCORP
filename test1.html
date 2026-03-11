@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MNSO Library</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -27,21 +27,32 @@ color:#111;
 .top-bar{
 background:var(--mnso-blue);
 color:white;
-height:86px;
+height:100px;
 display:flex;
 align-items:center;
 justify-content:center;
 position:sticky;
 top:0;
 border-bottom:3px solid var(--mnso-gold);
+flex-direction:column;
 }
 
-.top-bar h1{
-font-family:"Libre Baskerville",serif;
+.header-title{
+font-family:"Times New Roman",serif;
 font-size:34px;
-letter-spacing:1.4px;
+font-weight:300;
+letter-spacing:1.5px;
 margin:0;
-text-transform:uppercase;
+color:white;
+}
+
+.header-subtitle{
+font-family:"Times New Roman",serif;
+font-size:15px;
+font-weight:300;
+letter-spacing:1px;
+margin-top:4px;
+opacity:0.9;
 }
 
 .top-bar img{
@@ -58,13 +69,13 @@ transform:translateY(-50%);
 
 .page-title{
 text-align:center;
-font-family:"Libre Baskerville",serif;
-font-size:28px;
-margin:30px 0 10px;
+font-family:"Times New Roman",serif;
+font-size:26px;
+margin:32px 0 8px;
 letter-spacing:.8px;
 }
 
-/* ================= MAIN BUTTONS ================= */
+/* ================= TOP BUTTONS ================= */
 
 .top-buttons{
 display:flex;
@@ -119,7 +130,7 @@ overflow-y:auto;
 .link-item{
 margin:14px 0;
 font-size:17px;
-font-family:"Libre Baskerville",serif;
+font-family:"Times New Roman",serif;
 }
 
 .link-item a{
@@ -140,7 +151,6 @@ opacity:.7;
 .top-bar{
 height:auto;
 padding:14px 0;
-flex-direction:column;
 }
 
 .top-bar img{
@@ -149,7 +159,7 @@ transform:none;
 height:34px;
 }
 
-.top-bar h1{
+.header-title{
 font-size:22px;
 }
 
@@ -170,13 +180,14 @@ margin:0 15px 40px;
 
 <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo-left">
 
-<h1>MNSO Library</h1>
+<h1 class="header-title">MNSO Library</h1>
+<div class="header-subtitle">Modern Nonpartisan Student Organization</div>
 
 <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal-right">
 
 </header>
 
-<h2 class="page-title">Modern Nonprofit Student Organization Archive</h2>
+<h2 class="page-title">Organizational Archive & Resources</h2>
 
 <!-- TOP BUTTONS -->
 
@@ -219,8 +230,6 @@ margin:0 15px 40px;
 </div>
 
 <script>
-
-/* simple library search */
 
 const searchInput = document.getElementById("searchInput");
 const items = document.querySelectorAll(".link-item");
