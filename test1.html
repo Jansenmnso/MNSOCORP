@@ -2,169 +2,128 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>The MNSO Review – Story</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MNSO Library</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---mnso-blue:#0b2a4a;
---mnso-gold:#c9a24d;
---light-gray:#f4f6f8;
-}
+*{box-sizing:border-box;}
 
 body{
 margin:0;
-background:var(--light-gray);
-font-family:"Inter",sans-serif;
+font-family:'Roboto',sans-serif;
+background:#f4f4f4;
 color:#111;
 }
 
-/* ================= HEADER ================= */
+/* ================= TOP BAR ================= */
 
 .top-bar{
-background:var(--mnso-blue);
-color:white;
-height:100px;
+position:fixed;
+top:0;
+width:100%;
+height:70px;
 display:flex;
 align-items:center;
-justify-content:center;
-position:sticky;
-top:0;
-border-bottom:3px solid var(--mnso-gold);
-flex-direction:column;
+justify-content:space-between;
+padding:0 20px;
+background:#001f3f;
+z-index:1000;
 }
 
-.header-title{
-font-family:"Times New Roman",serif;
-font-size:34px;
-font-weight:300;
-letter-spacing:1.5px;
-margin:0;
-color:white;
-}
-
-.header-subtitle{
-font-family:"Times New Roman",serif;
-font-size:15px;
-font-weight:300;
-letter-spacing:1px;
-margin-top:4px;
-opacity:0.9;
-}
-
-.top-bar img{
-height:46px;
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-}
-
-.logo-left{ left:20px; }
-.seal-right{ right:20px; }
-
-/* ================= PAGE TITLE ================= */
-
-.page-title{
-text-align:center;
-font-family:"Times New Roman",serif;
-font-size:26px;
-margin:32px 0 8px;
-letter-spacing:.8px;
-}
-
-/* ================= TOP BUTTONS ================= */
-
-.top-buttons{
+.top-left{
 display:flex;
-justify-content:center;
-gap:22px;
-margin:25px auto 40px;
-flex-wrap:wrap;
+align-items:center;
+gap:14px;
 }
 
-.top-buttons a{
-background:var(--mnso-blue);
-color:white;
-padding:12px 20px;
-text-decoration:none;
-border-radius:4px;
-font-weight:500;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
+.logo{height:40px;}
 
-.top-buttons a:hover{
-background:#143b63;
-}
-
-/* ================= LIBRARY CONTAINER ================= */
-
-.library-container{
-max-width:900px;
-margin:0 auto 60px;
-background:white;
-border:1px solid #ddd;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
-padding:25px 30px;
-}
-
-/* ================= SEARCH ================= */
-
-.search-box{
-width:100%;
-padding:12px;
-border:1px solid #ccc;
-margin-bottom:25px;
-font-size:15px;
-}
-
-/* ================= LINK LIST ================= */
-
-.link-list{
-max-height:420px;
-overflow-y:auto;
-}
-
-.link-item{
-margin:14px 0;
-font-size:17px;
+.review-title{
 font-family:"Times New Roman",serif;
+font-size:20px;
+color:white;
 }
 
-.link-item a{
-color:#1a4fa3;
+.nav-buttons{
+display:flex;
+gap:10px;
+}
+
+.nav-buttons a{
+color:white;
 text-decoration:none;
-border-bottom:1px solid #1a4fa3;
-padding-bottom:1px;
+font-size:14px;
+padding:6px 12px;
+border:1px solid rgba(255,255,255,0.35);
+border-radius:4px;
 }
 
-.link-item a:hover{
-opacity:.7;
+.nav-buttons a:hover{
+background:#d4af37;
+color:black;
+}
+
+/* ================= ARTICLE ================= */
+
+.story-container{
+max-width:720px;
+margin:120px auto 60px;
+padding:0 18px 40px;
+background:white;
+}
+
+.story-label{
+font-size:13px;
+font-weight:bold;
+text-transform:uppercase;
+color:#001f3f;
+margin-top:25px;
+}
+
+.story-title{
+font-family:"Times New Roman",serif;
+font-size:40px;
+margin:10px 0;
+}
+
+.story-author{
+font-size:14px;
+color:#666;
+margin-bottom:10px;
+}
+
+.story-image{
+width:100%;
+margin:18px 0;
+}
+
+.image-caption{
+font-size:13px;
+color:#666;
+margin-bottom:25px;
+}
+
+.story-content{
+font-family:"Times New Roman",serif;
+font-size:20px;
+line-height:1.75;
+}
+
+.story-content p{
+margin-bottom:22px;
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:800px){
+@media(max-width:700px){
 
-.top-bar{
-height:auto;
-padding:14px 0;
-}
+.story-title{font-size:30px;}
 
-.top-bar img{
-position:static;
-transform:none;
-height:34px;
-}
-
-.header-title{
-font-size:22px;
-}
-
-.library-container{
-margin:0 15px 40px;
+.story-content{
+font-size:18px;
 }
 
 }
@@ -174,81 +133,79 @@ margin:0 15px 40px;
 
 <body>
 
-<!-- HEADER -->
+<!-- TOP BAR -->
+<div class="top-bar">
+<div class="top-left">
+<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo">
+<div class="review-title">The MNSO Review</div>
+</div>
 
-<header class="top-bar">
+<div class="nav-buttons">
+<a href="https://www.mnso.live/review">Review</a>
+<a href="#">Opinion</a>
+<a href="#">Fact</a>
+<a href="https://www.mnso.live/articlesubmission">Submissions</a>
+</div>
+</div>
 
-<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo-left">
+<!-- ARTICLE -->
+<div class="story-container">
 
-<h1 class="header-title">MNSO Library</h1>
-<div class="header-subtitle">Modern Nonpartisan Student Organization</div>
+<div class="story-label">Opinion</div>
 
-<img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal-right">
+<h1 class="story-title">
+Why Gen Z Christianity Is Quietly Growing in Texas
+</h1>
 
-</header>
+<p class="story-author">Author: MNSO Staff</p>
 
-<h2 class="page-title">Organizational Archive & Resources</h2>
+<img src="IMG_1666.jpeg" class="story-image">
 
-<!-- TOP BUTTONS -->
+<div class="image-caption">
+Youth-led worship gatherings and campus ministries have seen renewed participation across Texas.
+</div>
 
-<div class="top-buttons">
+<div class="story-content">
 
-<a href="https://www.mnso.live/contact">Contact</a>
+<p>
+For years, the dominant narrative surrounding Generation Z has been one of secularization. Surveys and media coverage have consistently suggested that younger generations are abandoning religion at accelerating rates. But in Texas, that narrative is increasingly incomplete.
+</p>
 
-<a href="https://www.mnso.live/directory">Directory</a>
+<p>
+Across high schools, universities, and local communities, there are signs that Christianity among Gen Z is not simply surviving — it is adapting and, in some cases, growing. While institutional church attendance may not fully reflect this shift, participation in youth-led ministries, campus groups, and informal faith communities has expanded in noticeable ways.
+</p>
 
-<a href="https://www.mnso.live/members">Members</a>
+<p>
+One key factor behind this trend is cultural environment. Texas remains one of the most religious states in the United States, with strong community ties to churches, family traditions, and local identity. For Gen Z, this creates a baseline familiarity with Christianity that is not present in many other regions. However, what is emerging is not just inherited faith, but increasingly chosen belief.
+</p>
+
+<p>
+Unlike previous generations, Gen Z tends to approach religion less as an obligation and more as a personal decision. This has led to a shift in how Christianity is practiced. Traditional services are being supplemented — and sometimes replaced — by smaller, more intimate gatherings, youth-focused worship events, and discussion-based groups that prioritize authenticity over formality.
+</p>
+
+<p>
+Social media has also played an unexpected role. Platforms that are often associated with secular trends have become spaces where young Christians share testimonies, discuss theology, and build networks that extend beyond local communities. In Texas, these digital interactions often translate into real-world participation, reinforcing a sense of belonging.
+</p>
+
+<p>
+Another contributing factor is broader cultural uncertainty. Economic instability, political division, and social change have left many young people searching for structure and meaning. For some in Gen Z, Christianity provides a framework that addresses these concerns — offering not just belief, but identity and purpose.
+</p>
+
+<p>
+However, this growth should not be overstated. The overall trend in the United States still points toward declining religious affiliation among younger generations. What Texas represents is not a reversal of that trend, but a regional divergence — a case where cultural, social, and institutional factors have slowed or even partially countered national patterns.
+</p>
+
+<p>
+The more important takeaway is not simply whether Christianity is growing, but how it is changing. In Texas, Gen Z Christianity is becoming more decentralized, more personal, and more adaptive. It is less tied to tradition for its own sake and more focused on relevance and lived experience.
+</p>
+
+<p>
+If this trajectory continues, it may signal a broader shift in how religion functions in the United States. Not a return to past forms, but the emergence of something new — a version of faith shaped as much by the priorities of Gen Z as by the institutions that came before it.
+</p>
 
 </div>
 
-<!-- LIBRARY -->
-
-<div class="library-container">
-
-<input type="text" id="searchInput" class="search-box" placeholder="Search the MNSO Library...">
-
-<div class="link-list" id="libraryList">
-
-<div class="link-item">Election Archive: 
-<a href="https://www.mnso.live/archive">www.mnso.live/archive</a>
 </div>
-
-<div class="link-item">Legitimization: 
-<a href="https://www.mnso.live/kort">www.mnso.live/kort</a>
-</div>
-
-<div class="link-item">The Review: 
-<a href="https://www.mnso.live/review">www.mnso.live/review</a>
-</div>
-
-<div class="link-item">Uncoated Podcast: 
-<a href="https://www.mnso.live/uncoated">www.mnso.live/uncoated</a>
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-const searchInput = document.getElementById("searchInput");
-const items = document.querySelectorAll(".link-item");
-
-searchInput.addEventListener("keyup", function(){
-
-let filter = searchInput.value.toLowerCase();
-
-items.forEach(item => {
-
-let text = item.textContent.toLowerCase();
-
-item.style.display = text.includes(filter) ? "block" : "none";
-
-});
-
-});
-
-</script>
 
 </body>
 </html>
