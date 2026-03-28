@@ -95,6 +95,30 @@ color:#666;
 margin-bottom:10px;
 }
 
+/* REACTIONS */
+
+.reactions{
+display:flex;
+gap:12px;
+margin-bottom:18px;
+}
+
+.reaction-btn{
+border:1px solid #ddd;
+background:none;
+padding:5px 10px;
+cursor:pointer;
+font-size:14px;
+}
+
+.reaction-btn.active{
+background:black;
+color:white;
+border-color:black;
+}
+
+/* IMAGE */
+
 .story-image{
 width:100%;
 margin:18px 0;
@@ -106,6 +130,8 @@ color:#666;
 margin-bottom:25px;
 }
 
+/* TEXT */
+
 .story-content{
 font-family:"Times New Roman",serif;
 font-size:20px;
@@ -116,15 +142,13 @@ line-height:1.75;
 margin-bottom:22px;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
 .story-title{font-size:30px;}
 
-.story-content{
-font-size:18px;
-}
+.story-content{font-size:18px;}
 
 }
 
@@ -157,7 +181,18 @@ font-size:18px;
 Why Gen Z Christianity Is Quietly Growing in Texas
 </h1>
 
-<p class="story-author">Author: MNSO Staff</p>
+<p class="story-author">Author: Amanda Wells</p>
+
+<!-- REACTIONS -->
+<div class="reactions">
+<button class="reaction-btn" id="likeBtn">
+👍 <span id="likeCount">56</span>
+</button>
+
+<button class="reaction-btn" id="dislikeBtn">
+👎 <span id="dislikeCount">7</span>
+</button>
+</div>
 
 <img src="IMG_1666.jpeg" class="story-image">
 
@@ -206,6 +241,57 @@ If this trajectory continues, it may signal a broader shift in how religion func
 </div>
 
 </div>
+
+<script>
+
+let likeBtn = document.getElementById("likeBtn");
+let dislikeBtn = document.getElementById("dislikeBtn");
+
+let likeCount = document.getElementById("likeCount");
+let dislikeCount = document.getElementById("dislikeCount");
+
+let liked = false;
+let disliked = false;
+
+likeBtn.addEventListener("click", function(){
+
+if(!liked){
+
+likeCount.textContent = parseInt(likeCount.textContent) + 1;
+likeBtn.classList.add("active");
+
+if(disliked){
+dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+dislikeBtn.classList.remove("active");
+disliked = false;
+}
+
+liked = true;
+
+}
+
+});
+
+dislikeBtn.addEventListener("click", function(){
+
+if(!disliked){
+
+dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
+dislikeBtn.classList.add("active");
+
+if(liked){
+likeCount.textContent = parseInt(likeCount.textContent) - 1;
+likeBtn.classList.remove("active");
+liked = false;
+}
+
+disliked = true;
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
