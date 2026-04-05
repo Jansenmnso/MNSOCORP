@@ -97,6 +97,7 @@
 
     <div class="stats">
       <div class="stat">Views: <span id="views">0</span></div>
+      <div class="stat">Likes: <span id="likes">4</span></div>
     </div>
 
     <a class="btn" href="https://www.mnso.live/article4" target="_blank">
@@ -113,15 +114,15 @@
     let data = JSON.parse(localStorage.getItem(articleKey));
 
     if (!data) {
-      data = { views: 0 };
+      data = { views: 0, likes: 4 };
     }
 
-    // simulate view tracking on dashboard load
     data.views += 1;
 
     localStorage.setItem(articleKey, JSON.stringify(data));
 
     document.getElementById("views").textContent = data.views;
+    document.getElementById("likes").textContent = data.likes;
   }
 
   loadStats();
