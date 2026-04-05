@@ -40,7 +40,6 @@
     border: 1px solid #ddd;
     border-top: 4px solid #c9a24d;
     padding: 16px;
-    margin-bottom: 16px;
   }
 
   .title {
@@ -67,16 +66,18 @@
     text-align: center;
   }
 
-  button {
-    margin-top: 10px;
-    padding: 8px 12px;
-    border: none;
+  .btn {
+    margin-top: 14px;
+    display: inline-block;
+    padding: 10px 14px;
     background: #0b2a4a;
     color: white;
-    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
   }
 
-  button:hover {
+  .btn:hover {
     opacity: 0.85;
   }
 </style>
@@ -90,16 +91,17 @@
 
 <div class="container">
 
-  <div class="card" id="article4">
+  <div class="card">
     <div class="title">Easter peace in a time of unrest</div>
     <div class="meta">Author: Ole H. Frostad</div>
 
     <div class="stats">
-      <div class="stat">Views: <span id="views">7</span></div>
-      <div class="stat">Likes: <span id="likes">4</span></div>
+      <div class="stat">Views: <span id="views">0</span></div>
     </div>
 
-    <button onclick="likeArticle()">Like</button>
+    <a class="btn" href="https://www.mnso.live/article4" target="_blank">
+      Visit Article
+    </a>
   </div>
 
 </div>
@@ -111,26 +113,15 @@
     let data = JSON.parse(localStorage.getItem(articleKey));
 
     if (!data) {
-      data = { views: 0, likes: 0 };
+      data = { views: 0 };
     }
 
-    // simulate a view on load
+    // simulate view tracking on dashboard load
     data.views += 1;
 
     localStorage.setItem(articleKey, JSON.stringify(data));
 
     document.getElementById("views").textContent = data.views;
-    document.getElementById("likes").textContent = data.likes;
-  }
-
-  function likeArticle() {
-    let data = JSON.parse(localStorage.getItem(articleKey));
-    if (!data) data = { views: 0, likes: 0 };
-
-    data.likes += 1;
-
-    localStorage.setItem(articleKey, JSON.stringify(data));
-    document.getElementById("likes").textContent = data.likes;
   }
 
   loadStats();
