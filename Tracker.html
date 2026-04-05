@@ -108,24 +108,18 @@
 </div>
 
 <script>
-  const articleKey = "mnso_article_4";
+  const key = "mnso_article_4";
 
-  function loadStats() {
-    let data = JSON.parse(localStorage.getItem(articleKey));
+  let data = JSON.parse(localStorage.getItem(key));
 
-    if (!data) {
-      data = { views: 0, likes: 4 };
-    }
-
-    data.views += 1;
-
-    localStorage.setItem(articleKey, JSON.stringify(data));
-
-    document.getElementById("views").textContent = data.views;
-    document.getElementById("likes").textContent = data.likes;
+  if (!data) {
+    data = { views: 0, likes: 4 };
+    localStorage.setItem(key, JSON.stringify(data));
   }
 
-  loadStats();
+  // READ ONLY DISPLAY (NO AUTO CHANGES)
+  document.getElementById("views").textContent = data.views;
+  document.getElementById("likes").textContent = data.likes;
 </script>
 
 </body>
