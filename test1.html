@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The MNSO Review</title>
 
+  <!-- Formal newspaper + UI fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -21,6 +22,7 @@
       color: #111;
     }
 
+    /* ================= TOP BAR ================= */
     .top-bar {
       background-color: var(--mnso-blue);
       color: white;
@@ -28,8 +30,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 999;
       border-bottom: 3px solid var(--mnso-gold);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .top-bar h1 {
@@ -51,6 +56,7 @@
     .logo-left { left: 20px; }
     .seal-right { right: 20px; }
 
+    /* ================= NAV ================= */
     .nav-bar {
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(10px);
@@ -59,6 +65,10 @@
       justify-content: center;
       gap: 40px;
       padding: 12px 0;
+      position: sticky;
+      top: 86px;
+      z-index: 998;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
     .nav-bar span {
@@ -73,6 +83,7 @@
       text-decoration: underline;
     }
 
+    /* ================= LOCAL TIME ================= */
     .local-time {
       text-align: center;
       margin: 16px 0 36px;
@@ -82,12 +93,14 @@
       color: #444;
     }
 
+    /* ================= LAYOUT ================= */
     .container {
       max-width: 1150px;
       margin: 0 auto 44px;
       padding: 0 20px;
     }
 
+    /* ================= STORY BOX ================= */
     .story-box {
       background-color: white;
       border: 1px solid #ddd;
@@ -123,6 +136,7 @@
       text-decoration: underline;
     }
 
+    /* ================= FEATURED ================= */
     .featured {
       margin-bottom: 44px;
     }
@@ -135,13 +149,15 @@
       font-size: 30px;
     }
 
+    /* ================= GRID ================= */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 26px;
     }
 
-    @media (max-width: 900px) {
+    /* ================= MOBILE ================= */
+    @media (max-width:900px) {
       .top-bar {
         height: auto;
         padding: 14px 0;
@@ -162,62 +178,73 @@
       .grid {
         grid-template-columns: 1fr;
       }
+
+      .nav-bar {
+        top: 68px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- ================= TOP BAR ================= -->
   <header class="top-bar">
-    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo-left">
+    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo-left">
     <h1>The MNSO Review</h1>
-    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" class="seal-right">
+    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="seal-right">
   </header>
 
+  <!-- ================= NAV ================= -->
   <nav class="nav-bar">
     <span>Opinion</span>
     <span>Fact</span>
-    <span>Discussion</span>
+    <span onclick="window.location.href='https://www.mnso.live/articlesubmission'">Submissions</span>
   </nav>
 
+  <!-- ================= LOCAL TIME ================= -->
   <div class="local-time" id="localTime"></div>
 
+  <!-- ================= CONTENT ================= -->
   <main class="container">
 
-    <!-- FEATURED (Article 1) -->
+    <!-- FEATURED STORY -->
     <section class="story-box featured">
-      <a href="https://www.mnso.live">
-        <img src="PASTE_FEATURED_IMAGE_URL" class="story-image">
+      <a href="https://www.mnso.live/article1.html">
+        <img src="IMG_1661.jpeg" alt="Austin passes new city-wide law" class="story-image">
         <div class="story-title">
-          Primary Headline of Major MNSO Coverage
+          Austin passes new city-wide law. Why this may affect you..
         </div>
       </a>
     </section>
 
-    <!-- GRID (Articles 2, 3, 4) -->
+    <!-- SECONDARY STORIES -->
     <section class="grid">
 
-      <!-- Article 2 -->
       <div class="story-box">
-        <a href="https://www.mnso.live">
-          <img src="PASTE_IMAGE_URL" class="story-image">
-          <div class="story-title">Secondary Story Headline</div>
+        <a href="https://www.mnso.live/article2.html">
+          <img src="IMG_1666.jpeg" class="story-image" alt="Christian youth culture in Texas">
+          <div class="story-title">
+            Is Texas’s Christian youth culture growing or declining?
+          </div>
         </a>
       </div>
 
-      <!-- Article 3 -->
       <div class="story-box">
-        <a href="https://www.mnso.live">
-          <img src="PASTE_IMAGE_URL" class="story-image">
-          <div class="story-title">Secondary Story Headline</div>
+        <a href="https://www.mnso.live/article3.html">
+          <img src="IMG_1812.webp" class="story-image" alt="National unity discussion">
+          <div class="story-title">
+            The War in Iran OPINION TODAY
+          </div>
         </a>
       </div>
 
-      <!-- Article 4 (UPDATED) -->
       <div class="story-box">
-        <a href="https://www.mnso.live">
-          <img src="IMG_4830.jpeg" class="story-image">
-          <div class="story-title">Easter Peace in a Time of Unrest</div>
+        <a href="https://www.mnso.live/article4.html">
+          <img src="IMG_4830.jpeg" class="story-image" alt="Texas moral stronghold">
+          <div class="story-title">
+            Easter peace in a time of unrest
+          </div>
         </a>
       </div>
 
@@ -225,6 +252,7 @@
 
   </main>
 
+  <!-- ================= LOCAL TIME SCRIPT ================= -->
   <script>
     function updateTime() {
       const now = new Date();
@@ -239,6 +267,7 @@
           second: "2-digit"
         });
     }
+
     updateTime();
     setInterval(updateTime, 1000);
   </script>
