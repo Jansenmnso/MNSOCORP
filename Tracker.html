@@ -96,8 +96,8 @@
     <div class="meta">Author: Ole H. Frostad</div>
 
     <div class="stats">
-      <div class="stat">Views: <span id="views">0</span></div>
-      <div class="stat">Likes: <span id="likes">4</span></div>
+      <div class="stat">Views: 7</div>
+      <div class="stat">Likes: 4</div>
     </div>
 
     <a class="btn" href="https://www.mnso.live/article4" target="_blank">
@@ -106,21 +106,6 @@
   </div>
 
 </div>
-
-<script>
-  const key = "mnso_article_4";
-
-  let data = JSON.parse(localStorage.getItem(key));
-
-  if (!data) {
-    data = { views: 0, likes: 4 };
-    localStorage.setItem(key, JSON.stringify(data));
-  }
-
-  // READ ONLY DISPLAY (NO AUTO CHANGES)
-  document.getElementById("views").textContent = data.views;
-  document.getElementById("likes").textContent = data.likes;
-</script>
 
 </body>
 </html>
