@@ -1,359 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>The MNSO Review – Story</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSO | System Status</title>
+  <style>
+    body {
+      background-color: #0078d7; /* Microsoft blue */
+      color: white;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding-top: 10%;
+      margin: 0;
+      overflow: hidden;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    .sad-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 25px;
+    }
 
-<style>
+    .sad-face {
+      width: 120px;
+      z-index: 2;
+      position: relative;
+    }
 
-*{
-box-sizing:border-box;
-}
+    /* White loading ring animation */
+    .loading-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      height: 160px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 2s linear infinite;
+      z-index: 1;
+    }
 
-body{
-margin:0;
-font-family:'Roboto',sans-serif;
-background:#f4f4f4;
-color:#111;
-}
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
 
-/* ================= TOP BAR ================= */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin: 0;
+    }
 
-.top-bar{
-position:fixed;
-top:0;
-width:100%;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 20px;
-background:#001f3f;
-z-index:1000;
-}
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
 
-.top-left{
-display:flex;
-align-items:center;
-gap:14px;
-}
+    .footer {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
 
-.logo{
-height:40px;
-}
+    /* Logo placement */
+    .mnso-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 130px;
+    }
 
-.review-title{
-font-family:"Times New Roman",serif;
-font-size:20px;
-color:white;
-}
+    .chairman-seal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 130px;
+    }
 
-.nav-buttons{
-display:flex;
-gap:10px;
-}
+    /* Glowing animation for logos */
+    .glow-logo {
+      filter: drop-shadow(0 0 15px rgba(0, 153, 255, 0.7))
+              drop-shadow(0 0 30px rgba(0, 153, 255, 0.5));
+      animation: glowPulse 3s infinite alternate;
+    }
 
-.nav-buttons a{
-color:white;
-text-decoration:none;
-font-size:14px;
-padding:6px 12px;
-border:1px solid rgba(255,255,255,0.35);
-border-radius:4px;
-}
+    @keyframes glowPulse {
+      from {
+        filter: drop-shadow(0 0 10px rgba(0, 153, 255, 0.7))
+                drop-shadow(0 0 20px rgba(0, 153, 255, 0.4));
+      }
+      to {
+        filter: drop-shadow(0 0 25px rgba(0, 153, 255, 1))
+                drop-shadow(0 0 40px rgba(0, 153, 255, 0.8));
+      }
+    }
 
-.nav-buttons a:hover{
-background:#d4af37;
-color:black;
-border-color:#d4af37;
-}
-
-/* ================= ARTICLE LAYOUT ================= */
-
-.story-container{
-max-width:720px;
-margin:120px auto 60px auto;
-padding:0 18px 40px 18px;
-background:white;
-}
-
-/* category */
-
-.story-label{
-display:inline-block;
-margin-top:25px;
-font-size:13px;
-font-weight:bold;
-letter-spacing:.5px;
-text-transform:uppercase;
-color:#001f3f;
-}
-
-/* headline */
-
-.story-title{
-font-family:"Times New Roman",serif;
-font-size:40px;
-line-height:1.15;
-margin:10px 0;
-font-weight:500;
-}
-
-/* byline */
-
-.story-author{
-font-size:14px;
-color:#666;
-margin-bottom:10px;
-}
-
-/* reactions */
-
-.reactions{
-display:flex;
-gap:12px;
-margin-bottom:18px;
-}
-
-.reaction-btn{
-border:1px solid #ddd;
-background:none;
-padding:5px 10px;
-cursor:pointer;
-font-size:14px;
-}
-
-.reaction-btn.active{
-background:black;
-color:white;
-border-color:black;
-}
-
-/* ================= IMAGE ================= */
-
-.story-image{
-width:100%;
-height:auto;
-margin:18px 0 6px 0;
-display:block;
-}
-
-.image-caption{
-font-size:13px;
-color:#666;
-margin-bottom:25px;
-}
-
-/* ================= ARTICLE TEXT ================= */
-
-.story-content{
-font-family:"Times New Roman",serif;
-font-size:20px;
-line-height:1.75;
-color:#222;
-}
-
-.story-content p{
-margin-bottom:22px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:700px){
-
-.review-title{
-display:none;
-}
-
-.story-title{
-font-size:30px;
-}
-
-.story-content{
-font-size:18px;
-line-height:1.7;
-}
-
-.story-container{
-margin-top:110px;
-}
-
-}
-
-</style>
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 25%;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+        margin: 10px 20px;
+      }
+      .mnso-logo, .chairman-seal {
+        width: 90px;
+      }
+      .sad-face {
+        width: 90px;
+      }
+      .loading-ring {
+        width: 120px;
+        height: 120px;
+      }
+      .footer {
+        font-size: 0.8rem;
+        bottom: 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Top Logos -->
+  <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="mnso-logo glow-logo">
+  <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="chairman-seal glow-logo">
 
-<!-- TOP BAR -->
+  <!-- Sad Face + Loading Ring -->
+  <div class="sad-container">
+    <div class="loading-ring"></div>
+    <img src="IMG_1468.webp" alt="Sad Face" class="sad-face">
+  </div>
 
-<div class="top-bar">
+  <!-- Main Message -->
+  <h1>:(</h1>
+  <h1>MNSO Systems Are Temporarily Offline</h1>
+  <p>
+    A system disruption or cyber-related threat has been detected.<br>
+    Access to the MNSO Network and Documents is temporarily suspended<br>
+    while our team works to secure all data and restore normal operations.
+  </p>
 
-<div class="top-left">
-<img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" class="logo">
-<div class="review-title">The MNSO Review</div>
-</div>
+  <p>Please check back later or contact your MNSO administrator for updates.</p>
 
-<div class="nav-buttons">
-<a href="https://www.mnso.live/review">Review</a>
-<a href="#">Opinion</a>
-<a href="#">Fact</a>
-<a href="#">Discussion</a>
-</div>
-
-</div>
-
-<!-- ARTICLE -->
-
-<div class="story-container">
-
-<div class="story-label">Opinion</div>
-
-<h1 class="story-title">
-Easter Peace in a Time of Unrest
-</h1>
-
-<p class="story-author">
-Author: Ole H Frostad<br>
-<span style="font-size:12px;">Leader of The Youth Labor Party in Molde Møre og Romsdal region</span><br>
-<span style="font-size:12px; color:#888;">April 5, 2026</span>
-</p>
-
-<div class="reactions">
-<button class="reaction-btn" id="likeBtn">
-👍 <span id="likeCount">18</span>
-</button>
-
-<button class="reaction-btn" id="dislikeBtn">
-👎 <span id="dislikeCount">2</span>
-</button>
-</div>
-
-<img src="IMG_4830.jpeg" alt="Easter" class="story-image">
-
-<div class="image-caption">
-People across Norway celebrate Easter with rest, reflection, and time together.
-</div>
-
-<div class="story-content">
-
-<p>
-Easter has arrived, and many people have time off from both work and school. It’s a time when people go to their cabins, go skiing, eat candy, and enjoy time with their loved ones. At least here in Norway!
-</p>
-
-<p>
-Many of us try to find peace during Easter in a busy world.
-</p>
-
-<p>
-But sadly, I also think this is something people struggle with. I know I do.
-</p>
-
-<p>
-Because even in the middle of Easter peace, there is a lot of unrest. Conflicts are happening all over the world. Even here at home, the distance between people is growing. You can see it in debates, in Facebook comment sections, and in the news.
-</p>
-
-<p>
-That’s exactly why I think Easter and the message of Jesus are more important than they have been in a long time.
-</p>
-
-<p>
-The Bible tells us about a Jesus who wanted to help the weak, who spent time with those who were left out, and who showed forgiveness—even to people who were different.
-</p>
-
-<p>
-Even to those who wished him harm.
-</p>
-
-<p>
-This is a message about caring for others, about forgiveness, and about the idea that every person has value.
-</p>
-
-<p>
-Today, it often feels like we do the opposite. We pull away from people we disagree with, or we meet each other with harsh words. The gap between “us” and “them” grows, and trust between people is tested. Maybe the problem isn’t that we disagree, but that we don’t talk to each other enough.
-</p>
-
-<p>
-Caring for others in our time is not just about being polite—it’s about small choices in everyday life. Listening a little more. Trying to understand before we respond. Having the conversation we would usually avoid.
-</p>
-
-<p>
-Maybe Easter can be a chance to do just that. Not only to find peace, but to find each other.
-</p>
-
-<p>
-Because in a time marked by unrest, maybe Easter peace is found in the small moments between us.
-</p>
-
-<p>
-This is not meant to be a religious lecture. Still, I believe this holiday gives us a chance to be reminded of this way of seeing each other—no matter what we believe.
-</p>
-
-<p>
-Happy Easter!
-</p>
-
-</div>
-
-</div>
-
-<script>
-
-let likeBtn = document.getElementById("likeBtn");
-let dislikeBtn = document.getElementById("dislikeBtn");
-
-let likeCount = document.getElementById("likeCount");
-let dislikeCount = document.getElementById("dislikeCount");
-
-let liked = false;
-let disliked = false;
-
-likeBtn.addEventListener("click", function(){
-
-if(!liked){
-
-likeCount.textContent = parseInt(likeCount.textContent) + 1;
-likeBtn.classList.add("active");
-
-if(disliked){
-
-dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
-dislikeBtn.classList.remove("active");
-disliked = false;
-
-}
-
-liked = true;
-
-}
-
-});
-
-dislikeBtn.addEventListener("click", function(){
-
-if(!disliked){
-
-dislikeCount.textContent = parseInt(dislikeCount.textContent) + 1;
-dislikeBtn.classList.add("active");
-
-if(liked){
-
-likeCount.textContent = parseInt(likeCount.textContent) - 1;
-likeBtn.classList.remove("active");
-liked = false;
-
-}
-
-disliked = true;
-
-}
-
-});
-
-</script>
-
+  <div class="footer">
+    <p>© 2025 Modern Nonprofit Student Organization | System Security Division</p>
+  </div>
 </body>
 </html>
