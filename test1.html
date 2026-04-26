@@ -2,80 +2,336 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MNSO TEST MODE</title>
+  <title>The MNSO Organization</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /* ================= DEBUG CHECK ================= */
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-
-      /* STEP 1: FORCE VISUAL CONFIRMATION */
-      background: red !important;
+      font-family: 'Roboto', sans-serif;
       color: white;
-      text-align: center;
-    }
 
-    /* ================= HERO TEST ================= */
-
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .label {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: black;
-      padding: 8px 12px;
-      font-size: 12px;
-      z-index: 9999;
-    }
-
-    /* ================= IMAGE TEST LAYER ================= */
-
-    .skyline-test {
-      position: absolute;
-      inset: 0;
-
-      /* STEP 2: REAL IMAGE */
+      /* 🔥 FIXED SKYLINE FOCUS */
       background-image:
-        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
         url("IMG_1661.jpeg");
 
       background-size: cover;
       background-repeat: no-repeat;
 
-      /* IMPORTANT TEST VALUE */
-      background-position: center 90%;
+      /* KEY FIX: anchor skyline instead of sky */
+      background-position: center bottom;
 
-      z-index: -1;
+      background-attachment: fixed;
+    }
+
+    /* ================= TOP GLASS BAR ================= */
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 26px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 1000;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      height: 42px;
+    }
+
+    .review-title {
+      font-family: "Times New Roman", serif;
+      font-size: 20px;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-buttons a {
+      font-size: 14px;
+      text-decoration: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(212, 175, 55, 0.9);
+      color: black;
+      border-color: #d4af37;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 160px;
+      padding-left: 20px;
+      padding-right: 20px;
+      min-height: 100vh;
+    }
+
+    .hero h1 {
+      font-family: "Times New Roman", serif;
+      font-size: 56px;
+      font-weight: normal;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 18px;
+      color: #dddddd;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 30px;
+      font-family: "Times New Roman", serif;
+      font-size: 18px;
+      padding: 14px 40px;
+      background: transparent;
+      color: white;
+      border: 2px solid #d4af37;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background: #d4af37;
+      color: black;
+    }
+
+    /* ================= ABOUT SECTION ================= */
+
+    .about-section {
+      background: white;
+      color: black;
+      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .about-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-container {
+      max-width: 800px;
+      text-align: center;
+      font-family: "Times New Roman", serif;
+    }
+
+    .about-container h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .about-container p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* ================= JOIN BANNER ================= */
+
+    .join-banner {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background: url("IMG_1901.jpeg") center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .join-overlay {
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.5);
+      padding: 40px;
+      border-radius: 8px;
+    }
+
+    .join-overlay h2 {
+      font-family: "Times New Roman", serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .join-btn {
+      font-family: "Times New Roman", serif;
+      font-size: 18px;
+      padding: 12px 30px;
+      border: 2px solid white;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .join-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    /* ================= FOOTER ================= */
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaaaaa;
+      padding: 20px;
+      background: black;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+      .review-title {
+        display: none;
+      }
+
+      .top-bar {
+        height: auto;
+        padding: 14px 18px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-buttons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="label">
-    MNSO DEBUG TEST — CHECK IF RED APPEARS FIRST
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo">
+      <div class="review-title">The MNSO Organization</div>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="https://www.mnso.live/review">Review</a>
+      <a href="directory.html">Directory</a>
+      <a href="https://www.mnso.live/library">Library</a>
+      <a href="members.html">Members</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 
-  <div class="skyline-test"></div>
-
-  <div class="hero">
-    <h1>TEST HERO</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Independent Youth Journalism</h1>
     <p>
-      If you can see this, CSS is loading correctly.<br>
-      Next step: check if skyline appears instead of red.
+      The MNSO Review is a student-led publication committed to serious analysis,
+      cultural commentary, and principled debate — covering policy, youth movements,
+      and the ideas shaping the next generation.
     </p>
+
+    <a href="https://www.mnso.live/review" class="cta">
+      Enter The Review
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section reveal">
+    <div class="about-container">
+      <h2>About the MNSO</h2>
+      <p>
+        The Modern Nonpartisan Student Organization is dedicated to building a stronger
+        and more unified America by bridging divides and confronting extremism.
+        We believe that disagreement does not require division — that respectful
+        discourse and cooperation remain essential to a functioning society.
+      </p>
+      <p>
+        Rooted in the principle that “a house divided cannot stand,” the MNSO works
+        to connect individuals across cultures, beliefs, and perspectives. Through
+        dialogue, engagement, and shared purpose, we strive to narrow the gap between
+        us and foster a more cohesive national community.
+      </p>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="join-banner">
+    <div class="join-overlay">
+      <h2>Join the MNSO</h2>
+      <a href="https://www.mnso.live/joinus" class="join-btn">
+        Become a Member
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © MNSO Organization — Independent Student Publication
   </div>
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+
+        if (top < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+  </script>
 
 </body>
 </html>
