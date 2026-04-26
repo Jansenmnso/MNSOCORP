@@ -2,275 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>MNSO TEST MODE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The MNSO Review</title>
-
-  <!-- Formal newspaper + UI fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --mnso-blue: #0b2a4a;
-      --mnso-gold: #c9a24d;
-      --light-gray: #f4f6f8;
-    }
+    /* ================= DEBUG CHECK ================= */
 
     body {
       margin: 0;
-      background-color: var(--light-gray);
-      font-family: "Inter", sans-serif;
-      color: #111;
-    }
+      font-family: Arial, sans-serif;
 
-    /* ================= TOP BAR ================= */
-    .top-bar {
-      background-color: var(--mnso-blue);
+      /* STEP 1: FORCE VISUAL CONFIRMATION */
+      background: red !important;
       color: white;
-      height: 86px;
+      text-align: center;
+    }
+
+    /* ================= HERO TEST ================= */
+
+    .hero {
+      height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      border-bottom: 3px solid var(--mnso-gold);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
     }
 
-    .top-bar h1 {
-      font-family: "Libre Baskerville", serif;
-      font-size: 34px;
-      letter-spacing: 1.4px;
-      margin: 0;
-      text-transform: uppercase;
-      text-align: center;
+    .label {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: black;
+      padding: 8px 12px;
+      font-size: 12px;
+      z-index: 9999;
     }
 
-    .top-bar img {
-      height: 48px;
+    /* ================= IMAGE TEST LAYER ================= */
+
+    .skyline-test {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+      inset: 0;
 
-    .logo-left { left: 20px; }
-    .seal-right { right: 20px; }
+      /* STEP 2: REAL IMAGE */
+      background-image:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("IMG_1661.jpeg");
 
-    /* ================= NAV ================= */
-    .nav-bar {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 12px 0;
-      position: sticky;
-      top: 86px;
-      z-index: 998;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
+      background-size: cover;
+      background-repeat: no-repeat;
 
-    .nav-bar span {
-      font-family: "Libre Baskerville", serif;
-      font-weight: 700;
-      color: var(--mnso-blue);
-      letter-spacing: 0.8px;
-      cursor: pointer;
-    }
+      /* IMPORTANT TEST VALUE */
+      background-position: center 90%;
 
-    .nav-bar span:hover {
-      text-decoration: underline;
-    }
-
-    /* ================= LOCAL TIME ================= */
-    .local-time {
-      text-align: center;
-      margin: 16px 0 36px;
-      font-family: "Libre Baskerville", serif;
-      font-size: 14px;
-      letter-spacing: 0.6px;
-      color: #444;
-    }
-
-    /* ================= LAYOUT ================= */
-    .container {
-      max-width: 1150px;
-      margin: 0 auto 44px;
-      padding: 0 20px;
-    }
-
-    /* ================= STORY BOX ================= */
-    .story-box {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-top: 4px solid var(--mnso-gold);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      overflow: hidden;
-    }
-
-    .story-box a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .story-image {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      cursor: pointer;
-    }
-
-    .story-title {
-      padding: 18px;
-      font-family: "Libre Baskerville", serif;
-      font-size: 22px;
-      font-weight: 700;
-      border-top: 1px solid #eee;
-      cursor: pointer;
-    }
-
-    .story-title:hover {
-      text-decoration: underline;
-    }
-
-    /* ================= FEATURED ================= */
-    .featured {
-      margin-bottom: 44px;
-    }
-
-    .featured .story-image {
-      height: 380px;
-    }
-
-    .featured .story-title {
-      font-size: 30px;
-    }
-
-    /* ================= GRID ================= */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    /* ================= MOBILE ================= */
-    @media (max-width:900px) {
-      .top-bar {
-        height: auto;
-        padding: 14px 0;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .top-bar img {
-        height: 34px;
-        position: static;
-        transform: none;
-      }
-
-      .top-bar h1 {
-        font-size: 22px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-bar {
-        top: 68px;
-      }
+      z-index: -1;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ================= TOP BAR ================= -->
-  <header class="top-bar">
-    <img src="467CAA93-8809-4A02-AFA2-1749C9D78610.png" alt="MNSO Logo" class="logo-left">
-    <h1>The MNSO Review</h1>
-    <img src="7C60C8A7-1997-4A86-BC77-122697B82929.png" alt="Chairman Seal" class="seal-right">
-  </header>
+  <div class="label">
+    MNSO DEBUG TEST — CHECK IF RED APPEARS FIRST
+  </div>
 
-  <!-- ================= NAV ================= -->
-  <nav class="nav-bar">
-    <span>Opinion</span>
-    <span>Fact</span>
-    <span onclick="window.location.href='https://www.mnso.live/articlesubmission'">Submissions</span>
-  </nav>
+  <div class="skyline-test"></div>
 
-  <!-- ================= LOCAL TIME ================= -->
-  <div class="local-time" id="localTime"></div>
-
-  <!-- ================= CONTENT ================= -->
-  <main class="container">
-
-    <!-- FEATURED STORY -->
-    <section class="story-box featured">
-      <a href="https://www.mnso.live/article1.html">
-        <img src="IMG_1661.jpeg" alt="Austin passes new city-wide law" class="story-image">
-        <div class="story-title">
-          Austin passes new city-wide law. Why this may affect you..
-        </div>
-      </a>
-    </section>
-
-    <!-- SECONDARY STORIES -->
-    <section class="grid">
-
-      <div class="story-box">
-        <a href="https://www.mnso.live/article2.html">
-          <img src="IMG_1666.jpeg" class="story-image" alt="Christian youth culture in Texas">
-          <div class="story-title">
-            Is Texas’s Christian youth culture growing or declining?
-          </div>
-        </a>
-      </div>
-
-      <div class="story-box">
-        <a href="https://www.mnso.live/article3.html">
-          <img src="IMG_1812.webp" class="story-image" alt="National unity discussion">
-          <div class="story-title">
-            The War in Iran OPINION TODAY
-          </div>
-        </a>
-      </div>
-
-      <div class="story-box">
-        <a href="https://www.mnso.live/article4.html">
-          <img src="IMG_4830.jpeg" class="story-image" alt="Texas moral stronghold">
-          <div class="story-title">
-            Easter peace in a time of unrest
-          </div>
-        </a>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- ================= LOCAL TIME SCRIPT ================= -->
-  <script>
-    function updateTime() {
-      const now = new Date();
-      document.getElementById("localTime").textContent =
-        now.toLocaleString(undefined, {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit"
-        });
-    }
-
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
+  <div class="hero">
+    <h1>TEST HERO</h1>
+    <p>
+      If you can see this, CSS is loading correctly.<br>
+      Next step: check if skyline appears instead of red.
+    </p>
+  </div>
 
 </body>
 </html>
