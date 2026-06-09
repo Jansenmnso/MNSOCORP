@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Holy Lutheran Church of Jayland</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    font-family:'Cormorant Garamond', serif;
+    background:url('IMG_2075.jpeg') center center/cover no-repeat fixed;
+    color:white;
+}
+
+/* Cathedral-style overlay */
+.overlay{
+    min-height:100vh;
+    background:
+        linear-gradient(
+            rgba(15,15,15,.50),
+            rgba(15,15,15,.50)
+        ),
+        rgba(120,90,20,.08);
+}
+
+/* Header */
+
+.header{
+    background:white;
+    text-align:center;
+    padding:20px;
+}
+
+.cross{
+    color:#D4AF37;
+    font-size:48px;
+    margin-bottom:5px;
+}
+
+.header h1{
+    font-family:'Cinzel', serif;
+    color:#8B0000;
+    font-size:3rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.motto{
+    color:#555;
+    font-size:1.1rem;
+    margin-top:8px;
+    letter-spacing:2px;
+}
+
+.gold-line{
+    height:4px;
+    background:linear-gradient(
+        to right,
+        #B8860B,
+        #FFD700,
+        #B8860B
+    );
+}
+
+/* Main Area */
+
+.hero{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+    min-height:75vh;
+}
+
+.content-box{
+    max-width:900px;
+    text-align:center;
+
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(8px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:15px;
+
+    padding:50px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.5);
+}
+
+/* Church Seal */
+
+.seal{
+    width:180px;
+    height:180px;
+
+    margin:0 auto 35px auto;
+
+    border:3px solid #D4AF37;
+    border-radius:50%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,255,255,.08);
+
+    color:#F7E7A1;
+}
+
+.seal-cross{
+    font-size:32px;
+    margin-bottom:6px;
+}
+
+.seal-text{
+    font-size:.85rem;
+    line-height:1.2;
+    text-align:center;
+    font-family:'Cinzel', serif;
+}
+
+.content-box h2{
+    font-family:'Cinzel', serif;
+    font-size:2rem;
+    color:#F7E7A1;
+    margin-bottom:20px;
+}
+
+.content-box p{
+    font-size:1.45rem;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+/* Scripture */
+
+.scripture{
+    margin-top:15px;
+    margin-bottom:35px;
+
+    padding:20px;
+
+    border-left:3px solid #D4AF37;
+
+    background:rgba(255,255,255,.08);
+
+    font-style:italic;
+
+    font-size:1.2rem;
+    line-height:1.7;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+
+    color:white;
+
+    border:2px solid rgba(255,255,255,.75);
+
+    background:rgba(255,255,255,.08);
+
+    padding:14px 36px;
+
+    border-radius:40px;
+
+    font-family:'Cinzel', serif;
+    font-size:1rem;
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    background:rgba(255,255,255,.25);
+    transform:translateY(-3px);
+}
+
+/* Records Section */
+
+.records{
+    text-align:center;
+    max-width:900px;
+    margin:0 auto;
+    padding:60px 20px;
+}
+
+.records h2{
+    font-family:'Cinzel', serif;
+    color:#F7E7A1;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.records p{
+    font-size:1.3rem;
+    line-height:1.7;
+}
+
+.records-link{
+    display:inline-block;
+    margin-top:20px;
+
+    color:#F7E7A1;
+    text-decoration:none;
+
+    border-bottom:1px solid #F7E7A1;
+
+    padding-bottom:3px;
+}
+
+/* Services */
+
+.services{
+    text-align:center;
+    padding:40px 20px;
+    background:rgba(0,0,0,.30);
+}
+
+.services h3{
+    font-family:'Cinzel', serif;
+    color:#F7E7A1;
+    margin-bottom:15px;
+}
+
+.services p{
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    padding:25px;
+    background:rgba(0,0,0,.45);
+
+    color:#DDD;
+}
+
+.footer p{
+    margin:4px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .header h1{
+        font-size:2rem;
+    }
+
+    .content-box{
+        padding:30px;
+    }
+
+    .content-box p{
+        font-size:1.2rem;
+    }
+
+    .seal{
+        width:150px;
+        height:150px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <header class="header">
+
+        <div class="cross">✠</div>
+
+        <h1>The Church of Jayland</h1>
+
+        <div class="motto">
+            Faith • Tradition • Fellowship
+        </div>
+
+    </header>
+
+    <div class="gold-line"></div>
+
+    <section class="hero">
+
+        <div class="content-box">
+
+            <div class="seal">
+
+                <div class="seal-cross">✠</div>
+
+                <div class="seal-text">
+                    THE HOLY<br>
+                    LUTHERAN CHURCH<br>
+                    OF JAYLAND<br>
+                    EST. 2020
+                </div>
+
+            </div>
+
+            <h2>The Holy Lutheran Church of Jayland</h2>
+
+            <p>
+                The Church of Jayland was established in 2020 for the purpose
+                of sharing God's faith in a protected environment for youth.
+                The Church continues to operate, maintain historical records,
+                and conduct ceremonial services. The Church is fully known as
+                <strong>The Holy Lutheran Church of Jayland</strong>.
+            </p>
+
+            <div class="scripture">
+                “Let the little children come to me, and do not hinder them,
+                for the kingdom of heaven belongs to such as these.”
+                <br><br>
+                <strong>— Matthew 19:14</strong>
+            </div>
+
+            <div class="buttons">
+
+                <a href="https://www.mnso.live/jaylandabout.html" class="btn">
+                    About
+                </a>
+
+                <a href="https://www.mnso.live/Jaylandarchive.html" class="btn">
+                    Archive
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="records">
+
+        <h2>Church Records</h2>
+
+        <p>
+            The Church maintains historical records, ceremonial archives,
+            foundational documents, and materials relating to the continued
+            operation of the Church since its establishment in 2020.
+        </p>
+
+        <a href="https://www.mnso.live/Jaylandarchive.html"
+           class="records-link">
+           View Historical Archives →
+        </a>
+
+    </section>
+
+    <section class="services">
+
+        <h3>✠ Ceremonial Services ✠</h3>
+
+        <p>
+            Sunday Worship<br>
+            Special Ceremonies by Appointment<br>
+            Historical Archives Available to Members
+        </p>
+
+    </section>
+
+    <footer class="footer">
+
+        <p>The Holy Lutheran Church of Jayland</p>
+
+        <p>Established 2020</p>
+
+        <p>Faith • Tradition • Fellowship</p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
