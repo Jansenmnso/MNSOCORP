@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Directory - MNSO</title>
+
   <style>
     body {
       margin: 0;
@@ -26,6 +28,7 @@
       flex-direction: column;
       align-items: center;
       padding-top: 80px;
+      padding-bottom: 50px;
     }
 
     h1 {
@@ -43,12 +46,14 @@
       width: 300px;
       margin-bottom: 20px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .profile img {
       width: 100%;
       height: auto;
       border-radius: 10px;
+      display: block;
     }
 
     .profile h2 {
@@ -63,11 +68,10 @@
 
     /* Footer styling */
     .footer {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+      text-align: center;
       font-size: 12px;
       color: gray;
+      margin: 20px 0;
     }
   </style>
 </head>
@@ -79,34 +83,39 @@
 
   <!-- Main content container -->
   <div class="container">
+
     <h1>Our Youth Board Members</h1>
 
-    <!-- Jerome Foster (MNSO Chairman) -->
-    <div class="profile"
-      <img src="IMG_7141.jpeg" alt="Jerome Foster">
+    <!-- Jansen Monk -->
+    <div class="profile">
+      <img src="IMG_7141.jpeg" alt="Jansen Monk"
+           onerror="this.src='https://via.placeholder.com/300x400?text=Photo+Not+Found';">
       <h2>Jansen Monk</h2>
-      <p>MNSO Youth Youth Board member</p>
+      <p>MNSO Youth Board Member</p>
     </div>
 
-    <!-- Jansen Monk (Former MNSO Chairman) -->
+    <!-- Kendel Martin -->
     <div class="profile">
-      <img src="IMG_8401.jpeg" alt="Jansen Monk">
+      <img src="IMG_8401.jpeg" alt="Kendel Martin"
+           onerror="this.src='https://via.placeholder.com/300x400?text=Photo+Not+Found';">
       <h2>Kendel Martin</h2>
       <p>Second Chair</p>
     </div>
 
-    <!-- Janathe Nilsen (MNSO Data and Security Manager) -->
+    <!-- Janathe Nilsen -->
     <div class="profile">
-      <img src="IMG_2093.jpeg" alt="Janathe Nilsen">
+      <img src="IMG_2093.jpeg" alt="Janathe Nilsen"
+           onerror="this.src='https://via.placeholder.com/300x400?text=Photo+Not+Found';">
       <h2>Janathe Nilsen</h2>
       <p>MNSO Data and Security Manager</p>
     </div>
+
   </div>
 
-  <!-- Footer with ownership notice -->
+  <!-- Footer -->
   <div class="footer">
-    MNSO Official board members<br>
-    Houston, TX & Norway
+    MNSO Official Board Members<br>
+    Houston, TX &amp; Norway
   </div>
 
 </body>
